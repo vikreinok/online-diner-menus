@@ -1,22 +1,34 @@
-spring3-rest-api-template
+<h1> TTU caterign </h1>
+
+Hajusarhitektuurid & Tarkvara kvaliteeet ja standardi aine projekt
 =========================
+
 
 Template spring 3 rest api app with JPA and annotation based configuration
 
-Run it
+Ettevalmistamien
 ======
-```
-mvn tomcat7:run
 
-```
+käiviatada create_db.sql   @localhost mysql
+Paigalada JDK7, tomcat7 bin ja maven M2HOME keskkonna muutujaga.
 
-Test it
+
+Ehitamine
+======
+
+./tks/mvn clean package -DskipTests=true
+
+
+Käivitamine
+======
+
+deplay WAR to webapps & restart tomcat container
+
+
+Ühiktestimine
 =======
 
-```
 mvn test -Ptest
-
-```
 
 
 
