@@ -1,31 +1,31 @@
-<h1> TTU caterign </h1>
+<h2> TTU caterign </h2>
 
-Hajusarhitektuurid & Tarkvara kvaliteeet ja standardi aine projekt
+<h3> Hajusarhitektuurid & Tarkvara kvaliteeet ja standardi aine projekt </h3>
 =========================
 
 
-Template spring 3 rest api app with JPA and annotation based configuration
+Template spring 3 rest api app with JPA and annotation based configuration 
 
-Ettevalmistamien
+<h3> Ettevalmistamien </h3>
 ======
 
 käiviatada create_db.sql   @localhost mysql
 Paigalada JDK7, tomcat7 bin ja maven M2HOME keskkonna muutujaga.
 
 
-Ehitamine
+<h3> Ehitamine </h3>
 ======
 
 ./tks/mvn clean package -DskipTests=true
 
 
-Käivitamine
+<h3> Käivitamine </h3>
 ======
 
 deplay WAR to webapps & restart tomcat container
 
-
-Ühiktestimine
+ 
+<h3> Ühiktestimine </h3>
 =======
 
 mvn test -Ptest
