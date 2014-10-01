@@ -26,10 +26,6 @@ public class MenuController {
 	@Autowired
 	private MenuService menuService;
 	
-//	@POST
-//	@Path("/create")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
 	@ResponseBody
 	@RequestMapping(value="/create", method=RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public ApiResponse create(@RequestBody @Valid Menu menu) {
@@ -37,10 +33,6 @@ public class MenuController {
             return new ApiResponse(HttpStatus.OK, menuService.create(menu));
 	}
 	
-//	@PUT
-//	@Path("/edit/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
 	@ResponseBody
 	@RequestMapping(value="/edit/{id}", method=RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public ApiResponse edit(@PathVariable Integer id, @RequestBody Menu menu) {
@@ -48,21 +40,22 @@ public class MenuController {
 		return new ApiResponse(HttpStatus.OK, "ok", menuService.update(menu));
 	}
 	
-//	@DELETE
-//	@Path("/delete/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	@ResponseBody
 	public Menu deleteSmartphone(@PathVariable int id) {
 		return menuService.delete(id);
 	}
 	
-	
 	@RequestMapping(value="", method=RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<Menu> all() {
 		return menuService.getAll();
+	}
+	
+	@RequestMapping(value="/read/{id}", method=RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Menu one(@PathVariable int id) {
+		return menuService.get(id);
 	}
 	
 }

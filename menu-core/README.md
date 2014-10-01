@@ -3,8 +3,9 @@
 <h3> Hajusarhitektuurid & Tarkvara kvaliteeet ja standardi aine projekt </h3>
 =========================
 
-
-Template spring 3 rest api app with JPA and annotation based configuration 
+Template spring 3 rest api app with JPA and annotation based configuration.
+Unittest and live seperate datasource configuration.
+H2 in memory database with init testdata script configuation.
 
 <h3> Ettevalmistamien </h3>
 ======

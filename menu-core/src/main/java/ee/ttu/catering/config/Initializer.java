@@ -13,6 +13,8 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import ee.ttu.catering.config.live.LiveEnv;
+
 public class Initializer implements WebApplicationInitializer {
 	
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
@@ -20,7 +22,7 @@ public class Initializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-		ctx.register(WebAppConfig.class);
+		ctx.register(LiveEnv.class);
 		
 		ctx.setServletContext(servletContext);		
 
