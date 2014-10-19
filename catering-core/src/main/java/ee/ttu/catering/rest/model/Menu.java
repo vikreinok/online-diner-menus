@@ -1,8 +1,13 @@
 package ee.ttu.catering.rest.model;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -66,9 +71,9 @@ public class Menu extends IdEntity {
 		this.picture = picture;
 	}
 	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
-//	@OrderBy("name ASC")
-//	private Collection<MenuItem> menuItems;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
+	@OrderBy("name ASC")
+	private Collection<MenuItem> menuItems;
 
 	
 	public Menu update(Menu example) {
@@ -92,20 +97,30 @@ public class Menu extends IdEntity {
 		this.created = created;
 	}
 
+	public Collection<MenuItem> getMenuItems() {
+		return menuItems;
+	}
+
+	public void setMenuItems(Collection<MenuItem> menuItems) {
+		this.menuItems = menuItems;
+	}
+	
+	public void addMenuItem( MenuItem  menuItem) {
+		this.menuItems.add(menuItem);
+	}
+	
+	public void addMenuItems(Collection<MenuItem> menuItems) {
+		this.menuItems.addAll(menuItems);
+	}
+
 	@Override
 	public String toString() {
 		return "Menu [name=" + name + ", created=" + created + ", modifyDate="
 				+ modifyDate + ", username=" + username + ", password="
-				+ password + ", picture=" + picture + "]";
+				+ password + ", picture=" + picture + ", menuItems="
+				+ menuItems + "]";
 	}
-
-//	public Collection<MenuItem> getMenuItems() {
-//		return menuItems;
-//	}
-//
-//	public void setMenuItems(Collection<MenuItem> menuItems) {
-//		this.menuItems = menuItems;
-//	}
+	
 	
 
 }

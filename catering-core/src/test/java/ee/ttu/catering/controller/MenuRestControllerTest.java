@@ -1,12 +1,13 @@
 package ee.ttu.catering.controller;
 
 import static org.junit.Assert.fail;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.apache.log4j.Logger;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.StringContains;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringCon
        result = mvc.perform(MockMvcRequestBuilders.post("/menu/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content("{\"nam\":\"test\"}"))
+                .content("{\"nam\":\"Wrong field value and field content\"}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 
@@ -77,7 +78,6 @@ public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringCon
     
     @Test
     @Transactional
-    @Ignore
     public void testMenuDelete() {
     	MvcResult result;
     	try{
@@ -100,7 +100,7 @@ public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringCon
     		result = mvc.perform(MockMvcRequestBuilders.post("/menu/delete/2")
     				.contentType(MediaType.APPLICATION_JSON)
     				.accept(MediaType.APPLICATION_JSON)
-    				.content(""))
+    				.andExpect(content().string(Contains))
     				.andExpect(status().isOk())
     				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
     				.andReturn(); 

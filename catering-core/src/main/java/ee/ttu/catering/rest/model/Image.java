@@ -15,7 +15,7 @@ public class Image {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private int ID;
 	
 	@Column(nullable = false)
 	@Lob
@@ -23,11 +23,11 @@ public class Image {
 	private byte[] image;
 
 	public long getId() {
-		return id;
+		return ID;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(int ID) {
+		this.ID = ID;
 	}
 
 	public byte[] getImage() {

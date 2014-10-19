@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +21,8 @@ import ee.ttu.catering.rest.exception.ImageFileNotFoundException;
 @Transactional(rollbackFor=ImageFileNotFoundException.class)
 public class FileServiceImpl implements FileService {
 
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Override
 	public byte[] get(String pictureName) {
 		
@@ -31,9 +35,12 @@ public class FileServiceImpl implements FileService {
 			in = new FileInputStream(new File(fileName));
 			bytes = IOUtils.toByteArray(in);
 		} catch (FileNotFoundException e) {
-			throw new ImageFileNotFoundException("The image fail is not found. File name: " + fileName);
+			logger.warn("The image fail is not found. File name: " + fileName);
+//			throw new ImageFileNotFoundException("The image fail is not found. File name: " + fileName);
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			logger.warn("The image fail is not found. File name: " + fileName);
+
 		}
 		
 		return bytes;

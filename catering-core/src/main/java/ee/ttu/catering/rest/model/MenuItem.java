@@ -22,6 +22,8 @@ public class MenuItem extends IdEntity {
 	}
 
 	private String name;
+	
+	private Double price;
 
 	@Enumerated(EnumType.STRING)
 	@Basic
@@ -40,6 +42,14 @@ public class MenuItem extends IdEntity {
 
 	public Status getStatus() {
 		return status;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public void setStatus(Status status) {

@@ -50,4 +50,9 @@ public class DinerServiceImpl implements DinerService {
 		return Diner;
 	}
 
+	@Override
+	public List<Diner> findByName(String name) {
+		return dinerRepository.findAll(DinerRepository.Specs.findByName(name));
+	}
+
 }

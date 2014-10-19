@@ -27,10 +27,16 @@ public class MenuController {
 	private MenuService menuService;
 	
 	@ResponseBody
-	@RequestMapping(value="/create", method=RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	@RequestMapping( method=RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public ApiResponse create(@RequestBody @Valid Menu menu) {
             
             return new ApiResponse(HttpStatus.OK, menuService.create(menu));
+	}
+	
+	@RequestMapping(value="/read/{id}", method=RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public Menu one(@PathVariable int id) {
+		return menuService.get(id);
 	}
 	
 	@ResponseBody
@@ -52,10 +58,6 @@ public class MenuController {
 		return menuService.getAll();
 	}
 	
-	@RequestMapping(value="/read/{id}", method=RequestMethod.GET, produces = "application/json")
-	@ResponseBody
-	public Menu one(@PathVariable int id) {
-		return menuService.get(id);
-	}
+
 	
 }
