@@ -1,0 +1,13 @@
+<a href='#diner/<%= id %>'>
+
+	<div class="row">
+		<div class="col-xs-4">		
+			<img width="32" height="32"  
+				src="<%= picture === '-1' ? './resources/img/user_account_small.png' : 'http://localhost:8080/catering-core/diner/picture/' + picture %>"/>
+		</div>			    
+	    <div class="col-xs-8" style="padding-top:5px">
+	    	<strong><%= name %></strong>
+	    </div>
+   </div> 	
+    
+</a>

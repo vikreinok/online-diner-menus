@@ -20,7 +20,7 @@ public interface DinerRepository extends JpaRepository<Diner, Integer>, JpaSpeci
 
 				@Override
 				public Predicate toPredicate(Root<Diner> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-					return cb.like(root.get(Diner_.name), name);
+					return cb.like(root.get(Diner_.name), name + "%");
 				}
 
 			};

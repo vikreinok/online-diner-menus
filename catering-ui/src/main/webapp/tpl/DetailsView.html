@@ -1,0 +1,121 @@
+<div class="page-header">
+  <h1>Diner Details <small><%= name %></small></h1>
+  
+  <!-- ALERT FOR MESSAGING -->
+  <div class="alert alert-success" style="display: none">  		
+  		<b>Success!</b>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="col-xs-12">	
+	<div class="blockquote-box clearfix">
+		
+        <div class="square pull-left">
+        	
+            <img id="pictureFile" width="128" height="128" 
+					src="<%= picture === '-1' ? './resources/img/user_account.png' : 'http://localhost:8080/catering-core/diner/picture/' + picture %>"/>
+			<span class="file-input btn btn-block btn-primary btn-file" style="margin-top:5px;">
+				change picture&hellip; <input id="fileInput" type="file" name="fileInput">
+			</span>		
+        </div>
+        
+        <span id="filename" class="label label-default">
+			no file selected
+		</span>
+		
+		<h4>
+			<span class="label label-info">
+				Picture already Loaded
+			</span>
+			<span class="label <%= picture == '-1' ? 'label-danger' : 'label-success'%>" style="margin-left: 10px">
+				<span class="glyphicon <%= picture == '-1' ? 'glyphicon-remove' : 'glyphicon-ok'%>"></span>
+			</span>	
+		</h4> 		               
+    </div>
+		
+</div>
+	
+</div>
+
+<div class="row">
+
+<div class="col-xs-12">
+	<form class="form-horizontal">
+	
+		<div class="form-group">
+	    	<label for="id" class="col-lg-2 control-label">ID</label>
+	    	<div class="col-lg-10">
+	      		<div class="input-group">
+				  <span class="input-group-addon">#</span>						  
+				  <input id="accountId" name="id" type="text" class="form-control" value="<%= id === null ? '' : id %>" disabled/>			  
+				</div>				      		
+	    	</div>
+	  	</div>
+	  	
+	  	<!-- NAME -->
+	  	<div id="formGroupname" class="form-group">
+	    	<label for="name" class="col-lg-2 control-label">Name</label>
+	    	<div class="col-lg-10">
+	    		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
+				  <input id="name" name="name" type="text" class="form-control" value="<%= name %>">			  
+				</div> 
+				<span id="msgname" class="help-block"></span>     							  			  
+	    	</div>
+	  	</div>
+
+	  	
+ 		<!-- DESCRIPTION -->
+	  	<div id="formGroudescription" class="form-group">
+	    	<label for="description" class="col-lg-2 control-label">Description</label>
+	    	<div class="col-lg-10">
+	    		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
+				  <input id="description" name="description" type="text" class="form-control" value="<%= description %>">			  
+				</div> 
+				<span id="msgdescription" class="help-block"></span>     							  			  
+	    	</div>
+	    </div>
+	  	</div>
+	  	  	<div class="form-group">
+	    	<label for="modifyDate" class="col-lg-2 control-label">Last mdified</label>
+	    	<div class="col-lg-10">
+	    		<h4><span id="modifyDate" class="label label-primary">unknown</span></h4>  		
+	    	</div>
+	  	</div>
+	  
+	  	
+	  	<div class="form-group">
+	    	<div class="col-lg-offset-2 col-lg-10">
+	    		<button id="saveDinerButton" type="button" class="btn btn btn-default btn-lg save">Save</button>
+	    		<button id="deleteDinerButton" type="button" class="btn btn-warning btn-lg deleteConfirm">Delete</button>    		      	
+	    	</div>
+	  	</div>
+	  	
+	</form>
+		
+</div>
+
+</div>
+
+<!-- MODAL DELETE DINER -->
+ <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header modal-header-warning">
+             	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                 
+                 <h1><i class="glyphicon glyphicon-thumbs-up"></i> Delete Diner <strong><%= name %></strong></h1>
+             </div>
+             <div class="modal-body">
+             	<p>Are you sure to delete the selected diner <strong><%= name %> </strong> ?</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-warning delete">Confirm</button>
+                 <!-- a href="#" class="btn btn-warning delete" data-dismiss="modal">Confirm</a-->
+             </div>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->
