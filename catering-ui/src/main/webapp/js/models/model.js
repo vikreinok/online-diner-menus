@@ -58,7 +58,7 @@ window.DinerCollection = Backbone.Collection.extend({
         console.log("Diner collection initialized");
     },
 
-	findByName:function (key) {		
+	findByName:function (key) {
 		var url = '/catering-core/diner/name/'+ key;
 		console.log('findByName: ' + url);
 		console.log('findByName: ' + key);
@@ -69,7 +69,7 @@ window.DinerCollection = Backbone.Collection.extend({
 	        success:function (data) {
 	            console.log("search success: " + data.length);
 	            self.reset(data);
-	        }	    	
+	        }
 	    });
 	}
 });

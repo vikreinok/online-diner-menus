@@ -47,9 +47,11 @@ window.Router = Backbone.Router.extend({
     
     dinerDetails: function (id) {
         var diner = new Diner({id: id});
-        diner.fetch({success: function(){        	
+        diner.fetch({	success: function(){        	
             $("#content").html(new DetailsView({model: diner}).el);
-            $('#lastUpdate').text(convertDate(diner.get('modifyDate')));            
+            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
+            $('#created').text(convertDate(diner.get('created')));            
+            console.log("created: " + diner.get('created'));
         }});
         
         //this.headerView.selectMenuItem();

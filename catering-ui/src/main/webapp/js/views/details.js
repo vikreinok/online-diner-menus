@@ -74,7 +74,8 @@ window.DetailsView = Backbone.View.extend({
             success: function (model) {
                 self.render();                
                 $('#loadingModal').modal('hide');
-                $('#lastUpdate').text(convertDate(model.get('modifyDate')));
+                $('#modifyDate').text(convertDate(model.get('modifyDate')));
+                $('#created').text(convertDate(model.get('created')));            
                 app.navigate('http://localhost:8080/catering-core/diner/create/' + model.id, false);                
                 utils.showAlert('Success!', 'Diner saved successfully', 'alert-success');
             },
