@@ -1,5 +1,5 @@
 window.Router = Backbone.Router.extend({
-
+	
     routes: {
     	"": "home",
         "diners": "dinerlist",
@@ -37,11 +37,21 @@ window.Router = Backbone.Router.extend({
     	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
         var diners = new DinerCollection();
-        diners.fetch({success: function(){
-            $("#content").html(new ListView({model: diners, page: p}).el);
-            //$('#loadingModal').modal('hide');
-            $('#loadingimage').hide();
-        }});
+        diners.fetch({
+        	timeout:500000, 
+        	success: function(){
+	            $("#content").html(new ListView({model: diners, page: p}).el);
+	            //$('#loadingModal').modal('hide');
+	            $('#loadingimage').hide();
+        	},	
+	        error: function(model, response) {
+	        	console.log(response.status);
+	        	console.log(response.statusText);
+	        	$("#content").html(new ErrorView({model: response}).el);
+	        	$('#loadingimage').hide();
+	        }
+        	
+        });
         this.headerView.select('diners-menu');        
     },
     
@@ -67,7 +77,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","DetailsView","SearchResultItemView"],
+templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","DetailsView","SearchResultItemView", "ErrorView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();
