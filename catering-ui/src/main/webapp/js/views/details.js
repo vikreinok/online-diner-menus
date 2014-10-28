@@ -123,7 +123,7 @@ window.DetailsView = Backbone.View.extend({
 				//Read the image file from the local file system and display it in the img tag    				       
 		        reader.readAsDataURL(utils.getFile());
 			} else{
-				$('#pictureFile').attr('src', './resources/img/user_account.png');				
+				$('#pictureFile').attr('src', './resources/img/diner_logo.png');				
 				return false;
 			} 				
 		}		
@@ -142,7 +142,7 @@ window.DetailsView = Backbone.View.extend({
     	data.append('file', utils.getFile());
 		
 		$.ajax({
-		    url: 'http://localhost:8080/catering-core/diner/picture/upload/' + this.model.get('picture'),
+		    url: 'http://localhost:8080/catering-core/file/image/' + this.model.get('picture'),
 		    data: data,
 		    cache: false,
 		    contentType: false,

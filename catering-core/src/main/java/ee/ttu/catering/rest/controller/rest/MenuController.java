@@ -33,7 +33,7 @@ public class MenuController {
             return new ApiResponse(HttpStatus.OK, menuService.create(menu));
 	}
 	
-	@RequestMapping(value="/read/{id}", method=RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public Menu one(@PathVariable int id) {
 		return menuService.get(id);
