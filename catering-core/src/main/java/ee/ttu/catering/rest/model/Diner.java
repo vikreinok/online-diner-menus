@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
@@ -20,6 +21,7 @@ public class Diner extends IdEntity {
 	private static final long serialVersionUID = -7169873625528706006L;
 
 	@NotBlank
+	@Length(min=2, max=15, message="Too long name for diner")
 	private String name;
 	
 	@Temporal(TemporalType.DATE)
@@ -28,6 +30,7 @@ public class Diner extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
+	@NotBlank
 	private String description;
 	
 	private String picture;

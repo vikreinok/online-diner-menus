@@ -3,21 +3,16 @@ window.Diner = Backbone.Model.extend({
 	urlRoot: "http://localhost:8080/catering-core/diner/",
 	
 	initialize: function () {
-        //map key/value for validation 
 		this.validators = {};
 
         this.validators.name = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter an diner name"};
+            return value.length >= 2 && value.length <= 15  ? {isValid: true} : {isValid: false, message: "You must enter an diner name from 2 to 15 characters"};
         };
         
         this.validators.description = function (value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter an diner description"};
         };
         
-//        this.validators.created = function (value) {
-//            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter an creation date"};
-//        };
-    
     },
     
     validateItem: function (key) {
