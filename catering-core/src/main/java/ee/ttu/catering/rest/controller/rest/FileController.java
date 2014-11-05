@@ -12,9 +12,9 @@ import ee.ttu.catering.rest.controller.dto.FileUploadForm;
 public interface FileController {
 
 	@ResponseBody
-	@RequestMapping(value="/image/{fileName}", method=RequestMethod.POST)
+	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.POST)
 	public String createImage(String fileName, FileUploadForm form, BindingResult result);
 
-	@RequestMapping(value="/image/{pictureName}", method=RequestMethod.GET,  produces = MediaType.IMAGE_JPEG_VALUE)
-	public ResponseEntity<byte[]> getImage(String pictureName);
+	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.GET,  produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_GIF_VALUE})
+	public ResponseEntity<byte[]> getImage(String fileName);
 }

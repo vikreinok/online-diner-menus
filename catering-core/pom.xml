@@ -36,14 +36,6 @@
 <!--             <version>${mysql.connector}</version> -->
 <!--         </dependency> -->
 
-        <!-- UI testing -->
-		<dependency>
-			<groupId>com.codeborne</groupId>
-			<artifactId>selenide</artifactId>
-			<version>2.14</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -160,12 +152,12 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <!-- validators -->   
+        <!-- validators -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.2.Final</version>
-        </dependency> 
+        </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -234,10 +226,11 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
+            <scope>test</scope>
         </dependency>
         
         <!-- utils -->
-        <!-- Joda Time Library -->	
+        <!-- Joda Time Library -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -249,7 +242,7 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.2.2</version>
-        </dependency>	
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -269,7 +262,21 @@
 			<version>2.2.4</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+        <!-- UI testing -->
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>selenide</artifactId>
+			<scope>test</scope>
+			<version>2.14</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
     </dependencies>
     
     <profiles>
@@ -310,74 +317,74 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>  
+    </profiles>
 
     <build>
         <finalName>catering-core</finalName>
         
         <plugins>
       <!-- embedded tomcat (tomcat:run) -->
-		<plugin>
-			<groupId>org.apache.tomcat.maven</groupId>
-			<artifactId>tomcat7-maven-plugin</artifactId>
-			<version>2.0</version>
-			<configuration>
-				<path>/RestApi</path>
-				<systemProperties>
-					<systemProperty>
-						<name>spring.profiles.active</name>
-						<value>development</value>
-					</systemProperty>
-				</systemProperties>
-			</configuration>
-		</plugin>
-		<plugin>
-			<groupId>org.bsc.maven</groupId>
-			<artifactId>maven-processor-plugin</artifactId>
-			<version> 2.2.4</version>
-			<executions>
-				<execution>
-					<phase>generate-sources</phase>
-					<goals>
-						<goal>process</goal>
-					</goals>
-				</execution>
-			</executions>
-			<configuration>
-				<processors>
-					<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-				</processors>
-			</configuration>
-			<dependencies>
-				<dependency>
-					<groupId>org.hibernate</groupId>
-					<artifactId>hibernate-jpamodelgen</artifactId>
-					<version>${hibernate.version}</version>
-				</dependency>
-			</dependencies>
-		</plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-<!--                     <compilerArguments> -->
-<!--         				<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
-<!--        			 	</compilerArguments> -->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-<!--                 	<webappDirectory>C:/tomcat/webapps/RestApi</webappDirectory> -->
-                	<outputDirectory>C:/tomcat/webapps/</outputDirectory>
-                	<warName>catering-core</warName>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
+<!-- 		<plugin> -->
+<!-- 			<groupId>org.apache.tomcat.maven</groupId> -->
+<!-- 			<artifactId>tomcat7-maven-plugin</artifactId> -->
+<!-- 			<version>2.0</version> -->
+<!-- 			<configuration> -->
+<!-- 				<path>/catering-core</path> -->
+<!-- 				<systemProperties> -->
+<!-- 					<systemProperty> -->
+<!-- 						<name>spring.profiles.active</name> -->
+<!-- 						<value>development</value> -->
+<!-- 					</systemProperty> -->
+<!-- 				</systemProperties> -->
+<!-- 			</configuration> -->
+<!-- 		</plugin> -->
+<!-- 		<plugin> -->
+<!-- 			<groupId>org.bsc.maven</groupId> -->
+<!-- 			<artifactId>maven-processor-plugin</artifactId> -->
+<!-- 			<version>2.2.4</version> -->
+<!-- 			<executions> -->
+<!-- 				<execution> -->
+<!-- 					<phase>generate-sources</phase> -->
+<!-- 					<goals> -->
+<!-- 						<goal>process</goal> -->
+<!-- 					</goals> -->
+<!-- 				</execution> -->
+<!-- 			</executions> -->
+<!-- 			<configuration> -->
+<!-- 				<processors> -->
+<!-- 					<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
+<!-- 				</processors> -->
+<!-- 			</configuration> -->
+<!-- 			<dependencies> -->
+<!-- 				<dependency> -->
+<!-- 					<groupId>org.hibernate</groupId> -->
+<!-- 					<artifactId>hibernate-jpamodelgen</artifactId> -->
+<!-- 					<version>${hibernate.version}</version> -->
+<!-- 				</dependency> -->
+<!-- 			</dependencies> -->
+<!-- 		</plugin> -->
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+                <compilerArguments>
+		            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+		        </compilerArguments>
+            </configuration>
+        </plugin>
+        <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-war-plugin</artifactId>
+             <version>2.2</version>
+             <configuration>
+<!--              <webappDirectory>C:/tomcat/webapps/RestApi</webappDirectory> -->
+           	 <outputDirectory>C:/tomcat/webapps/</outputDirectory>
+           	 <warName>catering-core</warName>
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 

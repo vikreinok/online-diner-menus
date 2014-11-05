@@ -58,8 +58,8 @@ window.DetailsView = Backbone.View.extend({
         }
         
         //Check picture file                            		
-		if(this.checkFileAndExtension()) {			
-			this.model.set("picture", utils.createFileName(this.model.id));
+		if(this.checkFileAndExtension()) {
+			this.model.set("picture", utils.createFileName());
 			this.saveFile();
 		} 
 			

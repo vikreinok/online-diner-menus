@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ee.ttu.catering.rest.exception.DinerNotFoundException;
 import ee.ttu.catering.rest.model.Diner;
 import ee.ttu.catering.rest.repository.DinerRepository;
+import ee.ttu.catering.rest.repository.ImageRepository;
 
 @Service
 @Transactional(rollbackFor=DinerNotFoundException.class)
@@ -17,10 +18,15 @@ public class DinerServiceImpl implements DinerService {
 	
 	@Autowired
 	private DinerRepository dinerRepository;
+	
+	@Autowired
+	private ImageRepository imageRepository;
 
 	@Override
-	public Diner create(Diner sp) {
-		return dinerRepository.save(sp);
+	public Diner create(Diner dienr) {
+		
+		
+		return dinerRepository.save(dienr);
 	}
 
 	@Override

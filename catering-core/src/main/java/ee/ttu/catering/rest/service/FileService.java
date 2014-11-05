@@ -5,8 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
 
-	public byte[] get(String pictureName);
+	public byte[] get(String fineName);
 
-	public String create(String fileName, MultipartFile file);
+	public String create(String name, MultipartFile file, String fileName);
 
 }

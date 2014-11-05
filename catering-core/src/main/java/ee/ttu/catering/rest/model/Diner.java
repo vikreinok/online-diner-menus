@@ -14,27 +14,31 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
+/**
+ * @author viktor.reinok
+ *
+ */
 @Entity
-@Table(name="diner")
+@Table(name = "diner")
 public class Diner extends IdEntity {
-	
+
 	private static final long serialVersionUID = -7169873625528706006L;
 
 	@NotBlank
-	@Length(min=2, max=15, message="Too long name for diner")
+	@Length(min = 2, max = 15, message = "Name should be between 2 and 15 characters")
 	private String name;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date created;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
-	
+
 	@NotBlank
 	private String description;
-	
+
 	private String picture;
-	
+
 	@PrePersist
 	void created() {
 		this.created = this.modifyDate = new Date();
@@ -44,13 +48,12 @@ public class Diner extends IdEntity {
 	void updated() {
 		this.modifyDate = new Date();
 	}
-	
-	
+
 	public Diner update(Diner example) {
 		this.name = example.getName();
 		return this;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -74,14 +77,6 @@ public class Diner extends IdEntity {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
 
 	public String getDescription() {
 		return description;
@@ -91,12 +86,12 @@ public class Diner extends IdEntity {
 		this.description = description;
 	}
 
-	@Override
-	public String toString() {
-		return "Diner [name=" + name + ", created=" + created + ", modifyDate="
-				+ modifyDate + ", description=" + description + ", picture="
-				+ picture + "]";
+	public String getPicture() {
+		return picture;
 	}
 
-	
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
 }

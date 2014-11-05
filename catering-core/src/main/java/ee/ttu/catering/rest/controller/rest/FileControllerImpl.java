@@ -26,17 +26,15 @@ public class FileControllerImpl implements FileController {
 	@Override
 	public String createImage(@PathVariable String fileName, @ModelAttribute @Valid FileUploadForm form, BindingResult result) {
 		
-		if(result.hasErrors()) {
-			
-		}
+		if(result.hasErrors());
 		
-		return fileService.create(form.getFilename(), form.getFile() );
+		return fileService.create(fileName, form.getFile(), form.getFilename());
 	}
 	
 	@Override
-	public ResponseEntity<byte[]> getImage(@PathVariable String pictureName) {
+	public ResponseEntity<byte[]> getImage(@PathVariable String fileName) {
 		
-		byte[] bytes = fileService.get(pictureName);
+		byte[] bytes = fileService.get(fileName);
 
 	    final HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.IMAGE_JPEG);

@@ -4,7 +4,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -14,20 +13,34 @@ import javax.persistence.Table;
 public class Image {
 
 	@Id
-	@GeneratedValue
-	private int ID;
-	
+	private String name;
+
+	private String fileName;
+
 	@Column(nullable = false)
 	@Lob
 	@Basic(fetch = FetchType.EAGER)
 	private byte[] image;
 
-	public long getId() {
-		return ID;
+	public Image() {
 	}
 
-	public void setId(int ID) {
-		this.ID = ID;
+	public Image(String name, byte[] image) {
+		this.name = name;
+		this.image = image;
+	}
+
+	public Image(String name, byte[] image, String fileName) {
+		this(name, image);
+		this.fileName = fileName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public byte[] getImage() {
@@ -37,5 +50,13 @@ public class Image {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 }
