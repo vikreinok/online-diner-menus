@@ -50,7 +50,7 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
     public void testMenuItemCreate() {
         MvcResult result;
         try{
-        mvc.perform(MockMvcRequestBuilders.post("/menu_item/create")
+        mvc.perform(MockMvcRequestBuilders.post("/menu_item/")
                  .contentType(MediaType.APPLICATION_JSON)
                  .accept(MediaType.APPLICATION_JSON)
                  .content("{\"name\":\"test\"}"))
@@ -66,10 +66,8 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
                  .andExpect(status().isBadRequest())
                  .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                  .andReturn(); 
-        
-        LOG.info("RESULT " + result.getResponse().getContentAsString());
        
-        }catch(Exception e){
+        } catch(Exception e){
             e.printStackTrace();
             fail(e.getMessage());
         }

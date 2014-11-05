@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 import org.apache.log4j.Logger;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -25,6 +26,7 @@ import ee.ttu.catering.config.unittest.UnitTestEnv;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(loader = WebDelegatingSmartContextLoader.class, classes = UnitTestEnv.class)
+@Ignore
 public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	Logger LOG = Logger.getLogger(this.getClass());
@@ -43,7 +45,7 @@ public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringCon
 
     @Test
     public void userCanLoginByUsername() {
-      open("RestApi/menu/");
+      open("catering-core/menu/");
       $(By.name("user.name")).setValue("johny");
       $("#submit").click();
       $(".loading_progress").should(disappear); // Waits until element disappears

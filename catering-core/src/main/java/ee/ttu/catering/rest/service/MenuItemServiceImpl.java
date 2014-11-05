@@ -54,7 +54,12 @@ public class MenuItemServiceImpl implements MenuItemService {
 	}
 
 	@Override
-	public List<MenuItem> findAll(Integer menuId) {
+	public List<MenuItem> findAll() {
+		return menuItemRepository.findAll();
+	}
+	
+	@Override
+	public List<MenuItem> findByMenuId(Integer menuId) {
 		return (List<MenuItem>) menuRepository.findOne(menuId).getMenuItems();
 	}
 

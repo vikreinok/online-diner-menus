@@ -14,6 +14,8 @@ public interface MenuItemService {
 
 	MenuItem findOne(Integer id);
 
-	List<MenuItem> findAll(Integer menuId);
+	List<MenuItem> findAll();
+	
+	List<MenuItem> findByMenuId(Integer menuId);
 
 }
