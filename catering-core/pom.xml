@@ -248,7 +248,7 @@
             <artifactId>commons-io</artifactId>
             <version>2.0.1</version>
         </dependency>
-
+		
         <!-- Unit tests -->
 		<dependency>
 			<groupId>javax.el</groupId>
@@ -261,14 +261,6 @@
 			<artifactId>javax.el</artifactId>
 			<version>2.2.4</version>
 			<scope>test</scope>
-		</dependency>
-		
-        <!-- UI testing -->
-		<dependency>
-			<groupId>com.codeborne</groupId>
-			<artifactId>selenide</artifactId>
-			<scope>test</scope>
-			<version>2.14</version>
 		</dependency>
 		
 		<dependency>
