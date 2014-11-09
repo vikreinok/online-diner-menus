@@ -33,7 +33,7 @@ public class DinerControllerImpl implements DinerController {
 	}
 	
 	@Override
-	public ApiResponse create(@RequestBody @Valid Diner diner) {
+	public ApiResponse create(@Valid @RequestBody Diner diner) {
 		return new ApiResponse(HttpStatus.OK, dinerService.create(diner));
 	}
 	

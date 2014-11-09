@@ -25,7 +25,7 @@ public class Diner extends IdEntity {
 	private static final long serialVersionUID = -7169873625528706006L;
 
 	@NotBlank
-	@Length(min = 2, max = 15, message = "Name should be between 2 and 15 characters")
+	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 
 	@Temporal(TemporalType.DATE)
