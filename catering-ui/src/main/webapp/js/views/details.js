@@ -76,7 +76,7 @@ window.DetailsView = Backbone.View.extend({
                 $('#loadingModal').modal('hide');
                 $('#modifyDate').text(convertDate(model.get('modifyDate')));
                 $('#created').text(convertDate(model.get('created')));            
-                app.navigate('http://localhost:8080/catering-core/diner/create/' + model.id, false);                
+                app.navigate('http://localhost:8080/catering-core/rest/diner/create/' + model.id, false);                
                 utils.showAlert('Success!', 'Diner saved successfully', 'alert-success');
             },
             error: function () {
@@ -142,7 +142,7 @@ window.DetailsView = Backbone.View.extend({
     	data.append('file', utils.getFile());
 		
 		$.ajax({
-		    url: 'http://localhost:8080/catering-core/file/image/' + this.model.get('picture'),
+		    url: 'http://localhost:8080/catering-core/rest/file/image/' + this.model.get('picture'),
 		    data: data,
 		    cache: false,
 		    contentType: false,

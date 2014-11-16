@@ -9,7 +9,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-public abstract class AbstractDbEnv extends WebAppConfig{
+public abstract class AbstractDbEnv extends ApplicationConfig{
 
 	protected static String TYPE = "test.";
 	

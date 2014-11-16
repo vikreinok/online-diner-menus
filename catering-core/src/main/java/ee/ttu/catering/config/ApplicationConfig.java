@@ -18,16 +18,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 @Configuration
 @EnableWebMvc
-@EnableTransactionManagement
+@Import({ FileUploadConfig.class, SecurityConfig.class})
 @ComponentScan("ee.ttu.catering.rest")
 @EnableJpaRepositories("ee.ttu.catering.rest.repository")
-@Import({FileUploadConfig.class})
-public class WebAppConfig extends WebMvcConfigurerAdapter {
+@EnableTransactionManagement
+public class ApplicationConfig extends WebMvcConfigurerAdapter {
 	
 	
 	@Bean
@@ -52,7 +51,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 	
 	/**
 	* View resolver for returning JSON in a view-based system. Always returns a
-	* {@link MappingJackson2JsonView}.
+	* {@link MappingJacksonJsonView}.
 	*/
 	public class JsonViewResolver implements ViewResolver {
 		public View resolveViewName(String viewName, Locale locale)
@@ -62,5 +61,4 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 				return view;
 		}
 	}
-
 }

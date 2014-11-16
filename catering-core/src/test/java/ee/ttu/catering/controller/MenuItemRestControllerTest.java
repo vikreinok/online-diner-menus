@@ -50,7 +50,7 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
     public void testMenuItemCreate() {
         MvcResult result;
         try{
-        mvc.perform(MockMvcRequestBuilders.post("/menu_item/")
+        mvc.perform(MockMvcRequestBuilders.post("/rest/menu_item/")
                  .contentType(MediaType.APPLICATION_JSON)
                  .accept(MediaType.APPLICATION_JSON)
                  .content("{\"name\":\"test\"}"))
@@ -59,7 +59,7 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
                  .andReturn(); 
         
         
-        result = mvc.perform(MockMvcRequestBuilders.post("/menu_item/create")
+        result = mvc.perform(MockMvcRequestBuilders.post("/rest/menu_item/create")
                  .contentType(MediaType.APPLICATION_JSON)
                  .accept(MediaType.APPLICATION_JSON)
                  .content("{\"nam\":\"Wrong name and field value\"}"))
@@ -81,7 +81,7 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
     	try{
     		String CONTENT = "{\"id\":2,\"entityVersion\":0,\"name\":\"test\",\"created\":null}";
     		
-    		result = mvc.perform(MockMvcRequestBuilders.post("/menu/create")
+    		result = mvc.perform(MockMvcRequestBuilders.post("/rest/menu")
     				.contentType(MediaType.APPLICATION_JSON)
     				.accept(MediaType.APPLICATION_JSON)
     				.content(CONTENT))
@@ -89,13 +89,13 @@ public class MenuItemRestControllerTest extends AbstractTransactionalJUnit4Sprin
     				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
     				.andReturn();
     		
-			mvc.perform(MockMvcRequestBuilders.get("/menu/read/2")
+			mvc.perform(MockMvcRequestBuilders.get("/rest/menu/2")
 					.accept(MediaType.APPLICATION_JSON))
 			        .andExpect(MockMvcResultMatchers.status().isOk())
 			        .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE))
 			        .andExpect(MockMvcResultMatchers.content().string(CONTENT));
     		
-    		result = mvc.perform(MockMvcRequestBuilders.post("/menu/delete/2")
+    		result = mvc.perform(MockMvcRequestBuilders.post("/rest/menu/2")
     				.contentType(MediaType.APPLICATION_JSON)
     				.accept(MediaType.APPLICATION_JSON)
     				.content(""))

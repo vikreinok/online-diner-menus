@@ -29,44 +29,32 @@ import ee.ttu.catering.config.unittest.UnitTestEnv;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(loader = WebDelegatingSmartContextLoader.class, classes = UnitTestEnv.class)
-public class MenuRestControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class LoginRestControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	Logger LOG = Logger.getLogger(this.getClass());
 	
-    public MenuRestControllerTest() {}
+    public LoginRestControllerTest() {}
 
     MockMvc mvc;
-     
     @Autowired WebApplicationContext wac;
     
     @Before
     public void setup(){
        mvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
-
+    
+    public static final String CONTENT = "{\"loggedIn\":false,\"username\":\"admin\",\"password\":\"admin\",\"rememberMe\":true}";
     @Test
-    @Transactional
-    public void testMenuCreate() {
-        MvcResult result;
+//    @Transactional
+    public void testLogin() {
         try{
-       mvc.perform(MockMvcRequestBuilders.post("/rest/menu")
+        mvc.perform(MockMvcRequestBuilders.post("/rest/login/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content("{\"name\":\"test\"}"))
+                .content(CONTENT))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 
-       
-       
-       result = mvc.perform(MockMvcRequestBuilders.post("/rest/menu")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content("{\"nam\":\"Wrong field value and field content\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andReturn(); 
-       
-       LOG.info("RESULT " + result.getResponse().getContentAsString());
        
         }catch(Exception e){
             e.printStackTrace();
