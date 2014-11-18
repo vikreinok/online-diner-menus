@@ -29,7 +29,6 @@ public class Menu extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date created;
 	
-	
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
@@ -38,6 +37,7 @@ public class Menu extends IdEntity {
 	private String password;
 	
 	private String picture;
+	
 	
 	public Date getModifyDate() {
 		return modifyDate;
