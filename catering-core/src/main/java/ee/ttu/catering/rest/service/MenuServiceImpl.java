@@ -19,8 +19,8 @@ public class MenuServiceImpl implements MenuService {
 	private MenuRepository menuRepository;
 
 	@Override
-	public Menu create(Menu sp) {
-		return menuRepository.save(sp);
+	public Menu create(Menu menu) {
+		return menuRepository.save(menu);
 	}
 
 	@Override
@@ -43,11 +43,13 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public Menu delete(Integer id) throws MenuNotFoundException {
-		Menu Menu = get(id);
-		if (Menu == null)
+		
+		List<Menu> menus = menuRepository.findAll();
+		Menu menu = get(id);
+		if (menu == null)
 			throw new MenuNotFoundException(id.toString());
 		menuRepository.delete(id);
-		return Menu;
+		return menu;
 	}
 
 }

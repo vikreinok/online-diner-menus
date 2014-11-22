@@ -28,7 +28,7 @@ public interface DinerController {
 
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse create(Diner menu);
+	public Diner create(Diner menu);
 
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

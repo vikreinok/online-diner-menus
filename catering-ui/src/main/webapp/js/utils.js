@@ -51,14 +51,19 @@ window.utils = {
 	},
 	
 	/*Alert main*/
+	showAlert: function(title, text, klass, path) {
+		
+	    if(klass == 'alert-success'){
+	    	$('.alert').append(' <a href='+ path +' class="alert-link">Back to list view</a>');
+	    }
+		
+		this.showAlert(title, text, klass);
+	},
+
 	showAlert: function(title, text, klass) {
 	    $('.alert').removeClass("alert-danger alert-warning alert-success alert-info");
 	    $('.alert').addClass(klass);
 	    $('.alert').html('<strong>' + title + '</strong> ' + text);
-	    
-	    if(klass == 'alert-success'){
-	    	$('.alert').append(' <a href="#diners" class="alert-link">Back to diners list</a>');
-	    }
 	    
 	    $('.alert').show();
 	},
@@ -124,6 +129,12 @@ window.utils = {
     	} else {
     		return false;
     	}
+    },
+    
+    redirectTimer: function(interval, location) {
+        setTimeout(function(){
+        	app.navigate(location,  true);
+        }, 1000);
     }
-
+    
 };

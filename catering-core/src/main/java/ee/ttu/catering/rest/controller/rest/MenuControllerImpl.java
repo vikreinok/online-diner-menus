@@ -38,7 +38,7 @@ public class MenuControllerImpl implements MenuController {
 	}
 	
 	@Override
-	public ApiResponse edit(@PathVariable Integer id, @RequestBody Menu menu) {
+	public ApiResponse update(@PathVariable Integer id, @RequestBody Menu menu) {
 		menu.setId(id);
 		return new ApiResponse(HttpStatus.OK, "ok", menuService.update(menu));
 	}

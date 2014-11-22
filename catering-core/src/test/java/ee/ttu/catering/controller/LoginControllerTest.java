@@ -45,14 +45,14 @@ public class LoginControllerTest extends AbstractTransactionalJUnit4SpringContex
     @Transactional
     public void testLogin() {
         try{
-        mvc.perform(MockMvcRequestBuilders.post("/login/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(CONTENT))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andReturn(); 
-       
+	        mvc.perform(MockMvcRequestBuilders.post("/login/")
+	            .contentType(MediaType.APPLICATION_JSON)
+	            .accept(MediaType.APPLICATION_JSON)
+	            .content(CONTENT))
+	            .andExpect(status().isOk())
+	            .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+	            .andReturn(); 
+   
         }catch(Exception e){
             e.printStackTrace();
             fail(e.getMessage());
@@ -63,8 +63,7 @@ public class LoginControllerTest extends AbstractTransactionalJUnit4SpringContex
     @Transactional
     public void testLogout() {
     	try{
-    		
-    	mvc.perform(MockMvcRequestBuilders.delete("/login/")
+    		mvc.perform(MockMvcRequestBuilders.delete("/login/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())

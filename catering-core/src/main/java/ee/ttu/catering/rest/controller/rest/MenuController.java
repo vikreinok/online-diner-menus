@@ -13,11 +13,11 @@ import ee.ttu.catering.rest.response.ApiResponse;
 public interface MenuController {
 
 	@ResponseBody
-	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public List<Menu> all();
 
 	@ResponseBody
-	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Menu one(int id);
 
 	@ResponseBody
@@ -26,7 +26,7 @@ public interface MenuController {
 
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse edit(Integer id, Menu menu);
+	public ApiResponse update(Integer id, Menu menu);
 
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

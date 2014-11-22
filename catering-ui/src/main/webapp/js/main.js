@@ -6,6 +6,7 @@ window.Router = Backbone.Router.extend({
         "diners/add": "addDiner",
         "diners/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
+        "login": "login",
     },
 
     initialize: function () {
@@ -75,9 +76,15 @@ window.Router = Backbone.Router.extend({
         this.headerView.select('add-menu');
 	},
     
+    login: function() {
+        var login = new Login();
+        $('#content').html(new LoginView({model: login}).el);
+        this.headerView.select('login');
+	},
+    
 });
 
-templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","DetailsView","SearchResultItemView", "ErrorView"],
+templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","LoginView","DetailsView","SearchResultItemView", "ErrorView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

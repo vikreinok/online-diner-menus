@@ -75,9 +75,9 @@ window.DetailsView = Backbone.View.extend({
                 self.render();                
                 $('#loadingModal').modal('hide');
                 $('#modifyDate').text(convertDate(model.get('modifyDate')));
-                $('#created').text(convertDate(model.get('created')));            
-                app.navigate('http://localhost:8080/catering-core/rest/diner/create/' + model.id, false);                
-                utils.showAlert('Success!', 'Diner saved successfully', 'alert-success');
+                $('#created').text(convertDate(model.get('created')));
+                app.navigate('/diner/' + model.id, false);                
+                utils.showAlert('Success!', 'Diner saved successfully', 'alert-success', '#diners');
             },
             error: function () {
                 utils.showAlert('Error', 'An error occurred while trying to save this diner', 'alert-danger');
@@ -96,9 +96,9 @@ window.DetailsView = Backbone.View.extend({
         this.model.destroy({
             success: function () {
             	//app.navigate('diners', false);
-                window.history.back();        
+                window.history.back();
             }
-        });                    	  
+        });
     },
      
     uploadImage: function (event) {

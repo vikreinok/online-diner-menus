@@ -16,7 +16,7 @@ public abstract class IdEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
+	@Column(name = "id")
 	private Integer id;
 
 	@Version

@@ -34,8 +34,8 @@ public class DinerControllerImpl implements DinerController {
 	}
 	
 	@Override
-	public ApiResponse create(@Valid @RequestBody Diner diner) {
-		return new ApiResponse(HttpStatus.OK, dinerService.create(diner));
+	public Diner create(@Valid @RequestBody Diner diner) {
+		return  dinerService.create(diner);
 	}
 	
 	@Override
