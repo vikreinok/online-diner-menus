@@ -63,7 +63,7 @@ public class LoginController {
    * @return LoginStatus instance corresponding to the status found serialized in JSON because of "@ResponseBody" which triggered serialization,
    *         presence of Jackson library in classpath which allow JSON serialization and request header which ask for JSON.
    */
-  @RequestMapping(method = RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
   @ResponseBody
   public LoginStatus getStatus(HttpServletRequest request, HttpServletResponse response) {
     Authentication authentication = getSessionAuthentication(request);

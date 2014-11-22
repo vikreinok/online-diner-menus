@@ -7,6 +7,7 @@ window.Router = Backbone.Router.extend({
         "diners/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
         "login": "login",
+        "logout": "logout",
     },
 
     initialize: function () {
@@ -30,25 +31,24 @@ window.Router = Backbone.Router.extend({
             this.homeView.delegateEvents(); // delegate events when the view is recycled
         }                
         $("#content").html(this.homeView.el);
-        this.headerView.select('home-menu');                                
+        this.headerView.select('home-menu');                            
     },
     
     dinerlist: function(page) {
     	//$('#loadingModal').modal('show');
+
     	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
         var diners = new DinerCollection();
         diners.fetch({
-        	timeout:500000, 
+        	timeout:5000, 
         	success: function(){
 	            $("#content").html(new ListView({model: diners, page: p}).el);
 	            //$('#loadingModal').modal('hide');
 	            $('#loadingimage').hide();
         	},	
 	        error: function(model, response) {
-	        	console.log(response.status);
-	        	console.log(response.statusText);
-	        	$("#content").html(new ErrorView({model: response}).el);
+        		$("#content").html(new 	ErrorView({model: response}).el);
 	        	$('#loadingimage').hide();
 	        }
         	
@@ -58,12 +58,19 @@ window.Router = Backbone.Router.extend({
     
     dinerDetails: function (id) {
         var diner = new Diner({id: id});
-        diner.fetch({	success: function(){        	
-            $("#content").html(new DetailsView({model: diner}).el);
-            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
-            $('#created').text(convertDate(diner.get('created')));            
-            console.log("created: " + diner.get('created'));
-        }});
+        diner.fetch({	
+        	success: function(){        	
+	            $("#content").html(new DetailsView({model: diner}).el);
+	            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
+	            $('#created').text(convertDate(diner.get('created')));            
+	            console.log("created: " + diner.get('created'));
+        	},
+        	error: function(model, response) {
+         		$("#content").html(new 	ErrorView({model: response}).el);
+ 	        	$('#loadingimage').hide();
+ 	        }
+        
+        });
         
         //this.headerView.selectMenuItem();
     },
@@ -75,16 +82,30 @@ window.Router = Backbone.Router.extend({
         $('#deleteDinerButton').hide();  
         this.headerView.select('add-menu');
 	},
-    
-    login: function() {
+	
+	login: function() {
         var login = new Login();
         $('#content').html(new LoginView({model: login}).el);
         this.headerView.select('login');
 	},
+	
+	logout: function() {
+		$('.navbar-nav li.logout').hide();
+		$('.navbar-nav li.login').show();
+		
+		$.ajax({
+		  url: "/catering-core/rest/login/",
+		  method: "DELETE"
+		}).done(function() {
+			alert( "logged out" );
+		}).fail(function() {
+		   alert( "error" );
+		});
+	},
     
 });
 
-templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","LoginView","DetailsView","SearchResultItemView", "ErrorView"],
+templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","DetailsView","LoginView","SearchResultItemView", "ErrorView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

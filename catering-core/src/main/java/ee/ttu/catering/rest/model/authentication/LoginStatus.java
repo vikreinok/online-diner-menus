@@ -23,7 +23,6 @@ public class LoginStatus implements Serializable  {
 		this.rememberMe = rememberMe;
 	}
 
-
 	/**
 	 * Boolean logged in current status
 	 */

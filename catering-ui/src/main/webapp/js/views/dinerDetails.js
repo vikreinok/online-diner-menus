@@ -1,7 +1,8 @@
-window.DetailsView = Backbone.View.extend({
+window.DetailsView = AuthView.extend({
 
     initialize: function () {
-        this.render();        
+    	DetailsView.__super__.initialize.apply(this, arguments);    
+        this.render();
     },
 
     render: function () {
@@ -72,11 +73,11 @@ window.DetailsView = Backbone.View.extend({
         var self = this;        
         this.model.save(null, {        	
             success: function (model) {
-                self.render();                
+                self.render();
                 $('#loadingModal').modal('hide');
                 $('#modifyDate').text(convertDate(model.get('modifyDate')));
                 $('#created').text(convertDate(model.get('created')));
-                app.navigate('/diner/' + model.id, false);                
+                app.navigate('/diner/' + model.id, false);
                 utils.showAlert('Success!', 'Diner saved successfully', 'alert-success', '#diners');
             },
             error: function () {

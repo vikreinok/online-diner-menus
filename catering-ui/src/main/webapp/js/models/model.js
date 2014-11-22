@@ -49,14 +49,10 @@ window.Diner = Backbone.Model.extend({
 window.DinerCollection = Backbone.Collection.extend({
 	model: Diner,
 	url: "/catering-core/rest/diner/",
-    initialize: function(){
-        console.log("Diner collection initialized");
-    },
 
 	findByName:function (key) {
 		var url = '/catering-core/rest/diner/name/'+ key;
-		console.log('findByName: ' + url);
-		console.log('findByName: ' + key);
+
 		var self = this;
 	    $.ajax({
 	        url:url,
