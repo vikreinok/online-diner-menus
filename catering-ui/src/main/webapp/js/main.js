@@ -43,7 +43,7 @@ window.Router = Backbone.Router.extend({
         diners.fetch({
 //        	timeout:5000, 
         	success: function(){
-	            $("#content").html(new ListView({model: diners, page: p}).el);
+	            $("#content").html(new DinerListView({model: diners, page: p}).el);
 	            //$('#loadingModal').modal('hide');
 	            $('#loadingimage').hide();
         	},	
@@ -97,7 +97,8 @@ window.Router = Backbone.Router.extend({
 		  url: "/catering-core/rest/login/",
 		  method: "DELETE"
 		}).done(function() {
-			alert( "logged out" );
+//			app.navigate('login', true);
+     		$("#content").html(new 	AuthView().el);
 		}).fail(function() {
 		   alert( "error" );
 		});
@@ -105,7 +106,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","ListView","ListItemView","DinerDetailsView","LoginView","SearchResultItemView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","DinerListView","ListItemView","DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

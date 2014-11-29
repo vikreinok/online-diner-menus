@@ -68,6 +68,8 @@ window.LoginView = Backbone.View.extend({
                 
                 utils.showAlert('Success!', 'Login successful', 'alert-success');
                 
+        		$('.navbar-nav li.logout').show();
+        		$('.navbar-nav li.login').hide();
                 utils.redirectTimer(1000, '/diners');
             },
             error: function () {

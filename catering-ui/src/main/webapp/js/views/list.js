@@ -1,4 +1,4 @@
-window.ListView = Backbone.View.extend({
+window.DinerListView = Backbone.View.extend({
 
     initialize: function () {
         this.render();

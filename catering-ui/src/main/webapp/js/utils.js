@@ -133,7 +133,9 @@ window.utils = {
     
     redirectTimer: function(interval, location) {
         setTimeout(function(){
-        	app.navigate(location,  true);
+        	app.navigate(location,   {trigger: true});
+	    	var obj = new AuthView();
+	    	obj.initialize();
         }, 1000);
     }
     
