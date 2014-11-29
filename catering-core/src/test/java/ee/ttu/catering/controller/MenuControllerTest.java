@@ -28,7 +28,6 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     String getUpdateContent() {
     	return CONTENT;
     }
-   
     
     @Test
     @Transactional

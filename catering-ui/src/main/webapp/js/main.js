@@ -41,7 +41,7 @@ window.Router = Backbone.Router.extend({
     	var p = page ? parseInt(page, 10) : 1;
         var diners = new DinerCollection();
         diners.fetch({
-        	timeout:5000, 
+//        	timeout:5000, 
         	success: function(){
 	            $("#content").html(new ListView({model: diners, page: p}).el);
 	            //$('#loadingModal').modal('hide');
@@ -60,7 +60,7 @@ window.Router = Backbone.Router.extend({
         var diner = new Diner({id: id});
         diner.fetch({	
         	success: function(){        	
-	            $("#content").html(new DetailsView({model: diner}).el);
+	            $("#content").html(new DinerDetailsView({model: diner}).el);
 	            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
 	            $('#created').text(convertDate(diner.get('created')));            
 	            console.log("created: " + diner.get('created'));
@@ -77,7 +77,7 @@ window.Router = Backbone.Router.extend({
     
     addDiner: function() {
         var diner = new Diner();
-        $('#content').html(new DetailsView({model: diner}).el);
+        $('#content').html(new DinerDetailsView({model: diner}).el);
         //$('#deleteDinerButton').prop('disabled', true);
         $('#deleteDinerButton').hide();  
         this.headerView.select('add-menu');
@@ -105,7 +105,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["HeaderView","HomeView","FooterView","ListView","ListItemView","DetailsView","LoginView","SearchResultItemView", "ErrorView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","ListView","ListItemView","DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

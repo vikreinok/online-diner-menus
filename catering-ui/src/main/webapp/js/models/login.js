@@ -4,6 +4,14 @@ window.Login = Backbone.Model.extend({
 	
 	initialize: function () {
 		this.validators = {};
+
+        this.validators.username = function (value) {
+            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter username"};
+        };
+        
+        this.validators.password = function (value) {
+            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter password"};
+        };
         
     },
     
@@ -31,7 +39,7 @@ window.Login = Backbone.Model.extend({
     	loggedIn: false,
     	username: "",
     	password: "",
-    	rememberMe: false
+    	rememberMe: true
     }
     
 });

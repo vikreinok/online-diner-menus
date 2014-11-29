@@ -23,7 +23,7 @@ public class UiTest {
 	}
 	
 	@Test
-	public void testAddDiner() {
+	public void testAddDiner4Clicks() {
 	  open("/catering-ui/#diners/add");
 	  sleep(300);
 	  $(By.name("name")).sendKeys("1234");
@@ -32,7 +32,5 @@ public class UiTest {
 	  sleep(100);
 	  $("#saveDinerButton").click();
 	  sleep(1000);
-//	  $("#username").shouldHave(text("Hello, Johny!"));
-//	  $(".error").shouldNotBe(visible);
 	}
 }

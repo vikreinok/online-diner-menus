@@ -1,7 +1,7 @@
-window.DetailsView = AuthView.extend({
+window.DinerDetailsView = AuthView.extend({
 
     initialize: function () {
-    	DetailsView.__super__.initialize.apply(this, arguments);    
+    	DinerDetailsView.__super__.initialize.apply(this, arguments);    
         this.render();
     },
 
@@ -14,7 +14,7 @@ window.DetailsView = AuthView.extend({
         "change"        : "change",
         "click .save"   : "beforeSave",
         "click .deleteConfirm" : "deleteDinerConfirmation",
-        "click .delete" : "deleteDiner",        
+        "click .delete" : "deleteDiner",
         "change .btn-file"     : "uploadImage",                        	
     },
 

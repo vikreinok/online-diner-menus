@@ -35,7 +35,7 @@ public class DinerControllerImpl implements DinerController {
 	
 	@Override
 	public Diner create(@Valid @RequestBody Diner diner) {
-		return  dinerService.create(diner);
+		return dinerService.create(diner);
 	}
 	
 	@Override

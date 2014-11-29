@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
@@ -24,6 +27,7 @@ public class Menu extends IdEntity {
 	private static final long serialVersionUID = 4638627189448098616L;
 
 	@NotBlank
+	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 	
 	@Temporal(TemporalType.DATE)
@@ -32,12 +36,15 @@ public class Menu extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
-	private String username;
-	
-	private String password;
-	
-	private String picture;
-	
+	@PrePersist
+	void created() {
+		this.created = this.modifyDate = new Date();
+	}
+
+	@PreUpdate
+	void updated() {
+		this.modifyDate = new Date();
+	}
 	
 	public Date getModifyDate() {
 		return modifyDate;
@@ -47,30 +54,6 @@ public class Menu extends IdEntity {
 		this.modifyDate = modifyDate;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
-	}
-	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
 	@OrderBy("name ASC")
 	private Collection<MenuItem> menuItems;
@@ -116,11 +99,9 @@ public class Menu extends IdEntity {
 	@Override
 	public String toString() {
 		return "Menu [name=" + name + ", created=" + created + ", modifyDate="
-				+ modifyDate + ", username=" + username + ", password="
-				+ password + ", picture=" + picture + ", menuItems="
+				+ modifyDate + ", menuItems="
 				+ menuItems + "]";
 	}
 	
 	
-
 }

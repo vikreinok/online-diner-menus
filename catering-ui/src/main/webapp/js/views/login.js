@@ -1,22 +1,29 @@
 window.LoginView = Backbone.View.extend({
 
-
     initialize: function () {
-        this.render();        
+    	this.render();
     },
 
     render: function () {
-        $(this.el).html(this.template(this.model.toJSON()));                
+        $(this.el).html(this.template(this.model.toJSON()));
         return this;
     },
-
+    
     events: {
-        "change"        : "change",
-        "click .save"   : "login",
+        "change"         : "change",
+        "click .save"    : "beforeLogin",
+        "keydown :input" : "enter",
+    },
+  
+    enter: function(e) {
+    	if(e.keyCode == 13)
+    		this.beforeLogin();
     },
     
 	change: function (event) {
 	    	
+//		    console.log("- "  + $(':input:visible:enabled:first')[0].value)
+		    
 	        // Remove any existing alert message
 	        utils.hideAlert();
 	
@@ -26,7 +33,7 @@ window.LoginView = Backbone.View.extend({
 	        
         	change[target.name] = target.value;
         	this.model.set(change);
-	        
+        	
 	        // Run validation rule (if any) on changed item
 	        var check = this.model.validateItem(target.id);
 	        
@@ -35,7 +42,18 @@ window.LoginView = Backbone.View.extend({
 	        } else {
 	            utils.removeValidationError(target.id, this.model);
 	        }
-	        
+	    	
+    },
+    
+    beforeLogin: function () {
+    	
+        var check = this.model.validateAll();        
+        if (check.isValid === false) {
+            utils.displayValidationErrors(check.messages);
+            return false;
+        }
+        
+    	this.login();
     },
     
     login: function () {

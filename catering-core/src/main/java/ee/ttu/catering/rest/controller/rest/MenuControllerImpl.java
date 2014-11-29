@@ -33,8 +33,8 @@ public class MenuControllerImpl implements MenuController {
 	}
 	
 	@Override
-	public ApiResponse create(@RequestBody @Valid Menu menu) {
-		return new ApiResponse(HttpStatus.OK, menuService.create(menu));
+	public Menu create(@RequestBody @Valid Menu menu) {
+		return menuService.create(menu);
 	}
 	
 	@Override
@@ -47,7 +47,5 @@ public class MenuControllerImpl implements MenuController {
 	public Menu delete(@PathVariable int id) {
 		return menuService.delete(id);
 	}
-	
-	
 	
 }
