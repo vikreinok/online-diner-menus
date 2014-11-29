@@ -20,20 +20,15 @@
 
   <!-- Spring Security entry point which only send an HTTP 403 Forbidden in case of bad authentication. This has to be explicitely defined because the 
     default handling is now to forward on an automatically generated login page which is not what we want for an Ajax login -->
-  <beans:bean id="http403ForbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
 
-  <!-- Spring Security main HTTP filter -->
-  <http entry-point-ref="http403ForbiddenEntryPoint">	
-    <!-- The filter is mapped on every request in /rest/** and require a "ROLE_USER" profile -->
-<!--     <intercept-url pattern="/rest/**" access /> -->
-	<!-- The filter is mapped on every request in /data-rest/** and require a "ROLE_USER" profile -->
-	<intercept-url pattern="/rest/diner/**" method="GET" access="ROLE_USER" />
-	<intercept-url pattern="/rest/diner/**" method="POST" access="ROLE_USER" />
-	<intercept-url pattern="/rest/diner/**" method="PUT"  access="ROLE_USER" />
-	<intercept-url pattern="/rest/diner/**" method="DELETE"  access="ROLE_USER" />
-    <!-- Remember me mechanism trigger -->
-    <remember-me />
-  </http>
+  <http entry-point-ref="restAuthenticationEntryPoint">
+      <intercept-url pattern="/rest/diner/**" method="GET" access="ROLE_USER" />
+	  <intercept-url pattern="/rest/diner/**" method="POST" access="ROLE_USER" />
+	  <intercept-url pattern="/rest/diner/**" method="PUT"  access="ROLE_USER" />
+	  <intercept-url pattern="/rest/diner/**" method="DELETE"  access="ROLE_USER" />
+
+      <remember-me />
+   </http>
 
 
   <!-- Spring Security authentication manager, an alias is created to inject it into the LoginController -->
