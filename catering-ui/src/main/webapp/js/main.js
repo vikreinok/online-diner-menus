@@ -3,9 +3,13 @@ window.Router = Backbone.Router.extend({
     routes: {
     	"": "home",
         "diners": "dinerlist",
-        "diners/add": "addDiner",
-        "diners/page/:page": "dinerlist",
+        "diner/add": "addDiner",
+        "diner/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
+        "menus": "menuList",
+        "menus/page/:page": "menuList",
+        "menu/add": "addMenu",
+        "menu/:id": "menuDetails",
         "login": "login",
         "logout": "logout",
     },
@@ -46,23 +50,23 @@ window.Router = Backbone.Router.extend({
 	            $("#content").html(new DinerListView({model: diners, page: p}).el);
 	            //$('#loadingModal').modal('hide');
 	            $('#loadingimage').hide();
-        	},	
+        	},
 	        error: function(model, response) {
         		$("#content").html(new 	ErrorView({model: response}).el);
 	        	$('#loadingimage').hide();
 	        }
         	
         });
-        this.headerView.select('diners-menu');        
+        this.headerView.select('diners-menubar');
     },
     
     dinerDetails: function (id) {
         var diner = new Diner({id: id});
-        diner.fetch({	
-        	success: function(){        	
+        diner.fetch({
+        	success: function(){
 	            $("#content").html(new DinerDetailsView({model: diner}).el);
 	            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
-	            $('#created').text(convertDate(diner.get('created')));            
+	            $('#created').text(convertDate(diner.get('created')));
 	            console.log("created: " + diner.get('created'));
         	},
         	error: function(model, response) {
@@ -71,16 +75,53 @@ window.Router = Backbone.Router.extend({
  	        }
         
         });
-        
-        //this.headerView.selectMenuItem();
     },
     
     addDiner: function() {
         var diner = new Diner();
         $('#content').html(new DinerDetailsView({model: diner}).el);
-        //$('#deleteDinerButton').prop('disabled', true);
         $('#deleteDinerButton').hide();  
-        this.headerView.select('add-menu');
+        this.headerView.select('add-diner-menubar');
+	},
+
+	// List items
+	
+    menuList: function(page) {
+
+    	var p = page ? parseInt(page, 10) : 1;
+        var menus = new MenuCollection();
+        menus.fetch({
+        	success: function(){
+	            $("#content").html(new MenuListView({model: menus, page: p}).el);
+        	},	
+	        error: function(model, response) {
+        		$("#content").html(new 	ErrorView({model: response}).el);
+	        }
+        	
+        });
+        this.headerView.select('menus-menubar');        
+    },
+    
+    menuDetails: function (id) {
+        var menu = new Menu({id: id});
+        menu.fetch({	
+        	success: function(){        	
+	            $("#content").html(new MenuDetailsView({model: menu}).el);
+	            $('#modifyDate').text(convertDate(menu.get('modifyDate')));
+	            $('#created').text(convertDate(menu.get('created')));            
+        	},
+        	error: function(model, response) {
+         		$("#content").html(new 	ErrorView({model: response}).el);
+ 	        	$('#loadingimage').hide();
+ 	        }
+        });
+    },
+	
+	addMenu: function() {
+		var menu = new Menu();
+		$('#content').html(new MenuDetailsView({model: menu}).el);
+		$('#deleteMenuButton').hide();  
+		this.headerView.select('add-menu-menubar');
 	},
 	
 	login: function() {
@@ -106,7 +147,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","DinerListView","ListItemView","DinerDetailsView","LoginView","SearchResultItemView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

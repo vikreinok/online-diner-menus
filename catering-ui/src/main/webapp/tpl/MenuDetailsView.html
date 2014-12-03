@@ -1,0 +1,81 @@
+<div class="page-header">
+  <h1>Menu details <small><%= name %></small></h1>
+  
+  <!-- ALERT FOR MESSAGING -->
+  <div class="alert alert-success" style="display: none">  		
+  		<b>Success!</b>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="col-xs-12">
+	<form class="form-horizontal">
+	
+		<div class="form-group">
+	    	<label for="id" class="col-lg-2 control-label">ID</label>
+	    	<div class="col-lg-10">
+	      		<div class="input-group">
+				  <span class="input-group-addon">#</span>						  
+				  <input id="accountId" name="id" type="text" class="form-control" value="<%= id === null ? '' : id %>" disabled/>			  
+				</div>				      		
+	    	</div>
+	  	</div>
+	  	
+	  	<div id="formGroupname" class="form-group">
+	    	<label for="name" class="col-lg-2 control-label">Name</label>
+	    	<div class="col-lg-10">
+	    		<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>						  
+				  <input id="name" name="name" type="text" class="form-control" value="<%= name %>">			  
+				</div> 
+				<span id="msgname" class="help-block"></span>     							  			  
+	    	</div>
+	  	</div>
+
+  	
+  	  	<div id="formGroupname2" class="form-group">
+    	<label for="modifyDate" class="col-lg-2 control-label">Last mdified</label>
+    	<div class="col-lg-10">
+    		<h4><span id="modifyDate" class="label label-primary">unknown</span></h4>  		
+    	</div>
+  		</div>
+  	  	<div id="formGroupname3" class="form-group">
+    	<label for="created" class="col-lg-2 control-label">Created</label>
+    	<div class="col-lg-10">
+    		<h4><span id="created" class="label label-primary">unknown</span></h4>  		
+    	</div>
+  		</div>
+	  		
+	  	
+	  	<div class="form-group">
+	    	<div class="col-lg-offset-2 col-lg-10">
+	    		<button id="saveMenuButton" type="button" class="btn btn btn-default btn-lg save">Save</button>
+	    		<button id="deleteMenuButton" type="button" class="btn btn-warning btn-lg deleteConfirm">Delete</button>    		      	
+	    	</div>
+	  	</div>
+	  	
+	</form>
+		
+</div>
+
+</div>
+
+ <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header modal-header-warning">
+             	 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>                 
+                 <h1><i class="glyphicon glyphicon-thumbs-up"></i> Delete Menu <strong><%= name %></strong></h1>
+             </div>
+             <div class="modal-body">
+             	<p>Are you sure to delete the selected menu <strong><%= name %> </strong> ?</p>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-warning delete">Confirm</button>
+                 <!-- a href="#" class="btn btn-warning delete" data-dismiss="modal">Confirm</a-->
+             </div>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div><!-- /.modal -->

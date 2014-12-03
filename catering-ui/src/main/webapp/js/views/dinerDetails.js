@@ -168,13 +168,9 @@ window.DinerDetailsView = AuthView.extend({
     	if(utils.checkFile()){
     		// Ext is valid
     		if(utils.checkFileExt()){
-    			//$('#saveDinerButton').prop('disabled', false);
-        	    //$('#deleteDinerButton').prop('disabled', false);
         	    return true;
     		} else {
     			utils.showAlert('Error', 'Only image files are allowed ( .jpg, .jpeg, .png )', 'alert-danger');
-    			//$('#saveDinerButton').prop('disabled', true);
-    			//$('#deleteDinerButton').prop('disabled', true);
     			this.model.set("picture", "-1");
         	    $('#loadingModal').modal('hide');
         	    return false;

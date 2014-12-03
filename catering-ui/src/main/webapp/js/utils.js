@@ -32,7 +32,9 @@ window.utils = {
 	    controlGroup.addClass('has-error');
 	    $('#msg' + field).text(message);
 	    $('#saveDinerButton').prop('disabled', true);
+	    $('#saveMenuButton').prop('disabled', true);
 	    $('#deleteDinerButton').prop('disabled', true);
+	    $('#deleteMenuButton').prop('disabled', true);
 	},
 	
 	removeValidationError: function (field, model) {
@@ -45,7 +47,9 @@ window.utils = {
         
         if (check.isValid === true) {
         	$('#saveDinerButton').prop('disabled', false);
+        	$('#saveMenuButton').prop('disabled', false);
     	    $('#deleteDinerButton').prop('disabled', false);
+    	    $('#deleteMenuButton').prop('disabled', false);
         }
 	    
 	},

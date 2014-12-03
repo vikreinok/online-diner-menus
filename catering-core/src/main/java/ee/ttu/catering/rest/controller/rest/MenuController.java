@@ -17,7 +17,7 @@ public interface MenuController {
 	public List<Menu> all();
 
 	@ResponseBody
-	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Menu one(int id);
 
 	@ResponseBody

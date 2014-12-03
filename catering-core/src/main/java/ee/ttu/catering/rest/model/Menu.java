@@ -30,6 +30,10 @@ public class Menu extends IdEntity {
 	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
+	@OrderBy("name ASC")
+	private Collection<MenuItem> menuItems;
+	
 	@Temporal(TemporalType.DATE)
 	private Date created;
 	
@@ -54,11 +58,6 @@ public class Menu extends IdEntity {
 		this.modifyDate = modifyDate;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
-	@OrderBy("name ASC")
-	private Collection<MenuItem> menuItems;
-
-	
 	public Menu update(Menu example) {
 		this.name = example.getName();
 		return this;

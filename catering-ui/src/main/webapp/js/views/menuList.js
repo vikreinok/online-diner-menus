@@ -1,4 +1,4 @@
-window.DinerListView = Backbone.View.extend({
+window.MenuListView = Backbone.View.extend({
 
     initialize: function () {
         this.render();
@@ -13,7 +13,7 @@ window.DinerListView = Backbone.View.extend({
         $(this.el).html(this.template());
 
         for (var i = startPos; i < endPos; i++) {
-            $('.dinerlist', this.el).append(new ListItemView({model: list[i]}).render().el);
+            $('.menulist', this.el).append(new MenuListItemView({model: list[i]}).render().el);
         }
 
         $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
@@ -22,7 +22,7 @@ window.DinerListView = Backbone.View.extend({
     }
 });
 
-window.ListItemView = Backbone.View.extend({
+window.MenuListItemView = Backbone.View.extend({
     
 	initialize: function () {
         this.model.bind("change", this.render, this);
