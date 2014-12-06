@@ -3,15 +3,11 @@ package ee.ttu.catering;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
-
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class UiTest {
 
-	@Before
-	public void testLogin() {
+	public void loginAsAdminUser() {
 		open("/catering-ui/#login");
 		sleep(200);
 		$(By.name("username")).sendKeys("admin");
@@ -22,15 +18,5 @@ public class UiTest {
 		sleep(500);
 	}
 	
-	@Test
-	public void testAddDiner4Clicks() {
-	  open("/catering-ui/#diners/add");
-	  sleep(300);
-	  $(By.name("name")).sendKeys("1234");
-	  sleep(100);
-	  $(By.id("description")).sendKeys("1234descri");
-	  sleep(100);
-	  $("#saveDinerButton").click();
-	  sleep(1000);
-	}
+
 }
