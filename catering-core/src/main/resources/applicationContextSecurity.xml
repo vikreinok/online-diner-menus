@@ -18,15 +18,15 @@
   <!-- Spring Security special HTTP filter authorization on the login command -->
   <http security="none" pattern="/rest/login" />
 
-  <!-- Spring Security entry point which only send an HTTP 403 Forbidden in case of bad authentication. This has to be explicitely defined because the 
-    default handling is now to forward on an automatically generated login page which is not what we want for an Ajax login -->
-
   <http entry-point-ref="restAuthenticationEntryPoint">
-      <intercept-url pattern="/rest/diner/**" method="GET" access="ROLE_USER" />
-	  <intercept-url pattern="/rest/diner/**" method="POST" access="ROLE_USER" />
-	  <intercept-url pattern="/rest/diner/**" method="PUT"  access="ROLE_USER" />
-	  <intercept-url pattern="/rest/diner/**" method="DELETE"  access="ROLE_USER" />
-
+  	  <intercept-url pattern="/rest/login/**" method="POST" access="ROLE_ANONYMOUS,ROLE_USER" />
+  	  <intercept-url pattern="/rest/login/**" method="PUT" access="ROLE_ANONYMOUS,ROLE_USER" />
+      <intercept-url pattern="/rest/login/**" method="DELETE" access="ROLE_ANONYMOUS,ROLE_USER" />
+	  <intercept-url pattern="/rest/**" method="GET" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/rest/**" method="POST" access="ROLE_USER" />
+	  <intercept-url pattern="/rest/**" method="PUT"  access="ROLE_USER" />
+	  <intercept-url pattern="/rest/**" method="DELETE"  access="ROLE_USER" />
+      
       <remember-me />
    </http>
 
