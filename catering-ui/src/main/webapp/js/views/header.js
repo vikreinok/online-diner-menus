@@ -25,8 +25,6 @@ window.HeaderView = Backbone.View.extend({
     	
         var key = $('#searchText').val();
         
-        console.log('search ' + key);
-        
         this.searchResults.findByName(key);
         
         var size = this.searchResults.length;

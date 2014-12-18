@@ -15,12 +15,9 @@ window.AuthView = Backbone.View.extend({
 					if(val == true) {
 						$('.navbar-nav li.logout').show();
 						$('.navbar-nav li.login').hide();
-						$('#diner-autofill-search').show();
-						
 					} else {
 						$('.navbar-nav li.logout').hide();
 						$('.navbar-nav li.login').show();
-						$('#diner-autofill-search').hide();
 						
 						app.navigate('/login',  true);
 					}

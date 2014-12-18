@@ -1,7 +1,11 @@
 window.DinerDetailsView = AuthView.extend({
 
     initialize: function () {
-    	DinerDetailsView.__super__.initialize.apply(this, arguments);    
+    	var url = document.URL;
+    	var url = url.substring(url.indexOf('#diner/'), url.lenght);
+    	if(url.match(/\d/g) == null) {
+    		DinerDetailsView.__super__.initialize.apply(this, arguments);  
+    	}
         this.render();
     },
 
@@ -134,12 +138,6 @@ window.DinerDetailsView = AuthView.extend({
     saveFile: function() {
     	    	
     	var data = new FormData($("#fileuploadForm"));		
-    	/*for (var i=0; i < files.length; i++) {
-			var file = files[i];
-			accountImage = files[i];			
-			data.append('uploadedFile', file);
-		};*/
-    	
     	data.append('file', utils.getFile());
 		
 		$.ajax({

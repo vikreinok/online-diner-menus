@@ -16,20 +16,21 @@
 <!--   <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled" secured-annotations="enabled" /> -->
   
   <!-- Spring Security special HTTP filter authorization on the login command -->
-  <http security="none" pattern="/rest/login" />
+  <http pattern="/rest/login/**"  security="none" />
 
   <http entry-point-ref="restAuthenticationEntryPoint">
-  	  <intercept-url pattern="/rest/login/**" method="POST" access="ROLE_ANONYMOUS,ROLE_USER" />
-  	  <intercept-url pattern="/rest/login/**" method="PUT" access="ROLE_ANONYMOUS,ROLE_USER" />
-      <intercept-url pattern="/rest/login/**" method="DELETE" access="ROLE_ANONYMOUS,ROLE_USER" />
-	  <intercept-url pattern="/rest/**" method="GET" access="ROLE_ANONYMOUS" />
+	  <intercept-url pattern="/rest/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+<!--   	  <intercept-url pattern="/rest/login/**" method="PUT" access="permitAll" /> -->
+<!--       <intercept-url pattern="/rest/login/**" method="DELETE" access="permitAll" /> -->
+
+	  <intercept-url pattern="/rest/**" method="GET" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 	  <intercept-url pattern="/rest/**" method="POST" access="ROLE_USER" />
 	  <intercept-url pattern="/rest/**" method="PUT"  access="ROLE_USER" />
 	  <intercept-url pattern="/rest/**" method="DELETE"  access="ROLE_USER" />
       
       <remember-me />
    </http>
-
+   
 
   <!-- Spring Security authentication manager, an alias is created to inject it into the LoginController -->
   <authentication-manager alias="authenticationManager">

@@ -52,7 +52,6 @@ window.MenuCollection = Backbone.Collection.extend({
 	        url:url,
 	        dataType:"json",
 	        success:function (data) {
-	            console.log("search success: " + data.length);
 	            self.reset(data);
 	        }
 	    });
