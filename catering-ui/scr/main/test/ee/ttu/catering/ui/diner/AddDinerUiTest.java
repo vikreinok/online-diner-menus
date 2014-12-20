@@ -30,13 +30,13 @@ public class AddDinerUiTest {
 		sleep(300);
 		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
 		assertEquals("Success! Diner saved successfully",form.successMessage());
+		form.clickLogOut();
 	}
 	
 	@After
 	public void deleteTestData(){
 		DatabaseFunctions dbFunctions = new DatabaseFunctions();
-		dbFunctions.deleteTestData(dinerId);
-		
+		dbFunctions.deleteTestData(dinerId, "DINER");
 	}
 
 }

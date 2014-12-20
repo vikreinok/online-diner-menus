@@ -11,13 +11,13 @@ import ee.ttu.catering.db.DatabaseFunctions;
 
 public class FastSearchUiTest {
 	
-	private static String dinerId;
+	private static int dinerId;
 	private boolean hasLoggedIn = false;
 	
 	@BeforeClass
 	public static void createTestData(){
 		DatabaseFunctions functions = new DatabaseFunctions();
-		functions.createTestDiner("Test kirjeldus", "Test restoran");	
+		dinerId = functions.createTestDiner("Test kirjeldus", "Test restoran");	
 		
 	}
 	
@@ -29,8 +29,8 @@ public class FastSearchUiTest {
 		GeneralForm form = new GeneralForm();
 		form.fastSearchDiner("Test restoran");
 		form.clickSearchResult();
-		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
 		assertEquals("http://localhost:8080/catering-ui/#diner/"+ dinerId, form.getCurrentUrl());
+		form.clickLogOut();
 		
 	}
 	
@@ -44,14 +44,13 @@ public class FastSearchUiTest {
 		form.openForm("catering-ui/");
 		form.fastSearchDiner("Test restoran");
 		form.clickSearchResult();
-		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
 		assertEquals("http://localhost:8080/catering-ui/#diner/"+ dinerId, form.getCurrentUrl());
 	}
 	
 	@AfterClass
 	public static void deleteTestData(){
 		DatabaseFunctions functions = new DatabaseFunctions();
-		functions.deleteTestData(dinerId);
+		functions.deleteTestData(Integer.toString(dinerId), "DINER");
 	}
 
 }

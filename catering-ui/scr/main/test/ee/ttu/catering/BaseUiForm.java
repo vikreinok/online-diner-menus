@@ -9,6 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
+
+import ee.ttu.catering.ui.menu.MenuUiForm;
 public abstract class BaseUiForm {
 	
 	private String baseUrl = "http://localhost:8080/";
@@ -83,5 +85,7 @@ public abstract class BaseUiForm {
 		$(By.xpath("//li[@class='elementSearchResult']/a")).click();
 		return this;
 	}
+	
+
 
 }

@@ -16,6 +16,8 @@ public class ModifyDinerUiTest {
 	
 	@Before
 	public void signInAndCreateTestData() {
+		System.out.println("Siiin");
+		sleep(10000);
 		new UiTest().loginAsAdminUser();
 		DinerUiForm form = new DinerUiForm();
 		sleep(1000);
@@ -24,7 +26,7 @@ public class ModifyDinerUiTest {
 		form.clickSaveButton();
 		sleep(1000);
 		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
-		sleep(300);
+		sleep(1000);
 	}
 	
 	@Test
@@ -34,16 +36,16 @@ public class ModifyDinerUiTest {
 		sleep(1000);
 		form.setDinerData("Muudetud nimi", "Uued praed");
 		form.clickSaveButton();
-		sleep(500);
+		sleep(1000);
 		assertEquals("Success! Diner saved successfully",form.successMessage());
+		form.clickLogOut();
 		
 	}
 	
 	@After
 	public void deleteTestData(){
 		DatabaseFunctions dbFunctions = new DatabaseFunctions();
-		dbFunctions.deleteTestData(dinerId);
-		
+		dbFunctions.deleteTestData(dinerId, "DINER");
 	}
 	
 	

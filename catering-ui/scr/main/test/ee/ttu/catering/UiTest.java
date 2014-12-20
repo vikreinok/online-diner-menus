@@ -8,12 +8,13 @@ import org.openqa.selenium.By;
 public class UiTest {
 
 	public void loginAsAdminUser() {
+		sleep(1000);
 		open("/catering-ui/#login");
-		sleep(200);
+		sleep(500);
 		$(By.name("username")).sendKeys("admin");
-		sleep(50);
+		sleep(500);
 		$(By.name("password")).sendKeys("admin");
-		sleep(50);
+		sleep(500);
 		$("#submitLoginButtom").click();
 		sleep(500);
 	}
