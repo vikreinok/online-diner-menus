@@ -2,10 +2,12 @@ package ee.ttu.catering.rest.controller.rest;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ee.ttu.catering.rest.model.Menu;
 import ee.ttu.catering.rest.response.ApiResponse;
@@ -29,7 +31,8 @@ public interface MenuController {
 	public ApiResponse update(Integer id, Menu menu);
 
 	@ResponseBody
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT )
 	public Menu delete(int id);
 
 }
