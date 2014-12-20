@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ee.ttu.catering.UiTest;
-import ee.ttu.catering.helpFunctions.HelpFunctions;
 
 public class DeleteDinerUiTest {
 	
@@ -17,11 +16,11 @@ public class DeleteDinerUiTest {
 		new UiTest().loginAsAdminUser();
 		DinerUiForm form = new DinerUiForm();
 		sleep(1000);
-		form.openForm("catering-ui/#diner/add");
+		form.clickAddDinerTab();
 		form.setDinerData("Kolmapäev", "Hõrgud road");
 		form.clickSaveButton();
 		sleep(1000);
-		dinerId = new HelpFunctions().extractDigits(form.getCurrentUrl()).get(1).trim();
+		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
 		sleep(300);
 	}
 	

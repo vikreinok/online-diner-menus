@@ -2,6 +2,7 @@ package ee.ttu.catering;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.Selenide.sleep;
 
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -40,6 +41,47 @@ public abstract class BaseUiForm {
 	
 	public String getCurrentUrl(){
 		return getWebDriver().getCurrentUrl();
+	}
+	
+	public BaseUiForm clickAddDinerTab(){
+		$(By.linkText("Add Diner")).click();
+		return this;
+	}
+	
+	public BaseUiForm clickDinersTab(){
+		$(By.linkText("Diners")).click();
+		return this;
+	}
+	
+	public BaseUiForm clickMenusTab(){
+		$(By.linkText("Menus")).click();
+		return this;
+	}
+	
+	public BaseUiForm clickAddMenuTab(){
+		$(By.linkText("Add Menu")).click();
+		return this;
+	}
+	
+	public BaseUiForm clickLogOut(){
+		$(By.linkText("Logout")).click();
+		return this;
+	}
+	
+	public BaseUiForm clickLogIn(){
+		$(By.linkText("Login")).click();
+		return this;
+	}
+	
+	public BaseUiForm fastSearchDiner(String dinerName){
+		$(By.id("searchText")).setValue(dinerName);
+		sleep(3000);
+		return this;
+	}
+	
+	public BaseUiForm clickSearchResult(){
+		$(By.xpath("//li[@class='elementSearchResult']/a")).click();
+		return this;
 	}
 
 }

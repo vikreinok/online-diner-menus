@@ -4,7 +4,6 @@ import static com.codeborne.selenide.Selenide.$;
 import org.openqa.selenium.By;
 
 import ee.ttu.catering.BaseUiForm;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class DinerUiForm extends BaseUiForm{
 
 	public DinerUiForm setDinerData(String dinerName, String dinerDescription){
