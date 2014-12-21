@@ -10,7 +10,7 @@ import ee.ttu.catering.UiTest;
 import ee.ttu.catering.db.DatabaseFunctions;
 import ee.ttu.catering.ui.diner.DinerUiForm;
 
-public class BoundaryTests {
+public class BoundaryTestsForDinerName {
 	
 	private String dinerId;
 	
