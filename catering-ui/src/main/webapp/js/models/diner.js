@@ -6,11 +6,11 @@ window.Diner = Backbone.Model.extend({
 		this.validators = {};
 
         this.validators.name = function (value) {
-            return value.length >= 2 && value.length <= 20  ? {isValid: true} : {isValid: false, message: "You must enter an diner name from 2 to 15 characters"};
+            return value.length >= 2 && value.length <= 20  ? {isValid: true} : {isValid: false, message: "You must enter an diner name from 2 to 20 characters"};
         };
         
         this.validators.description = function (value) {
-            return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter an diner description"};
+            return value.length >= 10 && value.length <= 50  ? {isValid: true} : {isValid: false, message: "You must enter an diner description from 10 to 50 characters"};
         };
         
     },
