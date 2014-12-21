@@ -12,6 +12,8 @@ import ee.ttu.catering.ui.diner.DinerUiForm;
 
 public class DeleteButtonTest {
 	
+	private String dinerId;
+	
 	@BeforeClass
 	public static void signIn(){
 		new UiTest().loginAsAdminUser();
@@ -26,7 +28,18 @@ public class DeleteButtonTest {
 		form.setDinerData("Burgerite kodu", "Rasvased söögid");
 		form.clickSaveButton();
 		sleep(1000);
+		dinerId = form.extractDigits(form.getCurrentUrl()).get(1).trim();
 		form.deleteButton().shouldBe(Condition.visible);
+		form.clickLogOut();
+		sleep(5000);
+		testDeleteButtonVisibilityWithNoLogIn(form);
+	}
+	
+	
+	public void testDeleteButtonVisibilityWithNoLogIn(DinerUiForm form){
+		form.openForm("catering-ui/#diner/"+dinerId);
+		sleep(1000);
+		form.deleteButton().shouldNotBe(Condition.visible);
 	}
 
 }
