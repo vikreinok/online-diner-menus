@@ -17,7 +17,7 @@ public class FastSearchUiTest {
 	@BeforeClass
 	public static void createTestData(){
 		DatabaseFunctions functions = new DatabaseFunctions();
-		dinerId = functions.createTestDiner("Test kirjeldus", "Test restoran");	
+		dinerId = functions.createTestDiner("2014-12-21","Test kirjeldus","2014-12-21", "Test restoran");	
 		
 	}
 	

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class DatabaseFunctions {
 	
-	public int createTestDiner(String description, String name){
+	public int createTestDiner(String created, String description, String modifyDate, String name){
 		
 		 int createdTestDinerId = 0;
 		 
@@ -18,13 +18,15 @@ public class DatabaseFunctions {
 		 
 		 conn = connection.connectToDB();
 		 
-		 String sql = "INSERT INTO diner ( description, name)"
-		 		+ " VALUES (?,?);";
+		 String sql = "INSERT INTO diner ( created, description, modifyDate, name, picture)"
+		 		+ " VALUES (?,?,?,?,-1);";
 		 
 		 try {
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			 ps.setString(1, description);
-			 ps.setString(2, name);
+			 ps.setString(1, created);
+			 ps.setString(2, description);
+			 ps.setString(3, modifyDate);
+			 ps.setString(4, name);
 			 ps.executeUpdate();
 			 ResultSet generatedKeys = ps.getGeneratedKeys();
 			 if(generatedKeys.next()){

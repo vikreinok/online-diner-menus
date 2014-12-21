@@ -4,6 +4,8 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.Selenide.sleep;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +29,12 @@ public abstract class BaseUiForm {
 		   numbers.add(m.group());
 		}
 	    return numbers;
+	}
+	
+	public String formatDate(Date date){
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+		String formatted = format1.format(date);
+		return formatted;
 	}
 	
 	public String getModifiedDate(){

@@ -22,7 +22,7 @@ public class DinerListUiTest {
 	@BeforeClass
 	public static void createTestData(){
 		DatabaseFunctions functions = new DatabaseFunctions();
-		dinerId = functions.createTestDiner("Test kirjeldus", dinerName);	
+		dinerId = functions.createTestDiner("2014-12-21","Test kirjeldus","2014-12-21", dinerName);	
 	}
 	
 	@Test
