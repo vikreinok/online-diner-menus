@@ -1,7 +1,11 @@
 window.MenuDetailsView = AuthView.extend({
 
     initialize: function () {
-    	MenuDetailsView.__super__.initialize.apply(this, arguments);    
+    	var url = document.URL;
+    	var url = url.substring(url.indexOf('#diner/'), url.lenght);
+    	if(url.match(/\d/g) == null) {
+    		MenuDetailsView.__super__.initialize.apply(this, arguments);    
+    	}
         this.render();
     },
 
