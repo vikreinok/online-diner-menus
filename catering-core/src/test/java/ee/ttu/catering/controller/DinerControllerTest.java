@@ -1,5 +1,13 @@
 package ee.ttu.catering.controller;
 
+import static org.junit.Assert.fail;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.junit.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.transaction.annotation.Transactional;
+
 
 public class DinerControllerTest extends AbstractRestServiceTest {
 
@@ -19,6 +27,24 @@ public class DinerControllerTest extends AbstractRestServiceTest {
     @Override
     String getUpdateContent() {
     	return CONTENT;
+    }
+    
+    @Test
+    @Transactional
+    public void testFindMenusByDinerId() {
+        try{
+        
+		mvc.perform(MockMvcRequestBuilders.get(MAPPING + "menus/" + 0)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn(); 
+	
+        }catch(Exception e){
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
     }
     
 

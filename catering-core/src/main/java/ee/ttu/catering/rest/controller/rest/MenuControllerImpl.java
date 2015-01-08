@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ee.ttu.catering.rest.model.Diner;
 import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.model.MenuComment;
 import ee.ttu.catering.rest.service.DinerService;
 import ee.ttu.catering.rest.service.MenuService;
 
@@ -52,5 +54,15 @@ public class MenuControllerImpl implements MenuController {
 	public Menu delete(@PathVariable int id) {
 		return menuService.delete(id);
 	}
+	
+	@Override
+	public Menu addComment(@PathVariable int menuId, @RequestBody @Valid MenuComment menuComment) {
+		Menu menu = menuService.get(menuId);
+		menu.addMenuComment(menuComment);
+		
+		return menuService.update(menu);
+	}
+	
+	
 	
 }

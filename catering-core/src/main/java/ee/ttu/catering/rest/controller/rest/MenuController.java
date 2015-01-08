@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.model.MenuComment;
 
 public interface MenuController {
 
@@ -33,5 +34,9 @@ public interface MenuController {
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT )
 	public Menu delete(int id);
+
+	@ResponseBody
+	@RequestMapping(value="/comment/{menuId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Menu addComment(int menuId, MenuComment menuComment);
 
 }

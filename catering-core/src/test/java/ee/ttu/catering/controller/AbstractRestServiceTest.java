@@ -26,7 +26,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -69,11 +68,10 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     @Before
     public void setup() throws Exception{
-       id = create();
+       id = createEntity();
     }
     
-//    @Transactional(isolation = Isolation.READ_COMMITTED)
-    private Integer create() {
+    private Integer createEntity() {
     	try{
     		MvcResult result = mvc.perform(MockMvcRequestBuilders.post(getServiceMapping())
                 .contentType(MediaType.APPLICATION_JSON)
@@ -129,7 +127,7 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     @Test
     @Order(2)
-    @Transactional(isolation = Isolation.DEFAULT)
+    @Transactional()
     public void testUpdate() {
     	try {
     		

@@ -20,6 +20,7 @@
 
   <http entry-point-ref="restAuthenticationEntryPoint">
 	  <intercept-url pattern="/rest/login/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+	  <intercept-url pattern="/rest/menu/comment/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
 <!--   	  <intercept-url pattern="/rest/login/**" method="PUT" access="permitAll" /> -->
 <!--       <intercept-url pattern="/rest/login/**" method="DELETE" access="permitAll" /> -->
 

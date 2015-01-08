@@ -35,6 +35,9 @@ public class Menu extends IdEntity {
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<MenuItem> menuItems;
 	
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<MenuComment> menuComments;
+	
 	@Temporal(TemporalType.DATE)
 	private Date created;
 	
@@ -56,6 +59,10 @@ public class Menu extends IdEntity {
 	
 	public void addMenuItem(MenuItem menuItem) {
 		menuItems.add(menuItem);
+	}
+	
+	public void addMenuComment(MenuComment menuComment) {
+		menuComments.add(menuComment);
 	}
 	
 	// ---------------- Setters and Getters ----------------
@@ -95,6 +102,14 @@ public class Menu extends IdEntity {
 
 	public void setMenuItems(List<MenuItem> menuItems) {
 		this.menuItems = menuItems;
+	}
+
+	public List<MenuComment> getMenuComments() {
+		return menuComments;
+	}
+
+	public void setMenuComments(List<MenuComment> menuComments) {
+		this.menuComments = menuComments;
 	}
 
 	@JsonBackReference
