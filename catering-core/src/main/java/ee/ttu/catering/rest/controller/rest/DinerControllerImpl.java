@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ee.ttu.catering.rest.model.Diner;
+import ee.ttu.catering.rest.model.Menu;
 import ee.ttu.catering.rest.response.ApiResponse;
 import ee.ttu.catering.rest.service.DinerService;
+import ee.ttu.catering.rest.service.MenuService;
 
 @Controller
 @RequestMapping(value="/diner")
@@ -21,6 +23,8 @@ public class DinerControllerImpl implements DinerController {
 
 	@Autowired
 	private DinerService dinerService;
+	@Autowired
+	private MenuService menuService;
 
 	@Override
 	public List<Diner> all() {
@@ -49,9 +53,14 @@ public class DinerControllerImpl implements DinerController {
 	}
 	
 	@Override
+	public List<Menu> findDinerMenus(@PathVariable Integer dinerId) {
+		return menuService.findDinerMenus(dinerId);
+	}
+	
+	@Override
 	public List<Diner> findByName(@PathVariable String name) {
 		return dinerService.findByName(name);
 	}
-	
+
 	
 }

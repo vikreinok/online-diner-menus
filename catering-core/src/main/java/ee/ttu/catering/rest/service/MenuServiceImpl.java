@@ -52,4 +52,9 @@ public class MenuServiceImpl implements MenuService {
 		return menu;
 	}
 
+	@Override
+	public List<Menu> findDinerMenus(int dinerId) throws MenuNotFoundException {
+		return menuRepository.findAll(MenuRepository.Specs.findMenusByDienrId(dinerId));
+	}
+
 }

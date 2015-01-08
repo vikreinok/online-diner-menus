@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.service.DinerService;
 import ee.ttu.catering.rest.service.MenuService;
 
 @Controller
@@ -19,6 +20,8 @@ public class MenuControllerImpl implements MenuController {
 
 	@Autowired
 	private MenuService menuService;
+	@Autowired
+	private DinerService dinerService;
 	
 	@Override
 	public List<Menu> all() {
@@ -32,6 +35,8 @@ public class MenuControllerImpl implements MenuController {
 	
 	@Override
 	public Menu create(@RequestBody @Valid Menu menu) {
+//		Diner diner = dinerService.get(menu.getDiner().getId());
+//		menu.setDiner(diner);
 		return menuService.create(menu);
 	}
 	
