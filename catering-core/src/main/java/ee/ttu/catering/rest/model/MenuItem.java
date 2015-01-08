@@ -2,17 +2,16 @@ package ee.ttu.catering.rest.model;
 
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
@@ -22,17 +21,17 @@ public class MenuItem extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	public static enum Status {
-		AVAILABE, OUT;
-	}
-
+//	public static enum Status {
+//		AVAILABE, OUT;
+//	}
+	
 	private String name;
 	
 	private Double price;
 
-	@Enumerated(EnumType.STRING)
-	@Basic
-	private Status status;
+//	@Enumerated(EnumType.STRING)
+//	@Basic
+//	private Status status;
 	
 	@Temporal(TemporalType.DATE)
 	private Date created;
@@ -42,7 +41,7 @@ public class MenuItem extends IdEntity {
 		this.created = new Date();
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Menu menu;
 	
 	public String getName() {
@@ -53,9 +52,6 @@ public class MenuItem extends IdEntity {
 		this.name = name;
 	}
 
-	public Status getStatus() {
-		return status;
-	}
 
 	public Double getPrice() {
 		return price;
@@ -65,10 +61,7 @@ public class MenuItem extends IdEntity {
 		this.price = price;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
+	@JsonBackReference
 	public Menu getMenu() {
 		return menu;
 	}

@@ -1,14 +1,13 @@
 package ee.ttu.catering.rest.model;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -17,6 +16,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
@@ -31,9 +32,8 @@ public class Menu extends IdEntity {
 	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="menu", fetch=FetchType.EAGER)
-	@OrderBy("name ASC")
-	private Collection<MenuItem> menuItems;
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<MenuItem> menuItems;
 	
 	@Temporal(TemporalType.DATE)
 	private Date created;
@@ -53,6 +53,12 @@ public class Menu extends IdEntity {
 	void updated() {
 		this.modifyDate = new Date();
 	}
+	
+	public void addMenuItem(MenuItem menuItem) {
+		menuItems.add(menuItem);
+	}
+	
+	// ---------------- Setters and Getters ----------------
 	
 	public Date getModifyDate() {
 		return modifyDate;
@@ -83,22 +89,15 @@ public class Menu extends IdEntity {
 		this.created = created;
 	}
 
-	public Collection<MenuItem> getMenuItems() {
+	public List<MenuItem> getMenuItems() {
 		return menuItems;
 	}
 
-	public void setMenuItems(Collection<MenuItem> menuItems) {
+	public void setMenuItems(List<MenuItem> menuItems) {
 		this.menuItems = menuItems;
 	}
-	
-	public void addMenuItem( MenuItem  menuItem) {
-		this.menuItems.add(menuItem);
-	}
-	
-	public void addMenuItems(Collection<MenuItem> menuItems) {
-		this.menuItems.addAll(menuItems);
-	}
 
+	@JsonBackReference
 	public Diner getDiner() {
 		return diner;
 	}

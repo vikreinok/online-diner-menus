@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
@@ -97,7 +99,7 @@ public class Diner extends IdEntity {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-
+	
 	public List<Menu> getMenu() {
 		return menu;
 	}
