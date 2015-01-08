@@ -33,7 +33,7 @@ public interface MenuItemController {
 	public MenuItem delete(int id);
 	
 	@ResponseBody
-	@RequestMapping(value="/{menuId}/", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/by_menu_id/{menuId}/", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<MenuItem> readByMenu(int menuId);
 
 }
