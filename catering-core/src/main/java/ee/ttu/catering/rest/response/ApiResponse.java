@@ -7,12 +7,9 @@ package ee.ttu.catering.rest.response;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 
-/**
- *
- * @author craigbrookes
- */
 public class ApiResponse implements Serializable{
     
     private HttpStatus status;

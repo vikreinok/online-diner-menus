@@ -5,14 +5,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ee.ttu.catering.rest.model.Menu;
-import ee.ttu.catering.rest.response.ApiResponse;
 import ee.ttu.catering.rest.service.MenuService;
 
 @Controller
@@ -38,9 +36,11 @@ public class MenuControllerImpl implements MenuController {
 	}
 	
 	@Override
-	public ApiResponse update(@PathVariable Integer id, @RequestBody Menu menu) {
+	public Menu update(@PathVariable int id, @RequestBody @Valid Menu menu) {
 		menu.setId(id);
-		return new ApiResponse(HttpStatus.OK, "ok", menuService.update(menu));
+		return menuService.update(menu);
+
+//		return new ApiResponse(HttpStatus.OK, "ok", menuService.update(menu));
 	}
 	
 	@Override

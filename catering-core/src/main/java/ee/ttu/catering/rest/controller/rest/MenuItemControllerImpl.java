@@ -25,7 +25,7 @@ public class MenuItemControllerImpl implements MenuItemController {
 	private MenuItemService menuItemService;
 	
 	@Override
-	public List<MenuItem> readAll(@PathVariable int menuId) {
+	public List<MenuItem> readAll() {
 		return menuItemService.findAll();
 	}
 	

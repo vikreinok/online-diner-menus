@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
@@ -39,6 +40,9 @@ public class Menu extends IdEntity {
 	
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Diner diner;
 	
 	@PrePersist
 	void created() {
@@ -95,12 +99,12 @@ public class Menu extends IdEntity {
 		this.menuItems.addAll(menuItems);
 	}
 
-	@Override
-	public String toString() {
-		return "Menu [name=" + name + ", created=" + created + ", modifyDate="
-				+ modifyDate + ", menuItems="
-				+ menuItems + "]";
+	public Diner getDiner() {
+		return diner;
 	}
-	
-	
+
+	public void setDiner(Diner diner) {
+		this.diner = diner;
+	}
+
 }

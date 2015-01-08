@@ -36,12 +36,12 @@ public class MenuItem extends IdEntity {
 	
 	@Temporal(TemporalType.DATE)
 	private Date created;
-	
+
 	@PrePersist
 	void created() {
 		this.created = new Date();
 	}
-	
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Menu menu;
 	

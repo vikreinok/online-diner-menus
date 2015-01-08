@@ -18,11 +18,11 @@ public interface DinerController {
 	@ResponseBody
 	public List<Diner> all();
 
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Diner one(int id);
 	
-	@RequestMapping(value="/name/{name}", method=RequestMethod.GET)
+	@RequestMapping(value="/name/{name}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Diner> findByName(String name);
 

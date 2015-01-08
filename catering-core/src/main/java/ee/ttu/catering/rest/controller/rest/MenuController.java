@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ee.ttu.catering.rest.model.Menu;
-import ee.ttu.catering.rest.response.ApiResponse;
 
 public interface MenuController {
 
@@ -28,7 +27,7 @@ public interface MenuController {
 
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse update(Integer id, Menu menu);
+	public Menu update(int id, Menu menu);
 
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)

@@ -1,4 +1,4 @@
-package ee.ttu.catering.rest.validator;
+package ee.ttu.catering.validator;
 
 import static org.junit.Assert.assertEquals;
 

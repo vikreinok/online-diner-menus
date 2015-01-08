@@ -2,7 +2,6 @@ package ee.ttu.catering.validator;
 
 import org.junit.Test;
 
-import ee.ttu.catering.rest.validator.AssertedValue;
 import ee.ttu.catering.rest.validator.SSNValidator;
 
 public class SSNValidatorTest {

@@ -6,6 +6,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +26,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -39,28 +44,35 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
 	public AbstractRestServiceTest() {
 	}
 
-	ObjectMapper mapper = new ObjectMapper();
-	
 	abstract String getServiceMapping();
 	
 	abstract String getCreateContent();
+	
 	abstract String getUpdateContent();
 	
 	Logger LOG = Logger.getLogger(this.getClass());
 
-	protected void mocMvc() {
+	@Autowired 
+	protected WebApplicationContext wac;
+	
+	@PersistenceContext 
+	private EntityManager entityManager;
+	
+	MockMvc mvc;
+	
+	@PostConstruct
+	public void mocMvc() {
 		mvc = MockMvcBuilders.webAppContextSetup(wac).build();
 	}
-	
-    @Autowired WebApplicationContext wac;
-    MockMvc mvc;
-
+   
+    protected int id;
+    
     @Before
     public void setup() throws Exception{
-       mocMvc();
-       create();
+       id = create();
     }
     
+//    @Transactional(isolation = Isolation.READ_COMMITTED)
     private Integer create() {
     	try{
     		MvcResult result = mvc.perform(MockMvcRequestBuilders.post(getServiceMapping())
@@ -71,6 +83,7 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn();
     	
+    		entityManager.flush();
 			return parseId(result.getResponse().getContentAsString());
     	}catch(Exception e){
     		fail(e.getMessage());
@@ -101,14 +114,14 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     @Order(1)
     @Transactional
     public void testRead() {
-    	try{
-    		mvc.perform(MockMvcRequestBuilders.get(getServiceMapping(), create())
+    	try {
+    		mvc.perform(MockMvcRequestBuilders.get(getServiceMapping() + id)
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
     		
-    	}catch(Exception e){
+    	} catch(Exception e){
     		e.printStackTrace();
     		fail(e.getMessage());
     	}
@@ -116,17 +129,19 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     @Test
     @Order(2)
-    @Transactional
+    @Transactional(isolation = Isolation.DEFAULT)
     public void testUpdate() {
-    	try{
-    		mvc.perform(MockMvcRequestBuilders.put(getServiceMapping() + create())
-    				.contentType(MediaType.APPLICATION_JSON)
-    				.accept(MediaType.APPLICATION_JSON)
-    				.content(getCreateContent()))
-    				.andExpect(status().isOk())
-    				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    	try {
     		
-    	}catch(Exception e){
+    		Thread.sleep(1000);
+    		mvc.perform(MockMvcRequestBuilders.put(getServiceMapping() + id)
+    				.contentType(MediaType.APPLICATION_JSON)
+//    				.accept(MediaType.APPLICATION_JSON)
+    				.content(getCreateContent()))
+    				.andExpect(status().isOk());
+//    				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    		
+    	} catch(Exception e){
     		e.printStackTrace();
     		fail(e.getMessage());
     	}
@@ -135,14 +150,12 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     @Order(3)
     @Transactional
     public void testDelete() {
-    	try{
-    		mvc.perform(MockMvcRequestBuilders.delete(getServiceMapping() + create())
-    				.contentType(MediaType.APPLICATION_JSON)
-    				.accept(MediaType.APPLICATION_JSON))
-    				.andExpect(status().isOk())
-    				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    	try {
+    		mvc.perform(MockMvcRequestBuilders.delete(getServiceMapping() + id)
+    				.contentType(MediaType.APPLICATION_JSON))
+    				.andExpect(status().isNoContent());
     		
-    	}catch(Exception e){
+    	} catch(Exception e){
     		e.printStackTrace();
     		fail(e.getMessage());
     	}
@@ -152,7 +165,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
 		ObjectMapper mapper = new ObjectMapper();
         JsonNode actualObj = mapper.readTree(response);
      
-        JsonNode result = actualObj.get("result");
-		return result.findValue("id").asInt();
+        return actualObj.findValue("id").asInt();
 	}
 }

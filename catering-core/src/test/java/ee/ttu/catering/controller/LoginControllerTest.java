@@ -67,7 +67,6 @@ public class LoginControllerTest extends AbstractTransactionalJUnit4SpringContex
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
     		
     	}catch(Exception e){

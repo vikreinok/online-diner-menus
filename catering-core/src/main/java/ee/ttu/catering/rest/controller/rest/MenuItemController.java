@@ -14,7 +14,7 @@ public interface MenuItemController {
 
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<MenuItem> readAll(int menuId);
+	public List<MenuItem> readAll();
 	
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

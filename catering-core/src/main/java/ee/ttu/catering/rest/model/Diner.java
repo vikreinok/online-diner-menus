@@ -1,8 +1,12 @@
 package ee.ttu.catering.rest.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -14,10 +18,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
-/**
- * @author viktor.reinok
- *
- */
 @Entity
 @Table(name = "diner")
 public class Diner extends IdEntity {
@@ -28,14 +28,18 @@ public class Diner extends IdEntity {
 	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 
+	@NotBlank
+	@Length(min = 10, max = 50, message = "Descritpion should be between 10 and 50 characters")
+	private String description;
+	
 	@Temporal(TemporalType.DATE)
 	private Date created;
 
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
-
-	@NotBlank
-	private String description;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Menu> menu;
 
 	private String picture;
 
@@ -92,6 +96,14 @@ public class Diner extends IdEntity {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public List<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(List<Menu> menu) {
+		this.menu = menu;
 	}
 
 }

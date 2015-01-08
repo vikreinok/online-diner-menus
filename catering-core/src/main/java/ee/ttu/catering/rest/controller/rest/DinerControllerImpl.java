@@ -17,7 +17,6 @@ import ee.ttu.catering.rest.service.DinerService;
 
 @Controller
 @RequestMapping(value="/diner")
-//@Secured(Roles.USER)
 public class DinerControllerImpl implements DinerController {
 
 	@Autowired
