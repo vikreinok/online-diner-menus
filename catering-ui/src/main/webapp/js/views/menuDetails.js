@@ -6,7 +6,18 @@ window.MenuDetailsView = AuthView.extend({
     	if(url.match(/\d/g) == null) {
     		MenuDetailsView.__super__.initialize.apply(this, arguments);    
     	}
-        this.render();
+    	this.render();
+    	
+    	if($.cookie('diner_id') == "null") {
+    		
+            setTimeout(function() {
+            	utils.showAlert('Warning!', 'Please select diner before adding menu', 'alert-danger');
+    		}, 1);
+            
+    		utils.redirectTimer(1000, '/diners');
+    	}
+    	
+    	this.afterRender();
     },
 
     render: function () {
@@ -14,6 +25,18 @@ window.MenuDetailsView = AuthView.extend({
         return this;
     },
 
+    afterRender: function() {
+		setTimeout(function() {
+			if ($.cookie("authenticated") == "true") {
+				$('#saveMenuButton').show();
+				$('#deleteMenuButton').show();
+			} else {
+				$('#saveMenuButton').hide();
+				$('#deleteMenuButton').hide();
+			}
+		}, 1);
+    },
+    
     events: {
         "change"               : "change",
         "click .save"          : "beforeSave",
@@ -42,8 +65,6 @@ window.MenuDetailsView = AuthView.extend({
             utils.removeValidationError(target.id, this.model);
         }
         
-        //Check picture file                            		
-		//this.checkFileAndExtension();
     },
 
     beforeSave: function () {
@@ -60,8 +81,27 @@ window.MenuDetailsView = AuthView.extend({
     },
     
     saveMenu: function () {
-        var self = this;        
-        this.model.save(null, {        	
+        var self = this;
+        console.log("saving menu. Diner: " + $.cookie('diner'));
+        console.log("saving menu. Diner model: " + new Diner($.cookie('diner')).toJSON() );
+//        this.model.set("diner", new Diner($.cookie('diner')).toJSON() ); //
+//        console.log("saving menu. Diner get: " +  JSON.stringify(this.model.get('diner')) );
+        $.cookie('diner');
+        var book = new Diner(myJSON);
+        var myJSON = JSON.parse( $.cookie('diner')  );
+//        book.set( myJSON );
+        
+        console.log(JSON.stringify(myJSON));	
+        this.model.set({
+            diner: {id:  $.cookie('diner_id')}
+//        	diner: { entityVersion:0,name:"123213",description:"213213213213123",created:"2015-01-08",modifyDate:"2015-01-08",menu:[],picture:"-1"}
+        });
+        
+//        console.log("saving menu. Diner: parsed json " + myJSON.toString());
+
+//        this.model.set("diner", book ); //
+        
+        this.model.save(null, {
             success: function (model) {
                 self.render();
                 $('#modifyDate').text(convertDate(model.get('modifyDate')));

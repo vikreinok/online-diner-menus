@@ -6,6 +6,7 @@ window.Router = Backbone.Router.extend({
         "diner/add": "addDiner",
         "diner/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
+        "diner/select/:id": "selectDiner",
         "menus": "menuList",
         "menus/page/:page": "menuList",
         "menu/add": "addMenu",
@@ -45,10 +46,8 @@ window.Router = Backbone.Router.extend({
     	var p = page ? parseInt(page, 10) : 1;
         var diners = new DinerCollection();
         diners.fetch({
-//        	timeout:5000, 
         	success: function(){
 	            $("#content").html(new DinerListView({model: diners, page: p}).el);
-	            //$('#loadingModal').modal('hide');
 	            $('#loadingimage').hide();
         	},
 	        error: function(model, response) {
@@ -67,7 +66,6 @@ window.Router = Backbone.Router.extend({
 	            $("#content").html(new DinerDetailsView({model: diner}).el);
 	            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
 	            $('#created').text(convertDate(diner.get('created')));
-	            console.log("created: " + diner.get('created'));
         	},
         	error: function(model, response) {
          		$("#content").html(new 	ErrorView({model: response}).el);
@@ -75,6 +73,12 @@ window.Router = Backbone.Router.extend({
  	        }
         
         });
+    },
+    
+    selectDiner: function (id) {
+    	$.cookie('diner_id', id);
+    	window.location.replace("./#diners");
+    	window.location.reload();
     },
     
     addDiner: function() {
@@ -87,7 +91,7 @@ window.Router = Backbone.Router.extend({
 	// List items
 	
     menuList: function(page) {
-
+    	console.log("diner_id " + $.cookie('diner_id'));
     	var p = page ? parseInt(page, 10) : 1;
         var menus = new MenuCollection();
         menus.fetch({
@@ -138,10 +142,10 @@ window.Router = Backbone.Router.extend({
 		  url: "/catering-core/rest/login/",
 		  method: "DELETE"
 		}).done(function() {
-//			app.navigate('login', true);
      		$("#content").html(new 	AuthView().el);
+     		$.cookie("authenticated", false);
 		}).fail(function() {
-		   alert( "error" );
+		   alert( "Error during logout" );
 		});
 	},
     

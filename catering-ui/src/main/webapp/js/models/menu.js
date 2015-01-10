@@ -31,12 +31,16 @@ window.Menu = Backbone.Model.extend({
         return _.size(messages) > 0 ? {isValid: false, messages: messages} : {isValid: true};
     },
     
-    defaults: {
-        id: null,
-        name: "",
-        modifyDate: "",
-        created: ""
-    }
+    defaults: function() {
+        return {
+        	id: null,
+            name: "",
+            diner: null,
+            menuItems: new MenuItemCollection(),
+            modifyDate: "",
+            created: ""
+        };
+    },
     
 });
 

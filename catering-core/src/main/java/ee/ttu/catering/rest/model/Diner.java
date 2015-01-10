@@ -16,8 +16,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
@@ -40,7 +38,7 @@ public class Diner extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	private List<Menu> menu;
 
 	private String picture;

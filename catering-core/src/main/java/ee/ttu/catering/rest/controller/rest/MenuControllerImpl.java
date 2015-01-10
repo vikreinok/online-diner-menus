@@ -37,9 +37,13 @@ public class MenuControllerImpl implements MenuController {
 	
 	@Override
 	public Menu create(@RequestBody @Valid Menu menu) {
-//		Diner diner = dinerService.get(menu.getDiner().getId());
-//		menu.setDiner(diner);
-		return menuService.create(menu);
+		int dinerId = menu.getDiner().getId();
+		menu.setDiner(null);
+		Menu createdMenu = menuService.create(menu);
+		Diner diner = dinerService.get(dinerId);
+		createdMenu.setDiner(diner);
+		
+		return menuService.update(createdMenu);
 	}
 	
 	@Override

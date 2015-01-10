@@ -15,9 +15,14 @@ window.AuthView = Backbone.View.extend({
 					if(val == true) {
 						$('.navbar-nav li.logout').show();
 						$('.navbar-nav li.login').hide();
+						
+						$.cookie("authenticated", true);
+						
 					} else {
 						$('.navbar-nav li.logout').hide();
 						$('.navbar-nav li.login').show();
+					    
+						$.cookie("authenticated", false);
 						
 						app.navigate('/login',  true);
 					}

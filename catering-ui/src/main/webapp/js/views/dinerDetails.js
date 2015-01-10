@@ -7,12 +7,25 @@ window.DinerDetailsView = AuthView.extend({
     		DinerDetailsView.__super__.initialize.apply(this, arguments);  
     	}
         this.render();
+        this.afterRender();
     },
 
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));                
         return this;
     },
+    
+    afterRender: function() {
+		setTimeout(function() {
+			if ($.cookie("authenticated") == "true") {
+				$('#saveDinerButton').show();
+				$('#deleteDinerButton').show();
+			} else {
+				$('#saveDinerButton').hide();
+				$('#deleteDinerButton').hide();
+			}
+		}, 1);
+   },
 
     events: {
         "change"        : "change",
@@ -102,7 +115,10 @@ window.DinerDetailsView = AuthView.extend({
             success: function () {
             	//app.navigate('diners', false);
                 window.history.back();
-            }
+            },
+	        error: function(model, response) {
+	        	utils.showAlert('Warning!', 'Delete related menus before deleting diner', 'alert-warning', '#diners');
+	        }
         });
     },
      

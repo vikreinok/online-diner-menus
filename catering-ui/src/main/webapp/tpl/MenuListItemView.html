@@ -3,6 +3,7 @@
   <div class="caption" align="left">
     <h3> <a href="#menu/<%= id %>" ><%= name %></a></h3>
   </div>
-  <div class="text" align="left"><blockquote><%= created %></blockquote></div>
+  <div class="text" align="left"><blockquote>Created <%= created %></blockquote></div>
+  <div class="text" align="left"><blockquote>Diner name <%= diner == null ? "No diner connected": diner.name  %></blockquote></div>
 </div>
 </div>

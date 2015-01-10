@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class MenuControllerTest extends AbstractRestServiceTest {
 
-    private static final String CONTENT = "{\"id\": 1000, \"name\":\"test\"}";
+    private static final String CONTENT = "{\"id\": 1000, \"name\":\"test\", \"diner\":{\"id\":1}}";
 	private final String MAPPING = "/menu/";
     
     @Override
@@ -27,6 +27,25 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     @Override
     String getUpdateContent() {
     	return CONTENT;
+    }
+    
+    @Test
+    @Transactional
+    public void testAddComment() {
+        try{
+        
+		mvc.perform(MockMvcRequestBuilders.post(MAPPING + "comment/" + id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content( "{ \"comment\":\"test comment\"}"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn(); 
+	
+        }catch(Exception e){
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
     }
     
     @Test

@@ -9,7 +9,7 @@ window.Diner = Backbone.Model.extend({
             return value.length >= 2 && value.length <= 20  ? {isValid: true} : {isValid: false, message: "You must enter an diner name from 2 to 20 characters"};
         };
         
-        this.validators.description = function (value) {
+        this.validators.description	= function (value) {
             return value.length >= 10 && value.length <= 50  ? {isValid: true} : {isValid: false, message: "You must enter an diner description from 10 to 50 characters"};
         };
         
@@ -33,6 +33,16 @@ window.Diner = Backbone.Model.extend({
         }
 
         return _.size(messages) > 0 ? {isValid: false, messages: messages} : {isValid: true};
+    },
+    
+    parse: function(response){
+        for(var key in this.model)
+        {
+            var embeddedClass = this.model[key];
+            var embeddedData = response[key];
+            response[key] = new embeddedClass(embeddedData, {parse:true});
+        }
+        return response;
     },
     
     defaults: {

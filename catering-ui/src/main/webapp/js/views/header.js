@@ -10,10 +10,40 @@ window.HeaderView = Backbone.View.extend({
 
     render: function () {    	
         $(this.el).html(this.template());        
-        $('.dropdown', this.el).append(this.searchresultsView.render().el);           
+        $('.dropdown', this.el).append(this.searchresultsView.render().el);
+        
+        setTimeout(function() {
+
+        	var diner = new Diner({id: $.cookie('diner_id')});
+            diner.fetch({
+            	success: function(model, response){
+            		
+            		var picture = diner.get('picture');
+            		
+            		if(picture == '-1') {
+            			var scr = "./resources/img/diner_logo.png";
+            		} else {
+            			var scr = "http://localhost:8080/catering-core/rest/file/image/" + picture;
+            		}
+            		scr = "'" + scr + "'";
+            		var img = "<img style='width:48px; height:48px' src=" + scr + "/>"
+
+            		$("#selected_diner").empty();
+            		$("#selected_diner").prepend(img);
+            		
+     	        	$('#loadingimage').hide();
+            	},
+            	error: function(model, response) {
+             		$("#content").html(new 	ErrorView({model: response}).el);
+     	        	$('#loadingimage').hide();
+     	        }
+            });
+        	
+		}, 2);
+        
         return this;
     },
-
+    
     events: {
         "keyup .search-query": "search",
         "keypress .search-query": "onkeypress",
@@ -33,7 +63,7 @@ window.HeaderView = Backbone.View.extend({
         	$('.dropdown').addClass('open');
         	$('#loadingimage').hide();        	
         	//$('.dropdown-menu').fadeIn(1000);
-        }, 1500);        
+        }, 1500);
         
     },
 

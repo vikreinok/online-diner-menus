@@ -27,7 +27,7 @@ window.ErrorView = Backbone.View.extend({
         if(response.status == 404)
         	$('#error_solution', this.el).append("Please call 56252830 to start server");
         else if(response.status == 500)
-        	$('#error_solution', this.el).append("Internal server error. Possible database outage.");
+        	$('#error_solution', this.el).append("Internal server error. Possible database outage or invalid request.");
         else
         	$('#error_solution', this.el).append("Some other error");
 

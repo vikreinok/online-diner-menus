@@ -2,12 +2,19 @@ window.LoginView = Backbone.View.extend({
 
     initialize: function () {
     	this.render();
+    	this.afterRender();
     },
 
     render: function () {
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     },
+    
+    afterRender : function() {
+		setTimeout(function() {
+			$("#username").focus();
+		}, 1);
+	},
     
     events: {
         "change"         : "change",
@@ -21,8 +28,6 @@ window.LoginView = Backbone.View.extend({
     },
     
 	change: function (event) {
-	    	
-//		    console.log("- "  + $(':input:visible:enabled:first')[0].value)
 		    
 	        // Remove any existing alert message
 	        utils.hideAlert();
@@ -70,6 +75,9 @@ window.LoginView = Backbone.View.extend({
                 
         		$('.navbar-nav li.logout').show();
         		$('.navbar-nav li.login').hide();
+        		
+         		$.cookie("authenticated", true);
+
                 utils.redirectTimer(1000, '/diners');
             },
             error: function () {

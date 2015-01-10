@@ -12,7 +12,8 @@
 	      </button>
 	      <a class="navbar-brand" href="#">TTU Catering</a>
 	    </div>
-                          			 
+	    
+	    
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             
@@ -23,9 +24,19 @@
             <li class="login"><a href="#login"><i class="icon-edit icon-white"></i> Login</a></li>
             <li class="logout"><a href="#logout"><i class="icon-edit icon-white"></i> Logout</a></li>
          	
-          </ul>          
-				
-          <form class="navbar-form navbar-right"> 
+          </ul>
+          
+          
+        <div  class="navbar-brand"> </div>
+        <div  class="navbar-brand"> </div>
+		<div  class="navbar-brand">
+			  Selected Diner: 
+		</div>
+		<div id="selected_diner" class="navbar-nav">
+			  Not selected 
+		</div>
+
+			<form class="navbar-form navbar-right"> 
         	<img id="loadingimage" src="./resources/img/ajax-loader.gif" style="display:none;margin-right:5px"/>            	           	 
 		  	<div class="form-group" id="diner-autofill-search">
            		<input id="searchText" type="text" class="search-query form-control dropdown-toggle" placeholder="Diner name" autocomplete="off">
