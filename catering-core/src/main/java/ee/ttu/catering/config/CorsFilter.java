@@ -18,7 +18,6 @@ public class CorsFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
-//        if (((HttpServletRequest) req).getMethod().equalsIgnoreCase("OPTIONS"))
     	putCorsHeaders(res);
         chain.doFilter(req, res);
     }
