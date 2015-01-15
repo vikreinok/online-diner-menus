@@ -31,6 +31,8 @@ public class WebConfig implements WebApplicationInitializer {
     // Manage the lifecycle of the root application context
     container.addListener(new ContextLoaderListener(applicationContext));
 	
+    container.addFilter("CORS", new CorsFilter());
+    
 	// Add springSecurityFilterChain to the context
 	FilterRegistration.Dynamic springSecurityFilterChain = container.addFilter( "springSecurityFilterChain", DelegatingFilterProxy.class );
 	springSecurityFilterChain.addMappingForUrlPatterns( null, false, "/*" );
