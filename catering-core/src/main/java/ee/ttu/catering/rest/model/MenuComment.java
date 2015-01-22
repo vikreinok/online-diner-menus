@@ -11,8 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
@@ -23,7 +21,6 @@ public class MenuComment extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@NotBlank
 	private String comment;
 	
 	@Temporal(TemporalType.DATE)
