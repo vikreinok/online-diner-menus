@@ -4,6 +4,7 @@ window.HeaderView = Backbone.View.extend({
     	var obj = new AuthView();
     	obj.initialize();
     	
+    	this.searchResults2 = new DinerCollection();
         this.searchResults = new DinerCollection();
         this.searchresultsView = new SearchResultView({model: this.searchResults, className: 'dropdown-menu'});
     },
@@ -15,6 +16,7 @@ window.HeaderView = Backbone.View.extend({
         setTimeout(function() {
 
         	var diner = new Diner({id: $.cookie('diner_id')});
+        	$('#loadingimage').show();
             diner.fetch({
             	success: function(model, response){
             		
@@ -34,7 +36,8 @@ window.HeaderView = Backbone.View.extend({
      	        	$('#loadingimage').hide();
             	},
             	error: function(model, response) {
-             		$("#content").html(new 	ErrorView({model: response}).el);
+            		console.log("Error during header selected diner image loadign. Cookie value: " + $.cookie('diner_id'));
+//             		$("#content").html(new 	ErrorView({model: response}).el);
      	        	$('#loadingimage').hide();
      	        }
             });

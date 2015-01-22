@@ -18,6 +18,10 @@ public interface DinerController {
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Diner> all();
+	
+	@RequestMapping(value="/integration/", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Diner> allIntegration();
 
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -42,6 +46,7 @@ public interface DinerController {
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT )
 	public void delete(Integer id);
+
 	
 	
 }

@@ -32,6 +32,11 @@ public class DinerControllerImpl implements DinerController {
 	}
 	
 	@Override
+	public List<Diner> allIntegration() {
+		return dinerService.getAllIntegrationDiners();
+	}
+	
+	@Override
 	public Diner one(@PathVariable int id) {
 		return dinerService.get(id);
 	}

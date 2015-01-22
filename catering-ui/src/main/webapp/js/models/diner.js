@@ -1,6 +1,6 @@
 window.Diner = Backbone.Model.extend({
 	
-	urlRoot: "http://localhost:8080/catering-core/rest/diner/",
+	urlRoot: "/catering-core/rest/diner/",
 	
 	initialize: function () {
 		this.validators = {};

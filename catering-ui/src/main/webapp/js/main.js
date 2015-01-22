@@ -3,6 +3,7 @@ window.Router = Backbone.Router.extend({
     routes: {
     	"": "home",
         "diners": "dinerlist",
+        "integration_diners": "integrationDinerlist",
         "diner/add": "addDiner",
         "diner/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
@@ -39,8 +40,27 @@ window.Router = Backbone.Router.extend({
         this.headerView.select('home-menu');                            
     },
     
+    integrationDinerlist: function(page) {
+
+    	$('#loadingimage').show();
+    	var p = page ? parseInt(page, 10) : 1;
+        var integrationdiners = new IntegrationDinerCollection();
+        integrationdiners.fetch({
+        	success: function(){
+	            $("#content").html(new IntegrationDinerListView({model: integrationdiners, page: p}).el);
+	            $('#loadingimage').hide();
+        	},
+	        error: function(model, response) {
+	        	console.log("Error during integration diner service at main");
+        		$("#content").html(new 	ErrorView({model: response}).el);
+	        	$('#loadingimage').hide();
+	        }
+        	
+        });
+        this.headerView.select('integration-diners-menubar');
+    },
+    
     dinerlist: function(page) {
-    	//$('#loadingModal').modal('show');
 
     	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
@@ -60,12 +80,14 @@ window.Router = Backbone.Router.extend({
     },
     
     dinerDetails: function (id) {
+    	$('#loadingimage').show();
         var diner = new Diner({id: id});
         diner.fetch({
         	success: function(){
 	            $("#content").html(new DinerDetailsView({model: diner}).el);
 	            $('#modifyDate').text(convertDate(diner.get('modifyDate')));
 	            $('#created').text(convertDate(diner.get('created')));
+	            $('#loadingimage').hide();
         	},
         	error: function(model, response) {
          		$("#content").html(new 	ErrorView({model: response}).el);
@@ -92,14 +114,18 @@ window.Router = Backbone.Router.extend({
 	
     menuList: function(page) {
     	console.log("diner_id " + $.cookie('diner_id'));
+    	
+    	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
         var menus = new MenuCollection();
         menus.fetch({
         	success: function(){
 	            $("#content").html(new MenuListView({model: menus, page: p}).el);
+	            $('#loadingimage').hide();
         	},	
 	        error: function(model, response) {
         		$("#content").html(new 	ErrorView({model: response}).el);
+        		$('#loadingimage').hide();
 	        }
         	
         });
@@ -107,12 +133,14 @@ window.Router = Backbone.Router.extend({
     },
     
     menuDetails: function (id) {
+    	$('#loadingimage').show();
         var menu = new Menu({id: id});
-        menu.fetch({	
+        menu.fetch({
         	success: function(){        	
 	            $("#content").html(new MenuDetailsView({model: menu}).el);
 	            $('#modifyDate').text(convertDate(menu.get('modifyDate')));
-	            $('#created').text(convertDate(menu.get('created')));            
+	            $('#created').text(convertDate(menu.get('created')));           
+	            $('#loadingimage').hide();
         	},
         	error: function(model, response) {
          		$("#content").html(new 	ErrorView({model: response}).el);
@@ -151,7 +179,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","IntegrationDinerListView","IntegrationDinerListItemView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

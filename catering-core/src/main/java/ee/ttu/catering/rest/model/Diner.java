@@ -20,6 +20,7 @@ import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
 @Table(name = "diner")
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Diner extends IdEntity {
 
 	private static final long serialVersionUID = -7169873625528706006L;

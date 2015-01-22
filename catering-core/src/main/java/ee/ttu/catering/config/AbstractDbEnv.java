@@ -9,6 +9,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
+import com.mongodb.DB;
+
+import ee.ttu.catering.cloudservice.MongoDbConnctor;
+
 public abstract class AbstractDbEnv extends ApplicationConfig{
 
 	protected static String TYPE = "test.";
@@ -53,6 +57,11 @@ public abstract class AbstractDbEnv extends ApplicationConfig{
 		return dataSource;
 	}
     
+	@Bean
+	public DB initMongoDb() {
+		return new MongoDbConnctor().connection();
+	}
+	
     @Bean
 	public JpaTransactionManager transactionManager() {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();

@@ -13,4 +13,5 @@ public interface DinerService {
 	public Diner update(Diner sp) throws DinerNotFoundException;
 	public Diner delete(Integer id) throws DinerNotFoundException;
 	public List<Diner> findByName(String name);
+	public List<Diner> getAllIntegrationDiners();
 }
