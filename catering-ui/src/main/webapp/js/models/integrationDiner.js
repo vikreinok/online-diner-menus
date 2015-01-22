@@ -1,6 +1,6 @@
 window.IntegrationDiner = Backbone.Model.extend({
 	
-	urlRoot: "/catering-core/rest/diner/integration/",
+	urlRoot: baseUrl + '/diner/integration/',
 	
 	initialize: function () {
 		 
@@ -29,19 +29,5 @@ window.IntegrationDiner = Backbone.Model.extend({
 
 window.IntegrationDinerCollection = Backbone.Collection.extend({
 	model: IntegrationDiner,
-	url: "/catering-core/rest/diner/integration/",
-	
-	findByName:function (key) {
-		var url = '/catering-core/rest/diner/name/'+ key;
-
-		var self = this;
-	    $.ajax({
-	        url:url,
-	        dataType:"json",
-	        success:function (data) {
-	            self.reset(data);
-	        }
-	    });
-	}
-
+	url: baseUrl + '/diner/integration/'
 });

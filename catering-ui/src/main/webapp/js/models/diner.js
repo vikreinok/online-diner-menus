@@ -1,6 +1,6 @@
 window.Diner = Backbone.Model.extend({
 	
-	urlRoot: "/catering-core/rest/diner/",
+	urlRoot:  baseUrl + "/diner/",
 	
 	initialize: function () {
 		this.validators = {};
@@ -58,10 +58,10 @@ window.Diner = Backbone.Model.extend({
 
 window.DinerCollection = Backbone.Collection.extend({
 	model: Diner,
-	url: "/catering-core/rest/diner/",
+	url: baseUrl + '/diner/',
 
 	findByName:function (key) {
-		var url = '/catering-core/rest/diner/name/'+ key;
+		var url = baseUrl + '/diner/name/'+ key;
 
 		var self = this;
 	    $.ajax({

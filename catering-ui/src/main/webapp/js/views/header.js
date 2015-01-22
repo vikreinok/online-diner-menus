@@ -25,7 +25,7 @@ window.HeaderView = Backbone.View.extend({
             		if(picture == '-1') {
             			var scr = "./resources/img/diner_logo.png";
             		} else {
-            			var scr = "http://localhost:8080/catering-core/rest/file/image/" + picture;
+            			var scr = baseUrl + '/file/image/' + picture;
             		}
             		scr = "'" + scr + "'";
             		var img = "<img style='width:48px; height:48px' src=" + scr + "/>"

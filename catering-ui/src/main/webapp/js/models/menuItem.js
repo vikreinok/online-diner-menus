@@ -1,6 +1,6 @@
 window.MenuItem = Backbone.Model.extend({
 	
-	urlRoot: "http://localhost:8080/catering-core/rest/menu_item/",
+	urlRoot: baseUrl + '/menu_item/',
 	
 	initialize: function () {
 		this.validators = {};
@@ -35,13 +35,27 @@ window.MenuItem = Backbone.Model.extend({
     },
     
 });
-	
-window.MenuItemCollection = Backbone.Collection.extend({
-	model: MenuItem,
-	url: "/catering-core/rest/menu_item/",
 
-	findByName:function (key) {
-		var url = '/catering-core/rest/menu_item/name/'+ key;
+window.MenuItemCollection = Backbone.Collection.extend({
+	
+	model: MenuItem,
+	url: baseUrl + '/menu_item/',
+//	initialize: function(models, options) {
+//		console.log("model options");
+//		console.log(models);
+//		console.log(options);
+//		if (typeof options === "undefined") {
+//			console.log("something is undefined");
+//			this.url =  baseUrl + '/rest/menu_item/';
+//		} else {
+//			console.log(options.id + "  is id");
+//			this.url =  baseUrl + '/menu_item/by_menu_id/' + options.id + '/';
+//		}
+//	},
+
+	
+	findByMenuId:function (id) {
+		var url =  baseUrl + '/menu_item/by_menu_id/' + id ;
 
 		var self = this;
 	    $.ajax({

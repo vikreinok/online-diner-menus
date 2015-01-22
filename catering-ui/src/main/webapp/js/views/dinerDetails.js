@@ -157,7 +157,7 @@ window.DinerDetailsView = AuthView.extend({
     	data.append('file', utils.getFile());
 		
 		$.ajax({
-		    url: 'http://localhost:8080/catering-core/rest/file/image/' + this.model.get('picture'),
+		    url: baseUrl + '/file/image/' + this.model.get('picture'),
 		    data: data,
 		    cache: false,
 		    contentType: false,

@@ -167,7 +167,7 @@ window.Router = Backbone.Router.extend({
 		$('.navbar-nav li.login').show();
 		
 		$.ajax({
-		  url: "/catering-core/rest/login/",
+		  url: baseUrl + '/login/',
 		  method: "DELETE"
 		}).done(function() {
      		$("#content").html(new 	AuthView().el);

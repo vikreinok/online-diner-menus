@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-xs-4">		
 			<img width="32" height="32"  
-				src="<%= picture === '-1' ? './resources/img/diner_logo_small.png' : 'http://localhost:8080/catering-core/rest/file/image/' + picture %>"/>
+				src="<%= picture === '-1' ? './resources/img/diner_logo_small.png' : baseUrl + '/file/image/' + picture %>"/>
 		</div>
 	    <div class="col-xs-8" style="padding-top:5px">
 	    	<strong><%= name %></strong>

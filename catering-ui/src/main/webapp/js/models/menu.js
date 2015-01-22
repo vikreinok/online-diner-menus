@@ -1,6 +1,6 @@
 window.Menu = Backbone.Model.extend({
 	
-	urlRoot: "http://localhost:8080/catering-core/rest/menu/",
+	urlRoot: baseUrl + '/menu/',
 	
 	initialize: function () {
 		this.validators = {};
@@ -46,18 +46,6 @@ window.Menu = Backbone.Model.extend({
 
 window.MenuCollection = Backbone.Collection.extend({
 	model: Menu,
-	url: "/catering-core/rest/menu/",
-
-	findByName:function (key) {
-		var url = '/catering-core/rest/menu/name/'+ key;
-
-		var self = this;
-	    $.ajax({
-	        url:url,
-	        dataType:"json",
-	        success:function (data) {
-	            self.reset(data);
-	        }
-	    });
-	}
+	url: baseUrl + 'menu/'
+	 
 });

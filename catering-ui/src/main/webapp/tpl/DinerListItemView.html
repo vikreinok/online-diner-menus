@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-3" style="margin: 5px 0px 5px 0px">
 <div class="thumbnail">
-  <img style="width:128px; height:128px" src="<%= picture == '-1' ? './resources/img/diner_logo.png' : 'http://localhost:8080/catering-core/rest/file/image/' + picture %>"/>
+  <img style="width:128px; height:128px" src="<%= picture == '-1' ? './resources/img/diner_logo.png' : baseUrl + '/file/image/' + picture %>"/>
   <div class="caption" align="left">
     <h3> <a href="#diner/<%= id %>" ><%= name %></a></h3>
   </div>

@@ -15,7 +15,7 @@
         <div class="square pull-left">
         	
             <img id="pictureFile" width="128" height="128" 
-					src="<%= picture === '-1' ? './resources/img/diner_logo.png' : 'http://localhost:8080/catering-core/rest/file/image/' + picture %>"/>
+					src="<%= picture === '-1' ? './resources/img/diner_logo.png' : baseUrl + 'file/image/' + picture %>"/>
 			<span class="file-input btn btn-block btn-primary btn-file" style="margin-top:5px;">
 				change picture&hellip; <input id="fileInput" type="file" name="fileInput">
 			</span>		
