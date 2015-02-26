@@ -17,6 +17,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 
@@ -31,9 +34,11 @@ public class Menu extends IdEntity {
 	private String name;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<MenuItem> menuItems;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<MenuComment> menuComments;
 	
 	@Temporal(TemporalType.DATE)
@@ -42,7 +47,8 @@ public class Menu extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonBackReference
 	private Diner diner;
 	
 	@PrePersist

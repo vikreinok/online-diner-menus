@@ -42,6 +42,7 @@ public class MenuItem extends IdEntity {
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonBackReference
 	private Menu menu;
 	
 	public String getName() {

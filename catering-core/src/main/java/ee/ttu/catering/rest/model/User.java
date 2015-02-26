@@ -35,38 +35,18 @@ public class User implements UserDetails {
 
   private String fullname;
 
-  /**
-   * Get id
-   *
-   * @return id
-   */
   public Integer getId() {
     return id;
   }
 
-  /**
-   * Set id
-   *
-   * @param id
-   */
   public void setId(Integer id) {
     this.id = id;
   }
 
-  /**
-   * Get login
-   *
-   * @return login
-   */
   public String getLogin() {
     return login;
   }
 
-  /**
-   * Set login
-   *
-   * @param login
-   */
   public void setLogin(String login) {
     this.login = login;
   }
@@ -79,29 +59,14 @@ public class User implements UserDetails {
     return password;
   }
 
-  /**
-   * Set password
-   *
-   * @param password
-   */
   public void setPassword(String password) {
     this.password = password;
   }
 
-  /**
-   * Get fullname
-   *
-   * @return fullname
-   */
   public String getFullname() {
     return fullname;
   }
 
-  /**
-   * Set fullname
-   *
-   * @param fullname
-   */
   public void setFullname(String fullname) {
     this.fullname = fullname;
   }
