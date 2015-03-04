@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="7.6" multi-file="no">
+  <meta>
+    <name>Toitlustus süsteem</name>
+    <authors> Karl Jürgenson, Viktor Reinok, Ott Jalakas</authors>
+    <description>See on toitlustus süsteemi jaoks kirjeldab andmemudel</description>
+  </meta>
+  <counters models="1">
+    <entity-names>
+      <counter>
+        <item-type stereotype="" type="UmlClass" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ErdEntity" />
+        <value>2</value>
+      </counter>
+    </entity-names>
+    <entity-ids>
+      <counter>
+        <item-type stereotype="" type="UmlClass" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ErdEntity" />
+        <value>3</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.Other.EntityRelationshipDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlUseCaseDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.DiagramItems.ErdItems.ErdEntityAttribute</type>
+        <value>8</value>
+      </counter>
+    </fields>
+  </counters>
+  <management>
+    <persons>
+      <person id="Pdb981693435f48c1bba6d62528802cdc">
+        <first-name />
+        <last-name />
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <tasks />
+    <requirements />
+    <issues />
+    <to-dos />
+  </management>
+  <glossary />
+  <types>
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types />
+  </types>
+  <filters />
+  <items />
+  <models>
+    <model id="p275934950671901725" name="Model 1" type="model" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>02/25/2015 15:45:30</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items />
+      <sub-models />
+      <diagram type="entity-relationship" id="p532456300385985143" name="EntityRelationshipDiagram1" order-index="2" overview-order-index="0" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="true" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>02/25/2015 15:49:21</creation-date>
+          <change-date>02/25/2015 15:54:23</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="di240570788500135098" cid="ENT001" type="erd-entity" name="Diner" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="02/25/2015 15:49:25">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <attributes>
+              <attribute uid="aa00dc140a77d43b0b199af13afd802c7910" cid="EA001" name="id" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="true" />
+              <attribute uid="ae67c59e662b545aa9ead3b79aba7749a416" cid="EA002" name="entityVersion" type="BigInteger" type-id="Uml.BigInteger" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="a2a5dc5b3b61b453a894334545195339f973" cid="EA003" name="created" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="a981db8a3afde43e182e08b78f17ab37f288" cid="EA004" name="description" type="String" type-id="Uml.String" type-size="50" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
+              <attribute uid="aa0e916d3157d4bf8a25512caf04daab2815" cid="EA005" name="modifyDate" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="addfdccb2cc6f4e8383deaaa7991682d3120" cid="EA006" name="name" type="String" type-id="Uml.String" type-size="20" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
+              <attribute uid="ad8cafa0b451a418f996939bd1abff44f475" cid="EA007" name="picture" type="String" type-id="Uml.String" type-size="255" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+            </attributes>
+            <indexes />
+          </item>
+          <item id="di326817286982496483" cid="ENT002" type="erd-entity" name="Entity2" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pdb981693435f48c1bba6d62528802cdc" creation-date="02/25/2015 15:54:23">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <attributes />
+            <indexes />
+          </item>
+        </abstract-items>
+        <layer name="Default" visible="true" enabled="true" locked="false">
+          <item id="di240570788500135098" iid="de2ff2766ca949b1821be8e1629133d5" creation-date="02/25/2015 15:49:25" order-index="0" type="entity">
+            <layout ax="164" ay="133" awidth="271" aheight="163" x="164" y="133" width="271" height="163" angle="0" />
+            <erd-entity show-nullability="true" />
+          </item>
+          <item id="di326817286982496483" iid="b89ba277a5d645f49ddd13030d6fa5c5" creation-date="02/25/2015 15:54:23" order-index="1" type="entity">
+            <layout ax="737" ay="253" awidth="140" aheight="160" x="737" y="253" width="140" height="160" angle="0" />
+            <erd-entity show-nullability="true" />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="uml-usecase" id="p744982546376334833" name="UseCaseDiagram1" order-index="3" overview-order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="true" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>03/04/2015 15:52:12</creation-date>
+          <change-date>03/04/2015 15:52:12</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items />
+        <layer name="Default" visible="true" enabled="true" locked="false" />
+      </diagram>
+    </model>
+  </models>
+  <documents />
+  <document-templates />
+</sim-project>
