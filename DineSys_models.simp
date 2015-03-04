@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sim-project version="7.6" multi-file="no">
+<sim-project version="8.2" multi-file="no">
   <meta>
     <name>Toitlustus süsteem</name>
     <authors> Karl Jürgenson, Viktor Reinok, Ott Jalakas</authors>
@@ -25,6 +25,10 @@
         <item-type stereotype="" type="ErdEntity" />
         <value>3</value>
       </counter>
+      <counter>
+        <item-type stereotype="" type="AbstractElementGroup" />
+        <value>3</value>
+      </counter>
     </entity-ids>
     <diagrams>
       <counter>
@@ -47,6 +51,7 @@
       </counter>
     </fields>
   </counters>
+  <alias-groups />
   <management>
     <persons>
       <person id="Pdb981693435f48c1bba6d62528802cdc">
@@ -131,22 +136,60 @@
             <associated-diagrams />
             <owned-items />
             <style class="default" />
+            <entity />
             <attributes>
-              <attribute uid="aa00dc140a77d43b0b199af13afd802c7910" cid="EA001" name="id" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="true" />
-              <attribute uid="ae67c59e662b545aa9ead3b79aba7749a416" cid="EA002" name="entityVersion" type="BigInteger" type-id="Uml.BigInteger" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
-              <attribute uid="a2a5dc5b3b61b453a894334545195339f973" cid="EA003" name="created" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
-              <attribute uid="a981db8a3afde43e182e08b78f17ab37f288" cid="EA004" name="description" type="String" type-id="Uml.String" type-size="50" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
-              <attribute uid="aa0e916d3157d4bf8a25512caf04daab2815" cid="EA005" name="modifyDate" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
-              <attribute uid="addfdccb2cc6f4e8383deaaa7991682d3120" cid="EA006" name="name" type="String" type-id="Uml.String" type-size="20" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
-              <attribute uid="ad8cafa0b451a418f996939bd1abff44f475" cid="EA007" name="picture" type="String" type-id="Uml.String" type-size="255" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="aa00dc140a77d43b0b199af13afd802c7910" cid="EA001" name="id" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="true">
+                <style class="default" />
+              </attribute>
+              <attribute uid="ae67c59e662b545aa9ead3b79aba7749a416" cid="EA002" name="entityVersion" type="BigInteger" type-id="Uml.BigInteger" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="a2a5dc5b3b61b453a894334545195339f973" cid="EA003" name="created" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="a981db8a3afde43e182e08b78f17ab37f288" cid="EA004" name="description" type="String" type-id="Uml.String" type-size="50" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="aa0e916d3157d4bf8a25512caf04daab2815" cid="EA005" name="modifyDate" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="addfdccb2cc6f4e8383deaaa7991682d3120" cid="EA006" name="name" type="String" type-id="Uml.String" type-size="20" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
+              <attribute uid="ad8cafa0b451a418f996939bd1abff44f475" cid="EA007" name="picture" type="String" type-id="Uml.String" type-size="255" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false">
+                <style class="default" />
+              </attribute>
             </attributes>
             <indexes />
           </item>
-          <item id="di326817286982496483" cid="ENT002" type="erd-entity" name="Entity2" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pdb981693435f48c1bba6d62528802cdc" creation-date="02/25/2015 15:54:23">
+          <item id="di326817286982496483" cid="ENT002" type="erd-entity" name="Entity3" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="02/25/2015 15:54:23">
             <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
             <associated-diagrams />
             <owned-items />
             <style class="default" />
+            <entity />
             <attributes />
             <indexes />
           </item>
