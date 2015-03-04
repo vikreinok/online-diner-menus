@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="7.6" multi-file="no">
+  <meta>
+    <name>Toitlustus süsteem</name>
+    <authors> Karl Jürgenson, Viktor Reinok, Ott Jalakas</authors>
+    <description>See on toitlustus süsteemi jaoks kirjeldab andmemudel</description>
+  </meta>
+  <counters models="1">
+    <entity-names>
+      <counter>
+        <item-type stereotype="" type="UmlClass" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ErdEntity" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlActor" />
+        <value>1</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlUseCase" />
+        <value>5</value>
+      </counter>
+    </entity-names>
+    <entity-ids>
+      <counter>
+        <item-type stereotype="" type="UmlClass" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="ErdEntity" />
+        <value>3</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlActor" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="AbstractElementGroup" />
+        <value>35</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlUseCase" />
+        <value>6</value>
+      </counter>
+      <counter>
+        <item-type stereotype="" type="UmlAssociation" />
+        <value>7</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.Other.EntityRelationshipDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlUseCaseDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.DiagramItems.ErdItems.ErdEntityAttribute</type>
+        <value>8</value>
+      </counter>
+    </fields>
+  </counters>
+  <management>
+    <persons>
+      <person id="Pdb981693435f48c1bba6d62528802cdc">
+        <first-name />
+        <last-name />
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <tasks />
+    <requirements />
+    <issues />
+    <to-dos />
+  </management>
+  <glossary />
+  <types>
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types />
+  </types>
+  <filters />
+  <items />
+  <models>
+    <model id="p275934950671901725" name="Model 1" type="model" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>02/25/2015 15:45:30</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items />
+      <sub-models />
+      <diagram type="entity-relationship" id="p532456300385985143" name="EntityRelationshipDiagram1" order-index="2" overview-order-index="0" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="true" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>02/25/2015 15:49:21</creation-date>
+          <change-date>02/25/2015 15:54:23</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="di240570788500135098" cid="ENT001" type="erd-entity" name="Diner" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="02/25/2015 15:49:25">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <attributes>
+              <attribute uid="aa00dc140a77d43b0b199af13afd802c7910" cid="EA001" name="id" type="Integer" type-id="Uml.Integer" type-size="" foreign-key="false" primary-key="true" nullable="false" description="" default-value="" auto-increment="true" />
+              <attribute uid="ae67c59e662b545aa9ead3b79aba7749a416" cid="EA002" name="entityVersion" type="BigInteger" type-id="Uml.BigInteger" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="a2a5dc5b3b61b453a894334545195339f973" cid="EA003" name="created" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="a981db8a3afde43e182e08b78f17ab37f288" cid="EA004" name="description" type="String" type-id="Uml.String" type-size="50" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
+              <attribute uid="aa0e916d3157d4bf8a25512caf04daab2815" cid="EA005" name="modifyDate" type="DateTime" type-id="Uml.DateTime" type-size="" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+              <attribute uid="addfdccb2cc6f4e8383deaaa7991682d3120" cid="EA006" name="name" type="String" type-id="Uml.String" type-size="20" foreign-key="false" primary-key="false" nullable="false" description="" default-value="" auto-increment="false" />
+              <attribute uid="ad8cafa0b451a418f996939bd1abff44f475" cid="EA007" name="picture" type="String" type-id="Uml.String" type-size="255" foreign-key="false" primary-key="false" nullable="true" description="" default-value="" auto-increment="false" />
+            </attributes>
+            <indexes />
+          </item>
+          <item id="di326817286982496483" cid="ENT002" type="erd-entity" name="Entity2" style-class="default" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creator="Pdb981693435f48c1bba6d62528802cdc" creation-date="02/25/2015 15:54:23">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <attributes />
+            <indexes />
+          </item>
+        </abstract-items>
+        <layer name="Default" visible="true" enabled="true" locked="false">
+          <item id="di240570788500135098" iid="de2ff2766ca949b1821be8e1629133d5" creation-date="02/25/2015 15:49:25" order-index="0" type="entity">
+            <layout ax="164" ay="133" awidth="271" aheight="163" x="164" y="133" width="271" height="163" angle="0" />
+            <erd-entity show-nullability="true" />
+          </item>
+          <item id="di326817286982496483" iid="b89ba277a5d645f49ddd13030d6fa5c5" creation-date="02/25/2015 15:54:23" order-index="1" type="entity">
+            <layout ax="737" ay="253" awidth="140" aheight="160" x="737" y="253" width="140" height="160" angle="0" />
+            <erd-entity show-nullability="true" />
+          </item>
+        </layer>
+      </diagram>
+      <diagram type="uml-usecase" id="p744982546376334833" name="UseCaseDiagram1" order-index="3" overview-order-index="1" show-id="false" show-name="true" show-parent-name="false" show-stereotypes="true" show-tagged-values="false" show-template-parameters="true" show-fields="true" show-empty-compartments="true" show-attributes="true" show-attribute-visibility="true" show-operations="true" show-operation-parameters="true" show-operation-visibility="true" show-nullability="true" show-sequence-number="false" show-extension-points="true" show-relationship-texts="true" auto-routed-paths="false">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="solid" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>03/04/2015 15:52:12</creation-date>
+          <change-date>03/04/2015 16:16:23</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <abstract-items>
+          <item id="di433640675896872890" cid="AC001" type="actor" name="Tavakasutaja" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 15:59:22">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+          </item>
+          <item id="di983522134759364415" cid="UC001" type="use-case" name="Restoranide vaatamine" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:00:59">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di802363951634240099" cid="UC002" type="use-case" name="Menüüde vaatamine" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:01:33">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di218789407412157685" cid="REL001" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:02:02">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <relation from="di433640675896872890" to="di983522134759364415">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
+            </relation>
+          </item>
+          <item id="di728691006893998450" cid="REL002" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:02:43">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <relation from="di433640675896872890" to="di802363951634240099">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
+            </relation>
+          </item>
+          <item id="di813239377839325902" cid="UC003" type="use-case" name="Tagasiside andmine" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:02:57">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di470697512806107577" cid="REL003" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:04:10">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <relation from="di433640675896872890" to="di813239377839325902">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
+            </relation>
+          </item>
+          <item id="di464486538746542015" cid="UC004" type="use-case" name="Rakendusse sisselogimine" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:12:37">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di199787136584655870" cid="REL005" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:13:01">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <relation from="di433640675896872890" to="di464486538746542015">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
+            </relation>
+          </item>
+          <item id="di471383036635010015" cid="UC005" type="use-case" name="Personaliseerimine" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:13:57">
+            <stereotypes />
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <use-case />
+          </item>
+          <item id="di846240454102954313" cid="REL006" type="relationship" name="" style-class="" is-abstract="false" is-root="false" is-leaf="false" is-active="false" creation-date="03/04/2015 16:16:23">
+            <stereotypes />
+            <documentation>
+              <text>
+                <styles>
+                  <style name="S1" font-name="Verdana" font-size="12" font-bold="false" font-italic="false" font-underline="false" font-strikeout="false">
+                    <text>
+                      <solid-brush color="#FF000000" />
+                    </text>
+                  </style>
+                </styles>
+                <content>
+                  <paragraph>
+                    <p s="S1">
+                      <t />
+                    </p>
+                  </paragraph>
+                </content>
+              </text>
+            </documentation>
+            <cooperation>
+              <participants />
+              <comments />
+            </cooperation>
+            <associated-diagrams />
+            <owned-items />
+            <style class="default" />
+            <relation from="di433640675896872890" to="di471383036635010015">
+              <start-role id="" name="" navigability="" association-type="association" visibility="private" />
+              <end-role id="" name="" navigability="yes" association-type="association" visibility="private" />
+            </relation>
+          </item>
+        </abstract-items>
+        <layer name="Default" visible="true" enabled="true" locked="false">
+          <item id="di433640675896872890" iid="209ad8be793847e0b1431aeae7830ce2" creation-date="03/04/2015 15:59:22" order-index="0" type="entity">
+            <layout ax="36" ay="315" awidth="114" aheight="100" x="36" y="315" width="114" height="100" angle="0" />
+          </item>
+          <item id="di983522134759364415" iid="8c056ddcd0b2482eba7e20d8ce2828a3" creation-date="03/04/2015 16:00:59" order-index="1" type="entity">
+            <layout ax="390" ay="58" awidth="120" aheight="75" x="390" y="58" width="120" height="75" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di802363951634240099" iid="fe00987ac610489795e29da29c020d1d" creation-date="03/04/2015 16:01:33" order-index="2" type="entity">
+            <layout ax="390" ay="191.5" awidth="120" aheight="75" x="390" y="191.5" width="120" height="75" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di218789407412157685" iid="b0024899c2644616a5e533785e9fd3c2" creation-date="03/04/2015 16:02:02" order-index="3" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" name-position="10,-10" auto-path="" x1="150" y1="315" x2="392" y2="105" start-border-pos="0.251086959838867" end-border-pos="0.823333333333333">
+              <points>
+                <point x="150" y="315" />
+                <point x="392" y="105" />
+              </points>
+            </layout>
+            <relation from="di433640675896872890" from-iid="209ad8be793847e0b1431aeae7830ce2" to="di983522134759364415" to-iid="8c056ddcd0b2482eba7e20d8ce2828a3" />
+            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+          <item id="di728691006893998450" iid="50c6abcf2e54466d956244733c1c034c" creation-date="03/04/2015 16:02:43" order-index="4" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="false" lock-to-fields="false" name-position="10,-10" auto-path="" x1="150" y1="343" x2="394" y2="242" start-border-pos="0.320714263916016" end-border-pos="0.798809509277344">
+              <points>
+                <point x="150" y="343" />
+                <point x="394" y="242" />
+              </points>
+            </layout>
+            <relation from="di433640675896872890" from-iid="209ad8be793847e0b1431aeae7830ce2" to="di802363951634240099" to-iid="fe00987ac610489795e29da29c020d1d" />
+            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+          <item id="di813239377839325902" iid="8b5956ba0d324af2bcd08b7caa56c307" creation-date="03/04/2015 16:02:57" order-index="5" type="entity">
+            <layout ax="390" ay="327.5" awidth="120" aheight="75" x="390" y="327.5" width="120" height="75" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di470697512806107577" iid="044ccb995b844f508860b82af5969f14" creation-date="03/04/2015 16:04:10" order-index="6" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" name-position="10,-10" auto-path="" x1="150" y1="364" x2="390" y2="361" start-border-pos="0.373080825805664" end-border-pos="0.896666666666667">
+              <points>
+                <point x="150" y="364" />
+                <point x="390" y="361" />
+              </points>
+            </layout>
+            <relation from="di433640675896872890" from-iid="209ad8be793847e0b1431aeae7830ce2" to="di813239377839325902" to-iid="8b5956ba0d324af2bcd08b7caa56c307" />
+            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+          <item id="di464486538746542015" iid="c6fe0f0098a34db6a0737337be21654c" creation-date="03/04/2015 16:12:37" order-index="7" type="entity">
+            <layout ax="390" ay="436" awidth="120" aheight="75" x="390" y="436" width="120" height="75" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di199787136584655870" iid="edf44762475640b5bc72d8478432ece1" creation-date="03/04/2015 16:13:01" order-index="8" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" name-position="10,-10" auto-path="" x1="150" y1="378" x2="419" y2="442" start-border-pos="0.408657989501953" end-border-pos="0.0770833333333333">
+              <points>
+                <point x="150" y="378" />
+                <point x="419" y="442" />
+              </points>
+            </layout>
+            <relation from="di433640675896872890" from-iid="209ad8be793847e0b1431aeae7830ce2" to="di464486538746542015" to-iid="c6fe0f0098a34db6a0737337be21654c" />
+            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+          <item id="di471383036635010015" iid="ca7d03fd9f714adcbc3554f9c4bdeaeb" creation-date="03/04/2015 16:13:57" order-index="9" type="entity">
+            <layout ax="390" ay="559" awidth="158" aheight="99" x="390" y="559" width="158" height="84" angle="0" />
+            <use-case show-extension-points="true" />
+          </item>
+          <item id="di846240454102954313" iid="54fa964c174249729a6fbd14a1e069e6" creation-date="03/04/2015 16:16:23" order-index="10" type="relation">
+            <layout line-style="oblique" lock-start-point="false" lock-end-point="true" lock-to-fields="false" name-position="10,-10" auto-path="" x1="150" y1="408" x2="394" y2="594" start-border-pos="0.483413619995117" end-border-pos="0.936666666666667">
+              <points>
+                <point x="150" y="408" />
+                <point x="394" y="594" />
+              </points>
+            </layout>
+            <relation from="di433640675896872890" from-iid="209ad8be793847e0b1431aeae7830ce2" to="di471383036635010015" to-iid="ca7d03fd9f714adcbc3554f9c4bdeaeb" />
+            <role-positions start-role="25,15" end-role="25,-15" start-multiplicity="25,-15" end-multiplicity="25,15" />
+          </item>
+        </layer>
+      </diagram>
+    </model>
+  </models>
+  <documents />
+  <document-templates />
+</sim-project>
