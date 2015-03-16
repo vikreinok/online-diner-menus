@@ -6,12 +6,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.transaction.annotation.Transactional;
 
 
 public class MenuControllerTest extends AbstractRestServiceTest {
 
-    private static final String CONTENT = "{\"id\": 1000, \"name\":\"test\", \"diner\":{\"id\":1}}";
+    private static final String CONTENT = "{\"name\":\"test\"}";
+    private static final String UPDATE_CONTENT = "{\"name\":\"test2\"}";
 	private final String MAPPING = "/menu/";
     
     @Override
@@ -26,11 +26,10 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     
     @Override
     String getUpdateContent() {
-    	return CONTENT;
+    	return UPDATE_CONTENT;
     }
     
     @Test
-    @Transactional
     public void testAddComment() {
         try{
         
@@ -49,7 +48,6 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     }
     
     @Test
-    @Transactional
     public void testMenuCreate() {
         try{
         
@@ -59,7 +57,7 @@ public class MenuControllerTest extends AbstractRestServiceTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .content(CONTENT))
                 .andExpect(status().isOk())
-//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 
        
        

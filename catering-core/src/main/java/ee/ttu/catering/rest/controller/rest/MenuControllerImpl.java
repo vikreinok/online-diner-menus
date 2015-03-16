@@ -37,11 +37,19 @@ public class MenuControllerImpl implements MenuController {
 	
 	@Override
 	public Menu create(@RequestBody @Valid Menu menu) {
-		int dinerId = menu.getDiner().getId();
+		
+		int dinerId = -1;
+		if(menu.getDiner() != null) {
+			dinerId = menu.getDiner().getId();
+		}
+		
 		menu.setDiner(null);
 		Menu createdMenu = menuService.create(menu);
-		Diner diner = dinerService.get(dinerId);
-		createdMenu.setDiner(diner);
+		
+		if(dinerId != -1) {
+			Diner diner = dinerService.get(dinerId);
+			createdMenu.setDiner(diner);
+		}
 		
 		return menuService.update(createdMenu);
 	}
@@ -50,8 +58,6 @@ public class MenuControllerImpl implements MenuController {
 	public Menu update(@PathVariable int id, @RequestBody @Valid Menu menu) {
 		menu.setId(id);
 		return menuService.update(menu);
-
-//		return new ApiResponse(HttpStatus.OK, "ok", menuService.update(menu));
 	}
 	
 	@Override

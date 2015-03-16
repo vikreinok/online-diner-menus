@@ -1,5 +1,6 @@
 package ee.ttu.catering.rest.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Menu extends IdEntity {
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
-	private List<MenuComment> menuComments;
+	private List<MenuComment> menuComments = new ArrayList<MenuComment>();
 	
 	@Temporal(TemporalType.DATE)
 	private Date created;

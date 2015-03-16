@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.hibernate.cfg.Environment;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
@@ -12,6 +13,9 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import ee.ttu.catering.config.AbstractDbEnv;
+import ee.ttu.catering.config.dialect.HibernateExtendedJpaDialect;
+import ee.ttu.catering.config.dialect.MySqlDialetResolver;
+
 
 @PropertySource("classpath:unittest_db.properties")
 public class UnitTestEnv extends AbstractDbEnv {
@@ -31,22 +35,30 @@ public class UnitTestEnv extends AbstractDbEnv {
 	}
 	
 	@Bean
+	@Override
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-		entityManagerFactoryBean.setPackagesToScan(getProperty(ENTITYMANAGER_PACKAGES_TO_SCAN));
-				
-		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-		return entityManagerFactoryBean;
+		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+		
+		entityManagerFactory.setDataSource(dataSource());
+		entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+		entityManagerFactory.setPackagesToScan(packagesToScan);
+		entityManagerFactory.setJpaDialect(new HibernateExtendedJpaDialect());
+		entityManagerFactory.setJpaProperties(hibernateProperties());
+		
+		return entityManagerFactory;
 	}
 	
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.put(HIBERNATE_DIALECT, getProperty(HIBERNATE_DIALECT));
-		properties.put(HIBERNATE_SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
-        properties.put(HIBERNATE_AUTO, getProperty(HIBERNATE_AUTO));
-		return properties;	
+		
+		properties.put(Environment.DIALECT, getProperty(HIBERNATE_DIALECT));
+		properties.put(Environment.HBM2DDL_AUTO, getProperty(HIBERNATE_AUTO));
+		properties.put(Environment.SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
+		properties.put(Environment.FORMAT_SQL, getProperty(HIBERNATE_FORMAT_SQL));
+		properties.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
+		properties.put(Environment.ENABLE_LAZY_LOAD_NO_TRANS, true);
+		
+		return properties;
 	}
 
 	@Override

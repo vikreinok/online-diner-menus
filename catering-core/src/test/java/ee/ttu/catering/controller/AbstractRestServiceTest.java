@@ -26,7 +26,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -80,8 +79,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn();
-    	
-    		entityManager.flush();
 			return parseId(result.getResponse().getContentAsString());
     	}catch(Exception e){
     		fail(e.getMessage());
@@ -91,7 +88,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
 
 	@Test
     @Order(0)
-    @Transactional
     public void testCreate() {
         try{
         	 mvc.perform(MockMvcRequestBuilders.post(getServiceMapping())
@@ -110,7 +106,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     @Test
     @Order(1)
-    @Transactional
     public void testRead() {
     	try {
     		mvc.perform(MockMvcRequestBuilders.get(getServiceMapping() + id)
@@ -127,17 +122,15 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     @Test
     @Order(2)
-    @Transactional()
     public void testUpdate() {
     	try {
     		
-    		Thread.sleep(1000);
     		mvc.perform(MockMvcRequestBuilders.put(getServiceMapping() + id)
     				.contentType(MediaType.APPLICATION_JSON)
-//    				.accept(MediaType.APPLICATION_JSON)
-    				.content(getCreateContent()))
-    				.andExpect(status().isOk());
-//    				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
+    				.accept(MediaType.APPLICATION_JSON)
+    				.content(getUpdateContent()))
+    				.andExpect(status().isOk())
+    				.andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE));
     		
     	} catch(Exception e){
     		e.printStackTrace();
@@ -146,7 +139,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     }
     @Test
     @Order(3)
-    @Transactional
     public void testDelete() {
     	try {
     		mvc.perform(MockMvcRequestBuilders.delete(getServiceMapping() + id)

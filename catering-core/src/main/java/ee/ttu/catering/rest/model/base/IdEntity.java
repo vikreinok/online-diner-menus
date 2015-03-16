@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 
 @MappedSuperclass
 public abstract class IdEntity implements Serializable {
@@ -19,8 +18,9 @@ public abstract class IdEntity implements Serializable {
 	@Column(name = "id")
 	private Integer id;
 
-	@Version
-	private Long entityVersion;
+//  Causes optimistic locking exception: updated by another transaction
+//	@Version
+//	private Long entityVersion;
 
 	public Integer getId() {
 		return id;
@@ -30,9 +30,9 @@ public abstract class IdEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Long getEntityVersion() {
-		return entityVersion;
-	}
+//	public Long getEntityVersion() {
+//		return entityVersion;
+//	}
 	
 	@Override
 	public String toString() {

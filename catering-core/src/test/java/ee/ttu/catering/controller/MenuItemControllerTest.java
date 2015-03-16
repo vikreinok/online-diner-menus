@@ -45,7 +45,6 @@ public class MenuItemControllerTest extends AbstractTransactionalJUnit4SpringCon
 
     @Test
     @Ignore
-    @Transactional
     public void testMenuItemCreate() {
         try{
         final String CONTENT = "{\"name\":\"test\"}";

@@ -18,7 +18,6 @@ import org.springframework.test.context.web.WebDelegatingSmartContextLoader;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import ee.ttu.catering.config.unittest.UnitTestEnv;
@@ -42,7 +41,6 @@ public class LoginControllerTest extends AbstractTransactionalJUnit4SpringContex
     
     public static final String CONTENT = "{\"loggedIn\":false,\"username\":\"admin\",\"password\":\"admin\",\"rememberMe\":true}";
     @Test
-    @Transactional
     public void testLogin() {
         try{
 	        mvc.perform(MockMvcRequestBuilders.post("/login/")
@@ -60,7 +58,6 @@ public class LoginControllerTest extends AbstractTransactionalJUnit4SpringContex
     }
     
     @Test
-    @Transactional
     public void testLogout() {
     	try{
     		mvc.perform(MockMvcRequestBuilders.delete("/login/")

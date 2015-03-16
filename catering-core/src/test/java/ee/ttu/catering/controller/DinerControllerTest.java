@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.transaction.annotation.Transactional;
 
 
 public class DinerControllerTest extends AbstractRestServiceTest {
@@ -30,7 +29,6 @@ public class DinerControllerTest extends AbstractRestServiceTest {
     }
     
     @Test
-    @Transactional
     public void testFindMenusByDinerId() {
         try{
         

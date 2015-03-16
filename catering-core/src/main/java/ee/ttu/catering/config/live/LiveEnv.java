@@ -2,40 +2,44 @@ package ee.ttu.catering.config.live;
 
 import java.util.Properties;
 
+import org.hibernate.cfg.Environment;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import ee.ttu.catering.config.AbstractDbEnv;
+import ee.ttu.catering.config.dialect.HibernateExtendedJpaDialect;
+import ee.ttu.catering.config.dialect.MySqlDialetResolver;
 
 
 @PropertySource("classpath:live_db.properties")
 public class LiveEnv extends AbstractDbEnv {
 	
-	
-	@Bean
 	@Override
+	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-		entityManagerFactoryBean.setPackagesToScan(getProperty(ENTITYMANAGER_PACKAGES_TO_SCAN));
-				
-		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
+		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
 		
-		return entityManagerFactoryBean;
+		entityManagerFactory.setPersistenceProvider(new HibernatePersistenceProvider());
+		entityManagerFactory.setPackagesToScan(packagesToScan);
+		entityManagerFactory.setJpaDialect(new HibernateExtendedJpaDialect());
+		entityManagerFactory.setDataSource(dataSource());
+		entityManagerFactory.setJpaProperties(jpaProperties());
+		
+		return entityManagerFactory;
 	}
 	
-	private Properties hibernateProperties() {
-		Properties properties = new Properties();
-		properties.put(HIBERNATE_DIALECT, getProperty(HIBERNATE_DIALECT));
-		properties.put(HIBERNATE_SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
-        properties.put(HIBERNATE_AUTO, getProperty(HIBERNATE_AUTO));
-//        properties.put("test.hibernate.format_sql", getProperty("test.hibernate.format_sql"));
-//        properties.put("test.hibernate.ejb.naming_strategy", getProperty("test.hibernate.ejb.naming_strategy"));
-
-		return properties;	
+	private Properties jpaProperties() {
+		Properties props = new Properties();
+		
+		props.put(Environment.DIALECT, getProperty(HIBERNATE_DIALECT));
+		props.put(Environment.HBM2DDL_AUTO, getProperty(HIBERNATE_DIALECT));
+		props.put(Environment.SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
+		props.put(Environment.FORMAT_SQL, getProperty(HIBERNATE_FORMAT_SQL));
+		props.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
+		
+		return props;
 	}
 
 	@Override
