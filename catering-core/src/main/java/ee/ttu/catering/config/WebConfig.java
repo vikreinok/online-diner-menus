@@ -10,6 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import ee.ttu.catering.config.filter.CorsFilter;
 import ee.ttu.catering.config.live.LiveEnv;
 
 /**

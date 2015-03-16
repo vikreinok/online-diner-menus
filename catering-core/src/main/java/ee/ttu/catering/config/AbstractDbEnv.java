@@ -49,7 +49,7 @@ public abstract class AbstractDbEnv extends ApplicationConfig {
         dataSource.setMaxActive(20);
         dataSource.setMaxIdle(10);
         
-//		dataSource.setConnectionProperties("useUnicode=true;characterEncoding=UTF-8");	
+		dataSource.setConnectionProperties("useUnicode=true;characterEncoding=UTF-8");	
         
 		dataSource.setDriverClassName(getProperty(DATABASE_DRIVER));
 		dataSource.setUrl(getProperty(DATABASE_URL));

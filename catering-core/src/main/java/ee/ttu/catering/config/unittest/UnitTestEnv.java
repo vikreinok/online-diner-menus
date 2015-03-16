@@ -11,9 +11,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 
 import ee.ttu.catering.config.AbstractDbEnv;
-import ee.ttu.catering.config.dialect.HibernateExtendedJpaDialect;
 import ee.ttu.catering.config.dialect.MySqlDialetResolver;
 
 
@@ -42,7 +42,7 @@ public class UnitTestEnv extends AbstractDbEnv {
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		entityManagerFactory.setPackagesToScan(packagesToScan);
-		entityManagerFactory.setJpaDialect(new HibernateExtendedJpaDialect());
+		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
 		entityManagerFactory.setJpaProperties(hibernateProperties());
 		
 		return entityManagerFactory;
@@ -55,8 +55,8 @@ public class UnitTestEnv extends AbstractDbEnv {
 		properties.put(Environment.HBM2DDL_AUTO, getProperty(HIBERNATE_AUTO));
 		properties.put(Environment.SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
 		properties.put(Environment.FORMAT_SQL, getProperty(HIBERNATE_FORMAT_SQL));
-		properties.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
-		properties.put(Environment.ENABLE_LAZY_LOAD_NO_TRANS, true);
+//		properties.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
+//		properties.put(Environment.ENABLE_LAZY_LOAD_NO_TRANS, true);
 		
 		return properties;
 	}

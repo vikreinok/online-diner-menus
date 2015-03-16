@@ -7,9 +7,9 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 
 import ee.ttu.catering.config.AbstractDbEnv;
-import ee.ttu.catering.config.dialect.HibernateExtendedJpaDialect;
 import ee.ttu.catering.config.dialect.MySqlDialetResolver;
 
 
@@ -23,7 +23,7 @@ public class LiveEnv extends AbstractDbEnv {
 		
 		entityManagerFactory.setPersistenceProvider(new HibernatePersistenceProvider());
 		entityManagerFactory.setPackagesToScan(packagesToScan);
-		entityManagerFactory.setJpaDialect(new HibernateExtendedJpaDialect());
+		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setJpaProperties(jpaProperties());
 		
@@ -34,10 +34,11 @@ public class LiveEnv extends AbstractDbEnv {
 		Properties props = new Properties();
 		
 		props.put(Environment.DIALECT, getProperty(HIBERNATE_DIALECT));
-		props.put(Environment.HBM2DDL_AUTO, getProperty(HIBERNATE_DIALECT));
+		props.put(Environment.HBM2DDL_AUTO, getProperty(HIBERNATE_AUTO));
 		props.put(Environment.SHOW_SQL, getProperty(HIBERNATE_SHOW_SQL));
 		props.put(Environment.FORMAT_SQL, getProperty(HIBERNATE_FORMAT_SQL));
-		props.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
+//		props.put(Environment.ENABLE_LAZY_LOAD_NO_TRANS, true);
+//		props.put(Environment.DIALECT_RESOLVERS, MySqlDialetResolver.class.getName());
 		
 		return props;
 	}

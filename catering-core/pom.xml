@@ -7,7 +7,7 @@
     <version>1.0.1-SNAPSHOT</version>
     
     <name>TTU catering</name>
-    <description>Application for dining inforamtion system</description>
+    <description>Application for dining information system</description>
     <url>http://loclahost:8080/catering-core/</url>
     <inceptionYear>2014 </inceptionYear>
   
@@ -18,14 +18,13 @@
 	    <maven.compiler.source>1.8</maven.compiler.source>
 	    <maven.compiler.target>1.8</maven.compiler.target>
     
-        <mysql.connector>5.1.32</mysql.connector>
+        <mysql.connector>5.1.34</mysql.connector>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <spring.version>4.1.5.RELEASE</spring.version>
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
         <spring.data.version>1.7.2.RELEASE</spring.data.version>
         <org.slf4j-version>1.5.10</org.slf4j-version>
         <version.surefire.plugin>2.10</version.surefire.plugin>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>

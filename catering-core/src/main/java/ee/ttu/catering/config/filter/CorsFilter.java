@@ -1,4 +1,4 @@
-package ee.ttu.catering.config;
+package ee.ttu.catering.config.filter;
 
 import java.io.IOException;
 
