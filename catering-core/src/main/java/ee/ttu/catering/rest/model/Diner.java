@@ -16,13 +16,10 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
 @Table(name = "diner")
-//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Diner extends IdEntity {
 
 	private static final long serialVersionUID = -7169873625528706006L;
@@ -42,7 +39,6 @@ public class Diner extends IdEntity {
 	private Date modifyDate;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonManagedReference
 	private List<Menu> menu;
 
 	private String picture;
