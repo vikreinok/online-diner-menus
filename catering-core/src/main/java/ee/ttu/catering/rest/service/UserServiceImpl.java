@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserDetailsService, InitializingBean {
      */
     @Autowired
     private UserRepository userRepository;
-
+    
     /**
      * This is the main (and only) method to implement to be a Spring Security authentication provider. It needs only to return the user corresponding
      * to the login in parameter or launch an exception if not exist. The password checking is fully managed by handling the UserDetails returned.<br/>
@@ -39,21 +39,11 @@ public class UserServiceImpl implements UserDetailsService, InitializingBean {
      * evolution of this tutorial.
      */
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    	// @see import.sql
         User user = userRepository.findByLogin(username);
         
-        //FIXME hack
-        if("admin".equals(username)) {
-        	User hackUser = new User();
-        	hackUser.setFullname("HACK");
-        	hackUser.setId(1);
-        	hackUser.setLogin(username);
-        	hackUser.setPassword("admin");
-        	return hackUser;
-        }
-        
-        
         if (user == null) {
-            throw new UsernameNotFoundException(username + " n'existe pas");
+            throw new UsernameNotFoundException(username + " not found in DB");
         } else {
             return user;
         }
@@ -66,13 +56,13 @@ public class UserServiceImpl implements UserDetailsService, InitializingBean {
      */
     public void afterPropertiesSet() throws Exception {
 
-        if (userRepository.count() == 0) {
-            User user = new User();
-            user.setFullname("admin");
-            user.setLogin("admin");
-            user.setPassword("admin");
-            userRepository.save(user);
-        }
+//        if (userRepository.count() == 0) {
+//            User user = new User();
+//            user.setFullname("Administrat");
+//            user.setLogin("admin");
+//            user.setPassword("admin");
+//            userRepository.save(user);
+//        }
     }
 
 }

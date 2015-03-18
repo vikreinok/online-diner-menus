@@ -7,10 +7,9 @@ import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 
 import ee.ttu.catering.config.AbstractDbEnv;
-import ee.ttu.catering.config.dialect.MySqlDialetResolver;
+import ee.ttu.catering.config.dialect.IsolationSupportHibernateJpaDialect;
 
 
 @PropertySource("classpath:live_db.properties")
@@ -23,7 +22,7 @@ public class LiveEnv extends AbstractDbEnv {
 		
 		entityManagerFactory.setPersistenceProvider(new HibernatePersistenceProvider());
 		entityManagerFactory.setPackagesToScan(packagesToScan);
-		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
+		entityManagerFactory.setJpaDialect(new IsolationSupportHibernateJpaDialect());
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setJpaProperties(jpaProperties());
 		

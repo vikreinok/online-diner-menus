@@ -11,10 +11,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 
 import ee.ttu.catering.config.AbstractDbEnv;
-import ee.ttu.catering.config.dialect.MySqlDialetResolver;
+import ee.ttu.catering.config.dialect.IsolationSupportHibernateJpaDialect;
 
 
 @PropertySource("classpath:unittest_db.properties")
@@ -42,7 +41,7 @@ public class UnitTestEnv extends AbstractDbEnv {
 		entityManagerFactory.setDataSource(dataSource());
 		entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		entityManagerFactory.setPackagesToScan(packagesToScan);
-		entityManagerFactory.setJpaDialect(new HibernateJpaDialect());
+		entityManagerFactory.setJpaDialect(new IsolationSupportHibernateJpaDialect());
 		entityManagerFactory.setJpaProperties(hibernateProperties());
 		
 		return entityManagerFactory;
