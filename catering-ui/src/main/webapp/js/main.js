@@ -2,14 +2,14 @@ window.Router = Backbone.Router.extend({
 	
     routes: {
     	"": "home",
+    	"integration_diners": "integrationDinerlist",
         "diners": "dinerlist",
-        "integration_diners": "integrationDinerlist",
         "diner/add": "addDiner",
         "diner/page/:page": "dinerlist",
         "diner/:id": "dinerDetails",
         "diner/select/:id": "selectDiner",
         "menus": "menuList",
-        "menus/page/:page": "menuList",
+        "menu/page/:page": "menuList",
         "menu/add": "addMenu",
         "menu/:id": "menuDetails",
         "login": "login",
@@ -19,7 +19,7 @@ window.Router = Backbone.Router.extend({
     initialize: function () {
         this.headerView = new HeaderView();
     	$('.header').html(this.headerView.render().el);
-    	this.footerView = new FooterView();		
+    	this.footerView = new FooterView();
     	$('.footer').html(this.footerView.render().el);
     	
         // Close the search dropdown on click anywhere in the UI

@@ -39,7 +39,7 @@ public class MenuControllerImpl implements MenuController {
 	public Menu create(@RequestBody @Valid Menu menu) {
 		
 		int dinerId = -1;
-		if(menu.getDiner() != null) {
+		if(menu.getDiner() != null && menu.getDiner().getId() != null) {
 			dinerId = menu.getDiner().getId();
 		}
 		

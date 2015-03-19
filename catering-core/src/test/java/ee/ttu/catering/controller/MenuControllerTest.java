@@ -3,9 +3,14 @@ import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.model.MenuItem;
 
 
 public class MenuControllerTest extends AbstractRestServiceTest {
@@ -27,6 +32,33 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     @Override
     String getUpdateContent() {
     	return UPDATE_CONTENT;
+    }
+    
+    @Test
+    public void testAddMenuItem() {
+        try{
+        	
+    	MenuItem menuItem = new MenuItem();
+    	menuItem.setName("Food");
+    	menuItem.setPrice(2.99);
+    	
+        Menu menu = new Menu();
+        menu.setName("Monday menu");
+        menu.setId(1);
+		menu.setMenuItems(Arrays.asList(menuItem));
+        
+		mvc.perform(MockMvcRequestBuilders.post(MAPPING)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(getJSONString(menu)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn();
+	
+        }catch(Exception e){
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
     }
     
     @Test

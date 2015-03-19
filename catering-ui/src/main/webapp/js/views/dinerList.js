@@ -16,7 +16,7 @@ window.DinerListView = Backbone.View.extend({
             $('.dinerlist', this.el).append(new DinerListItemView({model: list[i]}).render().el);
         }
 
-        $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
+        $(this.el).append(new Paginator({model: this.model, page: this.options.page, view: '#diner'}).render().el);
 
         return this;
     }

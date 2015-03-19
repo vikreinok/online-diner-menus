@@ -157,4 +157,13 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
      
         return actualObj.findValue("id").asInt();
 	}
+
+	protected String getJSONString(Object obj) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return mapper.writeValueAsString( obj);
+		} catch (JsonProcessingException e) {
+			throw new IllegalArgumentException("Bad input object");
+		}
+	}
 }

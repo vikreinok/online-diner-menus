@@ -1,6 +1,7 @@
 window.MenuListView = Backbone.View.extend({
 
-    initialize: function () {
+    initialize: function (options) {
+    	this.options = options || {};
         this.render();
     },
 
@@ -16,7 +17,7 @@ window.MenuListView = Backbone.View.extend({
             $('.menulist', this.el).append(new MenuListItemView({model: list[i]}).render().el);
         }
 
-        $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
+        $(this.el).append(new Paginator({model: this.model, page: this.options.page, view: "#menu"}).render().el);
 
         return this;
     }
