@@ -18,16 +18,15 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 
 @Entity
 @Table(name="menu")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@menu_id")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@menu_id")
 public class Menu extends IdEntity {
 	
 	private static final long serialVersionUID = 4638627189448098616L;
@@ -50,6 +49,7 @@ public class Menu extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private Diner diner;
 	
