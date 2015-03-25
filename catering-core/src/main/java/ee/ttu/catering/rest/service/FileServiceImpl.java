@@ -47,7 +47,12 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	private byte[] readFileFromDatabase(String fileName) {
-		return imageRepo.findOne(fileName).getImage();
+		Image image = imageRepo.findOne(fileName);
+		if(image == null) {
+			return null;
+		} else {
+			return image.getData();
+		}
 	}
 	
 	private String writeToDatabase(String name, MultipartFile file, String fileName) throws IOException {
