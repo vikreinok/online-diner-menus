@@ -20,18 +20,18 @@ public class Image {
 	@Column(nullable = false)
 	@Lob
 	@Basic(fetch = FetchType.EAGER)
-	private byte[] image;
+	private byte[] data;
 
 	public Image() {
 	}
 
-	public Image(String name, byte[] image) {
+	public Image(String name, byte[] data) {
 		this.name = name;
-		this.image = image;
+		this.data = data;
 	}
 
-	public Image(String name, byte[] image, String fileName) {
-		this(name, image);
+	public Image(String name, byte[] data, String fileName) {
+		this(name, data);
 		this.fileName = fileName;
 	}
 
@@ -43,12 +43,12 @@ public class Image {
 		this.name = name;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getData() {
+		return data;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 
 	public String getFileName() {
