@@ -66,7 +66,7 @@ window.LoginView = Backbone.View.extend({
     	var self = this;
         this.model.save(null, {
             success: function (model) {
-          	  	console.log(model.attributes);
+//          	  	console.log(model.attributes);
           	  	
                 self.render();
                 $('#loadingModal').modal('hide');

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ee.ttu.catering.rest.model.MenuItem;
-import ee.ttu.catering.rest.response.ApiResponse;
 
 public interface MenuItemController {
 
@@ -18,22 +17,21 @@ public interface MenuItemController {
 	
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public MenuItem readOne(int id);
+	public MenuItem read(int id);
 	
 	@ResponseBody
-	@RequestMapping(value="/{menuId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse create(Integer menuId, MenuItem menuItem);
+	@RequestMapping(method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public MenuItem create(MenuItem menuItem);
 	
 	@ResponseBody
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ApiResponse edit(Integer id, MenuItem menuItem);
+	public MenuItem update(int id, MenuItem menuItem);
 	
-	@ResponseBody
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public MenuItem delete(int id);
-	
-	@ResponseBody
-	@RequestMapping(value="/by_menu_id/{menuId}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<MenuItem> readByMenu(int menuId);
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public void delete(int id);
 
+	@ResponseBody
+	@RequestMapping(value="/all_menu_items/{menuId}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	List<MenuItem> readByMenu(int menuId);
+	
 }

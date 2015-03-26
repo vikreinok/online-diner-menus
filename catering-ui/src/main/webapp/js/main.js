@@ -12,6 +12,8 @@ window.Router = Backbone.Router.extend({
         "menu/page/:page": "menuList",
         "menu/add": "addMenu",
         "menu/:id": "menuDetails",
+        "menuitem/add/:menuId": "addMenuItem",
+        "menuitem/:menuId/:id": "menuItemDetails",
         "login": "login",
         "logout": "logout",
     },
@@ -113,7 +115,7 @@ window.Router = Backbone.Router.extend({
 	// List items
 	
     menuList: function(page) {
-    	console.log("diner_id " + $.cookie('diner_id'));
+    	console.log("cookie diner_id " + $.cookie('diner_id'));
     	
     	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
@@ -122,6 +124,13 @@ window.Router = Backbone.Router.extend({
         	success: function(){
 	            $("#content").html(new MenuListView({model: menus, page: p}).el);
 	            $('#loadingimage').hide();
+	            
+				if ($.cookie("authenticated") == "true") {
+					$('.menuItemAddButtons').show();
+				} else {
+					$('.menuItemAddButtons').hide();
+				}
+	            
         	},	
 	        error: function(model, response) {
         		$("#content").html(new 	ErrorView({model: response}).el);
@@ -147,6 +156,30 @@ window.Router = Backbone.Router.extend({
  	        	$('#loadingimage').hide();
  	        }
         });
+    },
+    
+    addMenuItem: function(menuId) {
+    	var menuItem = new MenuItem({menuId: menuId});
+        $('#content').html(new MenuItemDetailsView({model: menuItem}).el);
+        $('#deleteMenuItemButton').hide();  
+        this.headerView.select('add-menu-menubar');
+	},
+    
+    menuItemDetails: function (menuId, id) {
+
+    	$('#loadingimage').show();
+    	var menuItem = new MenuItem({menuId: menuId, id: id});
+    	menuItem.fetch({
+    		success: function(){
+    			$("#content").html(new MenuItemDetailsView({model: menuItem}).el);
+    			$('#created').text(convertDate(menuItem.get('created')));           
+    			$('#loadingimage').hide();
+    		},
+    		error: function(model, response) {
+    			$("#content").html(new 	ErrorView({model: response}).el);
+    			$('#loadingimage').hide();
+    		}
+    	});
     },
 	
 	addMenu: function() {
@@ -179,7 +212,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","IntegrationDinerListView","IntegrationDinerListItemView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","IntegrationDinerListView","IntegrationDinerListItemView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "MenuItemDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

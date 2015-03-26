@@ -1,10 +1,14 @@
 window.AuthView = Backbone.View.extend({
 
     initialize: function () {
-    	console.log("initialize");
+    	console.log("auth initialize ");
+    	
+    	if (!document.URL.match("#diner/|#menu/")) {
+    		return;
+		}
     	
 		$.ajax({
-		    url: baseUrl + '/login/',
+		    url: baseUrl + 'login/',
 		    method: "GET"
 		}).done(function(data) {
 			

@@ -9,13 +9,13 @@
 			<table style="width: 100%">
 				<% _.each(menuItems, function(menuItem) { %>
 				<tr>
-					<td><strong><%= menuItem.name %></strong></td>
-					<td><%= menuItem.price %> EUR</td>
-					<td><a class="btn btn btn-default btn-lg save" href="#menuitem/<%= id %>/<%= menuItem.id %>">Edit</a></td>
+					<td align="left"><strong><%= menuItem.name %></strong></td>
+					<td align="right"><%= menuItem.price %> EUR</td>
+					<td align="right" width="100px"><a class="btn btn btn-default" href="#menuitem/<%= id %>/<%= menuItem.id %>">Details</a></td>
 				</tr>
 				<%}); %>
 			</table>
-
+  			<div class="menuItemAddButtons" align="left"> <a class="btn btn btn-default" href="#menuitem/add/<%= id %>">Add menu item</a> </div>
 
 		</div>
 </div>

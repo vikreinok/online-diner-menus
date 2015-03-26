@@ -1,13 +1,12 @@
 window.HomeView = Backbone.View.extend({
 
     initialize:function () {
-        console.log('Initializing Home View');       
         //this.template = _.template(directory.utils.templateLoader.get('home'));
         //this.template = templates['Home'];
     },
 
     events:{
-        "click #showMeBtn":"showMeBtnClick",                	
+//        "click #  ":" ",                	
     },
 
     render:function () {
@@ -15,9 +14,5 @@ window.HomeView = Backbone.View.extend({
         return this;
     },
 
-    showMeBtnClick:function () {
-    	alert("Button sulla home");
-        //app.headerView.search();
-    },
     
 });

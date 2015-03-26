@@ -35,7 +35,7 @@ public class Menu extends IdEntity {
 	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 	
-	@OneToMany(mappedBy="menu")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="menu")
 	@JsonManagedReference
 	private List<MenuItem> menuItems;
 	

@@ -2,8 +2,22 @@ window.MenuItem = Backbone.Model.extend({
 	
 	urlRoot: baseUrl + '/menu_item/',
 	
-	initialize: function () {
+	initialize: function (ids) {
 		this.validators = {};
+		this.set({
+            menu: {id: Number(ids.menuId)}
+        });
+
+    },
+    
+    fetchCurrent: function (menuId, id, options) {
+        options = options || {};
+        
+        if (options.url === undefined) {
+            options.url = this.urlRoot + menuId + "/" + id;
+        }
+
+        return Backbone.Model.prototype.fetch.call(this, options);
     },
     
     validateItem: function (key) {
@@ -30,8 +44,10 @@ window.MenuItem = Backbone.Model.extend({
         return {
         	id: null,
             name: "",
-            price: 0
-        };
+	        price: 0,
+	        created: "",
+	        menu: new Menu()
+	        };
     },
     
 });
@@ -40,19 +56,6 @@ window.MenuItemCollection = Backbone.Collection.extend({
 	
 	model: MenuItem,
 	url: baseUrl + '/menu_item/',
-//	initialize: function(models, options) {
-//		console.log("model options");
-//		console.log(models);
-//		console.log(options);
-//		if (typeof options === "undefined") {
-//			console.log("something is undefined");
-//			this.url =  baseUrl + '/rest/menu_item/';
-//		} else {
-//			console.log(options.id + "  is id");
-//			this.url =  baseUrl + '/menu_item/by_menu_id/' + options.id + '/';
-//		}
-//	},
-
 	
 	findByMenuId:function (id) {
 		var url =  baseUrl + '/menu_item/by_menu_id/' + id ;

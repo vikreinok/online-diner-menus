@@ -1,38 +1,25 @@
-window.MenuDetailsView = AuthView.extend({
+window.MenuItemDetailsView = AuthView.extend({
 
     initialize: function () {
-    	MenuDetailsView.__super__.initialize.apply(this, arguments);
-    	
-    	var self = this;
-    	
-		
+		DinerDetailsView.__super__.initialize.apply(this, arguments);  
+
     	this.render();
-    	
-    	if($.cookie('diner_id') == "null") {
-    		
-            setTimeout(function() {
-            	utils.showAlert('Warning!', 'Please select diner before adding menu', 'alert-danger');
-    		}, 1);
-            
-    		utils.redirectTimer(2000, '/diners');
-    	}
-    	
     	this.afterRender();
     },
 
     render: function () {
-        $(this.el).html(this.template(this.model.toJSON()));
+        $(this.el).html(this.template(this.model.toJSON()));                
         return this;
     },
 
     afterRender: function() {
 		setTimeout(function() {
 			if ($.cookie("authenticated") == "true") {
-				$('#saveMenuButton').show();
-				$('#deleteMenuButton').show();
+				$('#saveMenuItemButton').show();
+				$('#deleteMenuItemButton').show();
 			} else {
-				$('#saveMenuButton').hide();
-				$('#deleteMenuButton').hide();
+				$('#saveMenuItemButton').hide();
+				$('#deleteMenuItemButton').hide();
 			}
 		}, 1);
     },
@@ -41,7 +28,7 @@ window.MenuDetailsView = AuthView.extend({
         "change"               : "change",
         "click .save"          : "beforeSave",
         "click .deleteConfirm" : "deleteMenuConfirmation",
-        "click .delete"        : "deleteMenu"
+        "click .delete"        : "deleteMenuItem"
     },
 
     change: function (event) {
@@ -82,22 +69,15 @@ window.MenuDetailsView = AuthView.extend({
     
     saveMenu: function () {
         var self = this;
-        
-        this.model.set({
-            diner: {id:  $.cookie('diner_id')},
-            menuItems: this.collection
-        });
-        
         this.model.save(null, {
             success: function (model) {
-            	self.render();
-                $('#modifyDate').text(convertDate(model.get('modifyDate')));
+                self.render();
                 $('#created').text(convertDate(model.get('created')));
                 app.navigate('/menu/' + model.id, false);
-                utils.showAlert('Success!', 'Menu saved successfully', 'alert-success', '#menu');
+                utils.showAlert('Success!', 'Menu item saved successfully', 'alert-success', '#menu');
             },
             error: function () {
-                utils.showAlert('Error', 'An error occurred while trying to save this menu', 'alert-danger');
+                utils.showAlert('Error', 'An error occurred while trying to save this menu item', 'alert-danger');
             }            
         });
     },
@@ -106,7 +86,7 @@ window.MenuDetailsView = AuthView.extend({
     	$('#deleteConfirmation').modal('show');    	
     },
     
-    deleteMenu: function () {    	   	
+    deleteMenuItem: function () {    	   	
     	$('#deleteConfirmation').modal('hide');
     	$('body').removeClass('modal-open');
     	$('.modal-backdrop').remove();
@@ -116,6 +96,5 @@ window.MenuDetailsView = AuthView.extend({
             }
         });
     },
-     
         	    
 });

@@ -2,7 +2,6 @@ package ee.ttu.catering.rest.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -41,7 +40,7 @@ public class MenuItem extends IdEntity {
 		this.created = new Date();
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference
 	private Menu menu;
 	
@@ -62,7 +61,6 @@ public class MenuItem extends IdEntity {
 		this.price = price;
 	}
 
-	@JsonBackReference
 	public Menu getMenu() {
 		return menu;
 	}

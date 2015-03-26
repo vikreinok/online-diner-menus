@@ -1,11 +1,8 @@
 window.DinerDetailsView = AuthView.extend({
 
     initialize: function () {
-    	var url = document.URL;
-    	var url = url.substring(url.indexOf('#diner/'), url.lenght);
-    	if(url.match(/\d/g) == null) {
-    		DinerDetailsView.__super__.initialize.apply(this, arguments);  
-    	}
+		DinerDetailsView.__super__.initialize.apply(this, arguments);
+		
         this.render();
         this.afterRender();
     },

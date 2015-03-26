@@ -4,7 +4,6 @@ window.HeaderView = Backbone.View.extend({
     	var obj = new AuthView();
     	obj.initialize();
     	
-    	this.searchResults2 = new DinerCollection();
         this.searchResults = new DinerCollection();
         this.searchresultsView = new SearchResultView({model: this.searchResults, className: 'dropdown-menu'});
     },

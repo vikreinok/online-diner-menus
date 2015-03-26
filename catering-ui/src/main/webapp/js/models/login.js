@@ -1,6 +1,6 @@
 window.Login = Backbone.Model.extend({
 	
-	urlRoot: baseUrl + '/login/',
+	urlRoot: baseUrl + 'login/',
 	
 	initialize: function () {
 		this.validators = {};
