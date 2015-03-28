@@ -11,22 +11,22 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import ee.ttu.catering.rest.model.base.CommentEntity;
 
 @Entity
-@Table(name="menu_comment")
-public class MenuComment extends CommentEntity {
+@Table(name="diner_comment")
+public class DinerComment extends CommentEntity {
 
 	private static final long serialVersionUID = 1L;
-
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Menu menu;
 	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Diner diner;
 
+	
 	@JsonBackReference
-	public Menu getMenu() {
-		return menu;
+	public Diner getDiner() {
+		return diner;
 	}
 
-	public void setMenu(Menu menu) {
-		this.menu = menu;
+	public void setDiner(Diner diner) {
+		this.diner = diner;
 	}
-	 
+
 }

@@ -1,11 +1,14 @@
 package ee.ttu.catering.controller;
 
 import static org.junit.Assert.fail;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import ee.ttu.catering.rest.model.DinerComment;
 
 
 public class DinerControllerTest extends AbstractRestServiceTest {
@@ -28,6 +31,28 @@ public class DinerControllerTest extends AbstractRestServiceTest {
     	return CONTENT;
     }
     
+    
+    @Test
+    public void testAddComment() {
+        try{
+        
+		DinerComment comment = new DinerComment();
+		comment.setComment("test");
+		
+		mvc.perform(MockMvcRequestBuilders.post(MAPPING + "comment/" + id)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(toJSONString(comment)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andReturn(); 
+	
+        }catch(Exception e){
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+    
     @Test
     public void testFindMenusByDinerId() {
         try{
@@ -36,7 +61,7 @@ public class DinerControllerTest extends AbstractRestServiceTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-//                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 
 	
         }catch(Exception e){

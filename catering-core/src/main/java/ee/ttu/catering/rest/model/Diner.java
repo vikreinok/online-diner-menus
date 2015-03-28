@@ -1,5 +1,6 @@
 package ee.ttu.catering.rest.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
@@ -40,7 +43,15 @@ public class Diner extends IdEntity {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Menu> menu;
+	
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<DinerComment> dinerComments = new ArrayList<DinerComment>();
 
+	public void addDinerComment(DinerComment dinerComment) {
+		dinerComments.add(dinerComment);
+	}
+	
 	private String picture;
 
 	@PrePersist
@@ -100,5 +111,14 @@ public class Diner extends IdEntity {
 	public void setMenu(List<Menu> menu) {
 		this.menu = menu;
 	}
+
+	public List<DinerComment> getDinerComments() {
+		return dinerComments;
+	}
+
+	public void setDinerComments(List<DinerComment> dinerComments) {
+		this.dinerComments = dinerComments;
+	}
+	
 
 }

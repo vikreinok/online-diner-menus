@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.model.MenuComment;
 import ee.ttu.catering.rest.model.MenuItem;
 
 
@@ -64,11 +65,14 @@ public class MenuControllerTest extends AbstractRestServiceTest {
     @Test
     public void testAddComment() {
         try{
+        	
+    	MenuComment comment = new MenuComment();
+		comment.setComment("test");
         
 		mvc.perform(MockMvcRequestBuilders.post(MAPPING + "comment/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content( "{ \"comment\":\"test comment\"}"))
+                .content(getJSONString(comment)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 
