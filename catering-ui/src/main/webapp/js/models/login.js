@@ -36,10 +36,8 @@ window.Login = Backbone.Model.extend({
     },
     
     defaults: {
-    	loggedIn: false,
     	username: "",
     	password: "",
-    	rememberMe: true
     }
     
 });

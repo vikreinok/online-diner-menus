@@ -16,7 +16,7 @@ import ee.ttu.catering.rest.model.MenuItem;
 import ee.ttu.catering.rest.service.MenuItemService;
 
 @Controller
-@RequestMapping(value="/menu_item")
+@RequestMapping(value="/rest/menu_item")
 public class MenuItemControllerImpl implements MenuItemController {
 
 	@Autowired

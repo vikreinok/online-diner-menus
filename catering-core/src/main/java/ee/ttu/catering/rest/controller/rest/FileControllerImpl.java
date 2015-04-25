@@ -17,7 +17,7 @@ import ee.ttu.catering.rest.controller.dto.FileUploadForm;
 import ee.ttu.catering.rest.service.FileService;
 
 @Controller
-@RequestMapping(value="/file")
+@RequestMapping(value="/rest/file")
 public class FileControllerImpl implements FileController {
 	
 	@Autowired

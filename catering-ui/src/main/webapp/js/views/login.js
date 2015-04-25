@@ -61,30 +61,25 @@ window.LoginView = Backbone.View.extend({
     	this.login();
     },
     
+    
     login: function () {
-    	
-    	var self = this;
-        this.model.save(null, {
-            success: function (model) {
-//          	  	console.log(model.attributes);
-          	  	
-                self.render();
-                $('#loadingModal').modal('hide');
-                
-                utils.showAlert('Success!', 'Login successful', 'alert-success');
-                
-        		$('.navbar-nav li.logout').show();
-        		$('.navbar-nav li.login').hide();
-        		
-         		$.cookie("authenticated", true);
-
-                utils.redirectTimer(1000, '/diners');
-            },
-            error: function () {
-                utils.showAlert('Error', 'An error occurred while trying to login', 'alert-danger');
-            }            
-        });
-    	
+    	var username =  $("#username").val();
+		var password =  $("#password").val();
+		
+		SessionManager.login(username, password, this.successfullAuthentication);
+		
+    },
+    
+    successfullAuthentication: function() {
+//		Callback so it wont work. No need.
+//    	this.render();
+        
+      	utils.showAlert('Success!', 'Login successful', 'alert-success');
+			$('.navbar-nav li.logout').show();
+			$('.navbar-nav li.login').hide();
+        
+ 		$.cookie("authenticated", true);
+        utils.redirectTimer(1000, '/diners');
     }
     
     

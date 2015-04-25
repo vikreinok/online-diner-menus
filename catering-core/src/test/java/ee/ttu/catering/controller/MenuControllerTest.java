@@ -51,7 +51,7 @@ public class MenuControllerTest extends AbstractRestServiceTest {
 		mvc.perform(MockMvcRequestBuilders.post(MAPPING)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(getJSONString(menu)))
+                .content(toJSONString(menu)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn();
@@ -72,7 +72,7 @@ public class MenuControllerTest extends AbstractRestServiceTest {
 		mvc.perform(MockMvcRequestBuilders.post(MAPPING + "comment/" + id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(getJSONString(comment)))
+                .content(toJSONString(comment)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn(); 

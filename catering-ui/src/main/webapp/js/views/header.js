@@ -1,8 +1,7 @@
-window.HeaderView = Backbone.View.extend({
+window.HeaderView = AuthView.extend({
 
     initialize: function () {
-    	var obj = new AuthView();
-    	obj.initialize();
+    	HeaderView.__super__.initialize.apply(this, arguments);
     	
         this.searchResults = new DinerCollection();
         this.searchresultsView = new SearchResultView({model: this.searchResults, className: 'dropdown-menu'});
@@ -24,7 +23,7 @@ window.HeaderView = Backbone.View.extend({
             		if(picture == '-1') {
             			var scr = "./resources/img/diner_logo.png";
             		} else {
-            			var scr = baseUrl + '/file/image/' + picture;
+            			var scr = baseUrl + 'file/image/' + picture;
             		}
             		scr = "'" + scr + "'";
             		var img = "<img style='width:48px; height:48px' src=" + scr + "/>"

@@ -4,30 +4,75 @@
     <groupId>ee.ttu.menu</groupId>
     <artifactId>catering-core</artifactId>
     <packaging>war</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     
     <name>TTU catering</name>
-    <description>Application for dining information system</description>
+    <description>Dining information system</description>
     <url>http://loclahost:8080/catering-core/</url>
     <inceptionYear>2014 </inceptionYear>
-  
  
     <properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	    <maven.compiler.source>1.8</maven.compiler.source>
-	    <maven.compiler.target>1.8</maven.compiler.target>
+	    <maven.compiler.source>1.7</maven.compiler.source>
+	    <maven.compiler.target>1.7</maven.compiler.target>
     
         <mysql.connector>5.1.34</mysql.connector>
         <hibernate.version>4.3.6.Final</hibernate.version>
-        <spring.version>4.1.5.RELEASE</spring.version>
-        <spring.security.version>3.2.6.RELEASE</spring.security.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.boot.version>1.2.3.RELEASE</spring.boot.version>
+        <spring.security.version>4.0.0.RELEASE </spring.security.version>
         <spring.data.version>1.7.2.RELEASE</spring.data.version>
-        <org.slf4j-version>1.5.10</org.slf4j-version>
+        <org.slf4j-version>1.7.12</org.slf4j-version>
         <version.surefire.plugin>2.10</version.surefire.plugin>
     </properties>
 
     <dependencies>
+    
+    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-ws</artifactId>
+			<version>${spring.boot.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.boot</groupId> -->
+<!--             <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+<!--             <version>${spring.boot.version}</version> -->
+<!--         </dependency> -->
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.boot</groupId> -->
+<!--             <artifactId>spring-boot-starter-data-rest</artifactId> -->
+<!--             <version>${spring.boot.version}</version> -->
+<!--         </dependency> -->
+
+	  	<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-tomcat</artifactId>
+	        <version>${spring.boot.version}</version>
+	        <scope>provided</scope>
+	    </dependency>
+    
     
 		<dependency>
 			<groupId>org.mongodb</groupId>
@@ -59,70 +104,70 @@
             <version>${hibernate.version}</version>
         </dependency>
         <!-- Spring -->
-        <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-      	<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.data.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-			   <exclusion>
-			      <groupId>commons-logging</groupId>
-			      <artifactId>commons-logging</artifactId>
-			   </exclusion>
-			</exclusions>			
-		</dependency>
-		<dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-rest-webmvc</artifactId>
-            <version>2.2.1.RELEASE</version>
-        </dependency>
+<!--         <dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-core</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>org.springframework</groupId> -->
+<!--             <artifactId>spring-webmvc</artifactId> -->
+<!--             <version>${spring.version}</version> -->
+<!--         </dependency> -->
+<!--       	<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-web</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 		</dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.data</groupId> -->
+<!--             <artifactId>spring-data-jpa</artifactId> -->
+<!--             <version>${spring.data.version}</version> -->
+<!--             <exclusions> -->
+<!--                 <exclusion> -->
+<!--                     <artifactId>spring-aop</artifactId> -->
+<!--                     <groupId>org.springframework</groupId> -->
+<!--                 </exclusion> -->
+<!--             </exclusions> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>org.springframework</groupId> -->
+<!--             <artifactId>spring-orm</artifactId> -->
+<!--             <version>${spring.version}</version> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!--             <groupId>org.springframework</groupId> -->
+<!--             <artifactId>spring-tx</artifactId> -->
+<!--             <version>${spring.version}</version> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-context</artifactId> -->
+<!-- 			<version>${spring.version}</version> -->
+<!-- 			<exclusions> -->
+<!-- 			   <exclusion> -->
+<!-- 			      <groupId>commons-logging</groupId> -->
+<!-- 			      <artifactId>commons-logging</artifactId> -->
+<!-- 			   </exclusion> -->
+<!-- 			</exclusions>			 -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!--             <groupId>org.springframework.data</groupId> -->
+<!--             <artifactId>spring-data-rest-webmvc</artifactId> -->
+<!--             <version>2.2.1.RELEASE</version> -->
+<!--         </dependency> -->
 		 <!-- Spring Security 3.1 Web, as for Spring MVC, this artifact will pull Spring Security core -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
-        <!-- Spring Security configuration, this is an optional feature and needs to be declared explicitly -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.security</groupId> -->
+<!--             <artifactId>spring-security-web</artifactId> -->
+<!--             <version>${spring.security.version}</version> -->
+<!--         </dependency> -->
+<!--         Spring Security configuration, this is an optional feature and needs to be declared explicitly -->
+<!--         <dependency> -->
+<!--             <groupId>org.springframework.security</groupId> -->
+<!--             <artifactId>spring-security-config</artifactId> -->
+<!--             <version>${spring.security.version}</version> -->
+<!--         </dependency> -->
         <!-- CGLIB is required to process @Configuration classes -->
         <dependency>
             <groupId>cglib</groupId>
@@ -165,12 +210,12 @@
             <version>${org.slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j-version}</version>
-            <scope>runtime</scope>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.slf4j</groupId> -->
+<!--             <artifactId>slf4j-log4j12</artifactId> -->
+<!--             <version>${org.slf4j-version}</version> -->
+<!--             <scope>runtime</scope> -->
+<!--         </dependency> -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -229,7 +274,7 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.176</version>
-			<scope>test</scope>
+<!-- 			<scope>test</scope> -->
 		</dependency>
         
         <!-- utils -->
@@ -321,6 +366,11 @@
         <plugins>
       
         <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+      
+        <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.2</version>
             <configuration>
@@ -336,6 +386,7 @@
              <artifactId>maven-war-plugin</artifactId>
              <version>2.6</version>
              <configuration>
+                 <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
 	           	 <outputDirectory>C:/tomcat/webapps/</outputDirectory>
 	           	 <warName>catering-core</warName>
 	             <failOnMissingWebXml>false</failOnMissingWebXml>

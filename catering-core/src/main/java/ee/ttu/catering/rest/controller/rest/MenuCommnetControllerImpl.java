@@ -12,7 +12,7 @@ import ee.ttu.catering.rest.model.MenuComment;
 import ee.ttu.catering.rest.service.MenuCommentService;
 
 @Controller
-@RequestMapping(value="/menu_comment")
+@RequestMapping(value="/rest/menu_comment")
 public class MenuCommnetControllerImpl implements MenuCommentController {
 
 	@Autowired

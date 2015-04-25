@@ -7,41 +7,36 @@ import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import ee.ttu.catering.config.authentication.UnauthenticationEntryPoint;
+
 @Configuration
-@EnableWebMvc
-@Import({ FileUploadConfig.class, SecurityConfig.class})
 @ComponentScan("ee.ttu.catering.rest")
-@EnableJpaRepositories("ee.ttu.catering.rest.repository")
-@EnableTransactionManagement
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
 	
+	@Bean
+	public static UnauthenticationEntryPoint unauthenticationEntryPoint() {
+		return new UnauthenticationEntryPoint();
+	}
+	
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+	    return new PropertySourcesPlaceholderConfigurer();
+	}
 	
 	@Bean
 	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
 		
 		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-		
-		InternalResourceViewResolver r1 = new InternalResourceViewResolver();
-		r1.setPrefix("/WEB-INF/pages/");
-		r1.setSuffix(".jsp");
-		r1.setViewClass(JstlView.class);
-		resolvers.add(r1);
-		
-		JsonViewResolver r2 = new JsonViewResolver();
-		resolvers.add(r2);
+		JsonViewResolver jsonViewResolver = new JsonViewResolver();
+		resolvers.add(jsonViewResolver);
 		
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 		resolver.setViewResolvers(resolvers);

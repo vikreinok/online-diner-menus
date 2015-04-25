@@ -196,18 +196,11 @@ window.Router = Backbone.Router.extend({
 	},
 	
 	logout: function() {
+		SessionManager.logout();
+		
 		$('.navbar-nav li.logout').hide();
 		$('.navbar-nav li.login').show();
 		
-		$.ajax({
-		  url: baseUrl + '/login/',
-		  method: "DELETE"
-		}).done(function() {
-     		$("#content").html(new 	AuthView().el);
-     		$.cookie("authenticated", false);
-		}).fail(function() {
-		   alert( "Error during logout" );
-		});
 	},
     
 });

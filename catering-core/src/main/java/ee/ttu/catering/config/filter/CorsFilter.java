@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//@Component
 public class CorsFilter implements Filter {
-    private static final Logger LOG = LoggerFactory.getLogger(CorsFilter.class);
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
@@ -27,7 +28,7 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with,Content-Type,Accept");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, Content-Type,Accept");
     }
 
     public void init(FilterConfig filterConfig) {

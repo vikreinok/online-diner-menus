@@ -14,7 +14,7 @@ import ee.ttu.catering.rest.model.DinerComment;
 public class DinerControllerTest extends AbstractRestServiceTest {
 
     private static final String CONTENT = "{\"id\": 1000, \"name\":\"test\", \"description\":\"test1234123\"}";
-	private final String MAPPING = "/diner/";
+	private final String MAPPING = "/rest/diner/";
     
     @Override
     String getServiceMapping() {

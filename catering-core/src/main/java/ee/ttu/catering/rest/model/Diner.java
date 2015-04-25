@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -41,15 +42,26 @@ public class Diner extends IdEntity {
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Image image;
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Menu> menu;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<DinerComment> dinerComments = new ArrayList<DinerComment>();
+	
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<DinerLike> dinerLikes = new ArrayList<DinerLike>();
 
 	public void addDinerComment(DinerComment dinerComment) {
 		dinerComments.add(dinerComment);
+	}
+	
+	public void addDinerLikes(DinerLike dinerLike) {
+		dinerLikes.add(dinerLike);
 	}
 	
 	private String picture;
@@ -104,6 +116,14 @@ public class Diner extends IdEntity {
 		this.picture = picture;
 	}
 	
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
 	public List<Menu> getMenu() {
 		return menu;
 	}
@@ -119,6 +139,13 @@ public class Diner extends IdEntity {
 	public void setDinerComments(List<DinerComment> dinerComments) {
 		this.dinerComments = dinerComments;
 	}
-	
+
+	public List<DinerLike> getDinerLikes() {
+		return dinerLikes;
+	}
+
+	public void setDinerLikes(List<DinerLike> dinerLikes) {
+		this.dinerLikes = dinerLikes;
+	}
 
 }

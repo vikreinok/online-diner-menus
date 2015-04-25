@@ -149,12 +149,17 @@ window.DinerDetailsView = AuthView.extend({
     },
     
     saveFile: function() {
-    	    	
+    	 $('#loadingModal').modal('show');
+    	 
     	var data = new FormData($("#fileuploadForm"));		
     	data.append('file', utils.getFile());
+		var token = SessionManager.getToken();
 		
 		$.ajax({
-		    url: baseUrl + '/file/image/' + this.model.get('picture'),
+		    url: baseUrl + 'file/image/' + this.model.get('picture'),
+		    headers: {
+		    	"X-Token": token
+		    },
 		    data: data,
 		    cache: false,
 		    contentType: false,

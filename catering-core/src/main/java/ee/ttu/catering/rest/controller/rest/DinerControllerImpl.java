@@ -17,7 +17,7 @@ import ee.ttu.catering.rest.service.DinerService;
 import ee.ttu.catering.rest.service.MenuService;
 
 @Controller
-@RequestMapping(value="/diner")
+@RequestMapping(value="/rest/diner")
 public class DinerControllerImpl implements DinerController {
 
 	@Autowired

@@ -5,17 +5,31 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mongodb.DB;
 
 import ee.ttu.catering.cloudservice.MongoDbConnctor;
 import ee.ttu.catering.rest.model.Diner;
 
-public abstract class AbstractDbEnv extends ApplicationConfig {
+
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(
+        basePackages = AbstractDbEnv.REPOSITORY_PACKAGE,
+        transactionManagerRef = "transactionManager",
+        entityManagerFactoryRef = "entityManagerFactory"
+)
+public abstract class AbstractDbEnv {
+	
+    public static final String REPOSITORY_PACKAGE = "ee.ttu.catering.rest.repository";
 
 	protected static String TYPE = "test.";
 	
