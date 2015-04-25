@@ -19,7 +19,6 @@ public class MenuComment extends CommentEntity {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Menu menu;
 	
-
 	@JsonBackReference
 	public Menu getMenu() {
 		return menu;

@@ -7,6 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ee.ttu.catering.rest.model.base.CommentEntity;
 
@@ -18,8 +19,8 @@ public class DinerComment extends CommentEntity {
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Diner diner;
-
 	
+	@JsonIgnore
 	@JsonBackReference
 	public Diner getDiner() {
 		return diner;

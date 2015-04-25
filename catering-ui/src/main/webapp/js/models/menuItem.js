@@ -46,6 +46,8 @@ window.MenuItem = Backbone.Model.extend({
             name: "",
 	        price: 0,
 	        created: "",
+	        vegeterian: null,
+	        foodType: null,
 	        menu: new Menu()
 	        };
     },

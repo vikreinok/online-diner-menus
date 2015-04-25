@@ -19,10 +19,15 @@ import ee.ttu.catering.rest.model.base.IdEntity;
 public class MenuItem extends IdEntity {
 
 	private static final long serialVersionUID = 1L;
-
-//	public static enum Status {
-//		AVAILABE, OUT;
+//
+//	public static enum FoodType {
+//		MEAT, PORK, FISH, SALAT;
 //	}
+	
+	private boolean vegeterian;
+	
+//    @Enumerated(EnumType.STRING)
+	private String foodType;
 	
 	private String name;
 	
@@ -52,7 +57,6 @@ public class MenuItem extends IdEntity {
 		this.name = name;
 	}
 
-
 	public Double getPrice() {
 		return price;
 	}
@@ -77,4 +81,21 @@ public class MenuItem extends IdEntity {
 		this.created = created;
 	}
 
+	public boolean isVegeterian() {
+		return vegeterian;
+	}
+
+	public FoodType getFoodType() {
+		return foodType;
+	}
+
+	public void setVegeterian(boolean vegeterian) {
+		this.vegeterian = vegeterian;
+	}
+
+	public void setFoodType(FoodType foodType) {
+		this.foodType = foodType;
+	}
+
+	
 }

@@ -13,6 +13,8 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import ee.ttu.catering.config.authentication.UnauthenticationEntryPoint;
@@ -33,10 +35,17 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
-		
+
 		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-		JsonViewResolver jsonViewResolver = new JsonViewResolver();
-		resolvers.add(jsonViewResolver);
+		
+		InternalResourceViewResolver r1 = new InternalResourceViewResolver();
+		r1.setPrefix("/WEB-INF/pages/");
+		r1.setSuffix(".jsp");
+		r1.setViewClass(JstlView.class);
+		resolvers.add(r1);
+		
+		JsonViewResolver r2 = new JsonViewResolver();
+		resolvers.add(r2);
 		
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
 		resolver.setViewResolvers(resolvers);

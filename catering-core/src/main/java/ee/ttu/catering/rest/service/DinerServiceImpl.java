@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ee.ttu.catering.rest.exception.DinerNotFoundException;
 import ee.ttu.catering.rest.model.Diner;
+import ee.ttu.catering.rest.repository.DinerCommentRepository;
 import ee.ttu.catering.rest.repository.DinerRepository;
 import ee.ttu.catering.rest.repository.ImageRepository;
 
@@ -23,7 +24,8 @@ public class DinerServiceImpl implements DinerService {
 	
 	@Autowired
 	private DinerRepository dinerRepository;
-	
+	@Autowired
+	private DinerCommentRepository dinerCommentRepository;
 	@Autowired
 	private ImageRepository imageRepository;
 	
@@ -55,7 +57,7 @@ public class DinerServiceImpl implements DinerService {
 			throw new DinerNotFoundException(dinerToUpdate != null ? dinerToUpdate.getId().toString() : "");
 		Diner updatableDiner = dinerRepository.save(dinerToUpdate);
 		
-		mongoDbServiceImpl.update(updatableDiner);
+//		mongoDbServiceImpl.update(updatableDiner);
 		
 		return updatableDiner;
 	}

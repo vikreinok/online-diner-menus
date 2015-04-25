@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Error page</title>
+<title>Home page</title>
 </head>
 <body>
-<h1>Api docs</h1>
+<h1>Oops wrong REST API path</h1>
 <p>
 </p>
 </body>

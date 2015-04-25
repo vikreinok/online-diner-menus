@@ -2,6 +2,10 @@ package ee.ttu.catering.rest.controller.rest;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import ee.ttu.catering.rest.model.Diner;
 import ee.ttu.catering.rest.model.DinerComment;
 import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.service.DinerCommentService;
 import ee.ttu.catering.rest.service.DinerService;
 import ee.ttu.catering.rest.service.MenuService;
 
@@ -28,7 +33,12 @@ public class DinerController {
 	@Autowired
 	private DinerService dinerService;
 	@Autowired
+	private DinerCommentService dinerCommentService;
+	@Autowired
 	private MenuService menuService;
+	
+	@PersistenceContext( )
+    private EntityManager entityManager;
 
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -81,9 +91,21 @@ public class DinerController {
 	
 	@RequestMapping(value="/comment/{dinerId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@Transactional(value=TxType.REQUIRES_NEW)
 	public Diner addComment(@PathVariable int dinerId, @RequestBody @Valid DinerComment dinerComment) {
+		
 		Diner diner = dinerService.get(dinerId);
+		dinerComment.setDiner(diner);
+		dinerComment = dinerCommentService.save(dinerComment);
+		
 		diner.addDinerComment(dinerComment);
+		
+//		entityManager.persist(dinerComment);
+//		
+//		Diner diner = entityManager.find(Diner.class, dinerId);
+//		diner.addDinerComment(dinerComment);
+//		entityManager.merge(diner);
+//		entityManager.flush();
 		
 		return dinerService.update(diner);
 	}

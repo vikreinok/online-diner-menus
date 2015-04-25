@@ -44,6 +44,34 @@
 	    	</div>
 	  	</div>
 	  	
+	  	<div id="formGroupPrice" class="form-group">
+	    	<label for="vegeterian" class="col-lg-2 control-label">Is vegetrian</label>
+	    	<div class="col-lg-1">
+	    		<div class="input-group">
+				  <span class="input-group-addon"></span>						  
+				  <input id="vegeterian" name="vegeterian" type="checkbox" class="form-control" value="<%= vegeterian %>">			  
+				</div> 
+				<span id="msgname" class="help-block"></span>     							  			  
+	    	</div>
+	  	</div>
+	  	
+	  	<div id="formGroupPrice" class="form-group">
+	    	<label for="foodType" class="col-lg-2 control-label">Food type</label>
+	    	<div class="col-lg-5">
+	    		<div class="input-group">
+				  <span class="input-group-addon"></span>
+				  <select id="foodType" name="foodType" value="<%= foodType %>">
+						<option value="MEAT">MEAT</option>
+						<option value="FISH">FISH</option>
+						<option value="PORK">PORK</option>
+						<option value="SALAT">SALAT</option>
+						</select>					  
+<!-- 				  <input id="foodType" name="foodType" type="dropbox" class="form-control" value="<%= price %>">			   -->
+				</div> 
+				<span id="msgname" class="help-block"></span>     							  			  
+	    	</div>
+	  	</div>
+	  	
   		</div>
   	  	<div id="formGroupname4" class="form-group">
     	<label for="created" class="col-lg-2 control-label">Created</label>

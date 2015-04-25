@@ -155,6 +155,8 @@ window.DinerDetailsView = AuthView.extend({
     	data.append('file', utils.getFile());
 		var token = SessionManager.getToken();
 		
+		console.log("save file: utils.getFile() - " + utils.getFile() + " token: " + token);
+		
 		$.ajax({
 		    url: baseUrl + 'file/image/' + this.model.get('picture'),
 		    headers: {
