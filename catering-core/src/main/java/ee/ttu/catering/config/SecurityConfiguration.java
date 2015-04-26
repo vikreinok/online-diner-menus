@@ -71,7 +71,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	.antMatchers(HttpMethod.GET, "/rest/diner/**")
     	.antMatchers(HttpMethod.GET, "/rest/menu/**")
     	.antMatchers(HttpMethod.GET, "/rest/menu_item/**")
-    	.antMatchers(HttpMethod.GET, "/rest/file/image/**");
+    	.antMatchers(HttpMethod.GET, "/rest/file/image/**")
+    	.antMatchers(HttpMethod.POST, "/rest/diner/comment/**");
     }
 
 }

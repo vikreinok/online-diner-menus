@@ -46,6 +46,6 @@ window.Menu = Backbone.Model.extend({
 
 window.MenuCollection = Backbone.Collection.extend({
 	model: Menu,
-	url: baseUrl + 'menu/'
+	url: baseUrl + 'diner/menus/' + $.cookie('diner_id')
 	 
 });

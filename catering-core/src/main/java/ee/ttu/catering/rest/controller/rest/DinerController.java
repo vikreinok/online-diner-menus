@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import javax.transaction.Transactional.TxType;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,20 +90,17 @@ public class DinerController {
 	
 	@RequestMapping(value="/comment/{dinerId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional(value=TxType.REQUIRES_NEW)
+	@Transactional
 	public Diner addComment(@PathVariable int dinerId, @RequestBody @Valid DinerComment dinerComment) {
 		
-		Diner diner = dinerService.get(dinerId);
-		dinerComment.setDiner(diner);
 		dinerComment = dinerCommentService.save(dinerComment);
+
+		Diner diner = dinerService.get(dinerId);
 		
 		diner.addDinerComment(dinerComment);
 		
 //		entityManager.persist(dinerComment);
-//		
-//		Diner diner = entityManager.find(Diner.class, dinerId);
-//		diner.addDinerComment(dinerComment);
-//		entityManager.merge(diner);
+//		entityManager.createNativeQuery("INSERT INTO diner_diner_comment (dinerComments_id, diner_id) VALUES ("+ dinerComment.getId() +","+ dinerId +")").executeUpdate();
 //		entityManager.flush();
 		
 		return dinerService.update(diner);

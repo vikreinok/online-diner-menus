@@ -3,9 +3,9 @@ window.AuthView = Backbone.View.extend({
     initialize: function () {
     	
     	// We do no do double requests.
-    	if (!document.URL.match("#diner/|#menu/")) {
-    		return;
-		}
+//    	if (!document.URL.match("#diner/|#menu/")) {
+//    		return;
+//		}
     	
     	var self = this;
     	var promise = SessionManager.isActive();

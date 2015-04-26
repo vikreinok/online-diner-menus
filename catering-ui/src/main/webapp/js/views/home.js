@@ -1,6 +1,8 @@
-window.HomeView = Backbone.View.extend({
+window.HomeView =  AuthView.extend({
 
     initialize:function () {
+    	HomeView.__super__.initialize.apply(this, arguments);
+    	
         //this.template = _.template(directory.utils.templateLoader.get('home'));
         //this.template = templates['Home'];
     },

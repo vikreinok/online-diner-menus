@@ -1,6 +1,8 @@
-window.MenuListView = Backbone.View.extend({
+window.MenuListView = AuthView.extend({
 
     initialize: function (options) {
+    	MenuListView.__super__.initialize.apply(this, arguments);
+    	
     	this.options = options;
         this.render();
     },

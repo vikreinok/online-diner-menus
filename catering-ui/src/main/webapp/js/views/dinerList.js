@@ -1,6 +1,8 @@
-window.DinerListView = Backbone.View.extend({
+window.DinerListView = AuthView.extend({
 
     initialize: function (options) {
+    	DinerListView.__super__.initialize.apply(this, arguments);
+
     	this.options = options;
         this.render();
     },
