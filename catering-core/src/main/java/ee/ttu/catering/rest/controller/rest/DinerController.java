@@ -45,12 +45,6 @@ public class DinerController {
 		return dinerService.getAll();
 	}
 	
-	@RequestMapping(value="/integration/", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<Diner> allIntegration() {
-		return dinerService.getAllIntegrationDiners();
-	}
-	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Diner one(@PathVariable int id) {

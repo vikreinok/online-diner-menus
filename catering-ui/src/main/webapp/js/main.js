@@ -2,7 +2,6 @@ window.Router = Backbone.Router.extend({
 	
     routes: {
     	"": "home",
-    	"integration_diners": "integrationDinerlist",
         "diners": "dinerlist",
         "diner/add": "addDiner",
         "diner/page/:page": "dinerlist",
@@ -40,26 +39,6 @@ window.Router = Backbone.Router.extend({
         }                
         $("#content").html(this.homeView.el);
         this.headerView.select('home-menu');                            
-    },
-    
-    integrationDinerlist: function(page) {
-
-    	$('#loadingimage').show();
-    	var p = page ? parseInt(page, 10) : 1;
-        var integrationdiners = new IntegrationDinerCollection();
-        integrationdiners.fetch({
-        	success: function(){
-	            $("#content").html(new IntegrationDinerListView({model: integrationdiners, page: p}).el);
-	            $('#loadingimage').hide();
-        	},
-	        error: function(model, response) {
-	        	console.log("Error during integration diner service at main");
-        		$("#content").html(new 	ErrorView({model: response}).el);
-	        	$('#loadingimage').hide();
-	        }
-        	
-        });
-        this.headerView.select('integration-diners-menubar');
     },
     
     dinerlist: function(page) {
@@ -112,8 +91,6 @@ window.Router = Backbone.Router.extend({
         this.headerView.select('add-diner-menubar');
 	},
 
-	// List items
-	
     menuList: function(page) {
     	console.log("cookie diner_id " + $.cookie('diner_id'));
     	
@@ -205,7 +182,7 @@ window.Router = Backbone.Router.extend({
     
 });
 
-templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","IntegrationDinerListView","IntegrationDinerListItemView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "MenuItemDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
+templateLoader.load(["ErrorView","HeaderView","HomeView","FooterView","DinerListView","DinerListItemView", "MenuListItemView", "MenuListView", "MenuDetailsView", "MenuItemDetailsView", "DinerDetailsView","LoginView","SearchResultItemView"],
 	function () {
 		app = new Router();
 		Backbone.history.start();

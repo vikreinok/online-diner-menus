@@ -13,9 +13,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.mongodb.DB;
-
-import ee.ttu.catering.cloudservice.MongoDbConnctor;
 import ee.ttu.catering.rest.model.Diner;
 
 
@@ -71,11 +68,6 @@ public abstract class AbstractDbEnv {
 		dataSource.setPassword(getProperty(DATABASE_PASSWORD));
 		
 		return dataSource;
-	}
-    
-	@Bean
-	public DB initMongoDb() {
-		return new MongoDbConnctor().connection();
 	}
 	  
 	@Bean(name = "transactionManager")
