@@ -7,6 +7,8 @@ import javax.sql.DataSource;
 import org.hibernate.cfg.Environment;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -15,8 +17,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import ee.ttu.catering.config.AbstractDbEnv;
 import ee.ttu.catering.config.dialect.IsolationSupportHibernateJpaDialect;
 
-
+@Configuration
 @PropertySource("classpath:unittest_db.properties")
+@Profile("unittest")
 public class UnitTestEnv extends AbstractDbEnv {
 	
 	private static final String TYPE = "test";

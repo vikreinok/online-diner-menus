@@ -15,13 +15,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.context.web.WebDelegatingSmartContextLoader;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -32,11 +31,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ee.ttu.catering.config.unittest.UnitTestEnv;
+import ee.ttu.catering.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(loader = WebDelegatingSmartContextLoader.class, classes = UnitTestEnv.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@ActiveProfiles("unittest")
 public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 	public AbstractRestServiceTest() {
@@ -87,7 +87,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
 	}
 
 	@Test
-    @Order(0)
     public void testCreate() {
         try{
         	 mvc.perform(MockMvcRequestBuilders.post(getServiceMapping())
@@ -105,7 +104,6 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     
     
     @Test
-    @Order(1)
     public void testRead() {
     	try {
     		mvc.perform(MockMvcRequestBuilders.get(getServiceMapping() + id)
@@ -121,10 +119,8 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     }
     
     @Test
-    @Order(2)
     public void testUpdate() {
     	try {
-    		
     		mvc.perform(MockMvcRequestBuilders.put(getServiceMapping() + id)
     				.contentType(MediaType.APPLICATION_JSON)
     				.accept(MediaType.APPLICATION_JSON)
@@ -137,8 +133,8 @@ public abstract class AbstractRestServiceTest extends AbstractTransactionalJUnit
     		fail(e.getMessage());
     	}
     }
+    
     @Test
-    @Order(3)
     public void testDelete() {
     	try {
     		mvc.perform(MockMvcRequestBuilders.delete(getServiceMapping() + id)

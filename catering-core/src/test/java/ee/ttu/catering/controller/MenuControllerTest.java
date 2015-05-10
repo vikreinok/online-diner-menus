@@ -18,7 +18,7 @@ public class MenuControllerTest extends AbstractRestServiceTest {
 
     private static final String CONTENT = "{\"name\":\"test\"}";
     private static final String UPDATE_CONTENT = "{\"name\":\"test2\"}";
-	private final String MAPPING = "/menu/";
+	private final String MAPPING = "/rest/menu/";
     
     @Override
     String getServiceMapping() {
@@ -98,7 +98,7 @@ public class MenuControllerTest extends AbstractRestServiceTest {
        
        
 	    final String BAD_CONTENT = "{\"nam\":\"Wrong field value and field content\"}";
-		mvc.perform(MockMvcRequestBuilders.post("/menu")
+		mvc.perform(MockMvcRequestBuilders.post(MAPPING)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(BAD_CONTENT))

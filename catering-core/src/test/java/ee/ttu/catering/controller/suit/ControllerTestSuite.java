@@ -14,6 +14,6 @@ import ee.ttu.catering.controller.MenuItemControllerTest;
    MenuItemControllerTest.class,
    LoginControllerTest.class
 })
-public class ContrellerTestSuite {
+public class ControllerTestSuite {
 	
 }  	
