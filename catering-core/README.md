@@ -1,11 +1,13 @@
 <h2> TTU dining </h2>
 
 <h3> Technology stack </h3>
-=========================
+======
 
 Spring 4 core, rest, data, security, ...
 
-Features:
+<h3>  Features</h3>
+======
+
 - Seperate datasource for unittest and live configuration.
 - For unittests H2 in memory database with init testdata script configuation.
 - Live data init scipt (import.sql)
