@@ -1,18 +1,21 @@
-<h2> TTU caterign </h2>
+<h2> TTU dining </h2>
 
-<h3> HajusArh & TKS ainete projekt </h3>
+<h3> Technology stack </h3>
 =========================
 
-Template spring 3 rest api app with JPA and annotation based configuration.
-Unittest and live seperate datasource configuration.
-H2 in memory database with init testdata script configuation.
+Spring 4 core, rest, data, security, ...
+
+Features:
+- Seperate datasource for unittest and live configuration.
+- For unittests H2 in memory database with init testdata script configuation.
+- Live data init scipt (import.sql)
+- Token based authentication.
 
 <h3> Ettevalmistamine</h3>
 ======
 
-Käiviatada create_db.sql   @localhost mysql  kontrolli AB username ja password @ live_db.properties
 Paigalada JDK7, tomcat7 ja maven
-
+Käiviatada create_db.sql   @localhost mysql  kontrolli baasi kasutajanime ja prooli @ live_db.properties
 
 <h3> Ehitamine </h3>
 ======
@@ -28,11 +31,7 @@ deplay WAR to webapps & restart tomcat container
 maven war plugin automatically moves war to C:\tomcat\webapps
 
 http://localhost:8080/catering-core/menu/
- 
-<h3> Ühiktestimine </h3>
-=======
 
-mvn test -Ptest
 
 
 
