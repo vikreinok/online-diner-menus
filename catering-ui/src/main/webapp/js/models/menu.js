@@ -44,8 +44,19 @@ window.Menu = Backbone.Model.extend({
     
 });
 
+// If diner id is not selected print all menus
+function getUrl() {
+	var url = '';
+	var dinerId = $.cookie('diner_id');
+	if (typeof dinerId != 'undefined') {
+		url = 'diner/menus/' + $.cookie('diner_id');
+	} else {
+		url = 'menu/';
+	}
+	return url;
+}
+
 window.MenuCollection = Backbone.Collection.extend({
 	model: Menu,
-	url: baseUrl + 'diner/menus/' + $.cookie('diner_id')
-	 
+	url: baseUrl + getUrl(),
 });
