@@ -23,6 +23,17 @@ window.Router = Backbone.Router.extend({
     	this.footerView = new FooterView();
     	$('.footer').html(this.footerView.render().el);
     	
+    	var dinerId = $.cookie('diner_id');
+
+    	if (typeof dinerId == 'undefined') {
+    		$('.navbar-nav li.menus-menubar').hide();
+    		$('.navbar-nav li.add-menu-menubar').hide();
+    	} else {
+    		$('.navbar-nav li.menus-menubar').show();
+    		$('.navbar-nav li.add-menu-menubar').show();
+    	}
+    	
+    	
         // Close the search dropdown on click anywhere in the UI
         $('body').click(function () {        	
         	$('.dropdown').removeClass("open");
@@ -82,6 +93,8 @@ window.Router = Backbone.Router.extend({
     	$.cookie('diner_id', id);
     	window.location.replace("./#diners");
     	window.location.reload();
+		$('.navbar-nav li.menus-menubar').show();
+		$('.navbar-nav li.add-menu-menubar').show();
     },
     
     addDiner: function() {
@@ -92,7 +105,15 @@ window.Router = Backbone.Router.extend({
 	},
 
     menuList: function(page) {
-    	console.log("cookie diner_id " + $.cookie('diner_id'));
+    	
+    	var dinerId = $.cookie('diner_id');
+    	console.log("cookie diner_id " + dinerId);
+
+    	if (typeof dinerId == 'undefined') {
+    		console.log("redirect to diners");
+    		alert("Please select diner");
+    		return;
+    	}
     	
     	$('#loadingimage').show();
     	var p = page ? parseInt(page, 10) : 1;
