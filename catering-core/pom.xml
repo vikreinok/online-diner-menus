@@ -25,10 +25,16 @@
         <spring.data.version>1.7.2.RELEASE</spring.data.version>
         <org.slf4j-version>1.7.12</org.slf4j-version>
         <version.surefire.plugin>2.10</version.surefire.plugin>
+        <jsondoc.verison>1.1.13</jsondoc.verison>
     </properties>
 
     <dependencies>
     
+	    <dependency>
+			<groupId>org.jsondoc</groupId>
+			<artifactId>spring-boot-starter-jsondoc</artifactId>
+			<version>${jsondoc.verison}</version>
+		</dependency>
     
         <dependency>
             <groupId>org.springframework.boot</groupId>

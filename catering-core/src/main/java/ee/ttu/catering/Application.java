@@ -1,5 +1,6 @@
 package ee.ttu.catering;
 
+import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -9,6 +10,7 @@ import org.springframework.core.env.AbstractEnvironment;
 
 @ComponentScan(basePackages = {"ee.ttu.catering"})
 @EnableAutoConfiguration
+@EnableJSONDoc
 public class Application extends SpringBootServletInitializer {
 
     @Override

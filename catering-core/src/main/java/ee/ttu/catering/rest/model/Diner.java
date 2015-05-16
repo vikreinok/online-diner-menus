@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -24,46 +26,47 @@ import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
 @Table(name = "diner")
+@ApiObject(name= "Diner", description="A diner information model")
 public class Diner extends IdEntity {
 
 	private static final long serialVersionUID = -7169873625528706006L;
 
+	@ApiObjectField(description="Dinerr name as customer recognises it", allowedvalues= "Not blank")
 	@NotBlank
 	@Length(min = 2, max = 20, message = "Name should be between 2 and 20 characters")
 	private String name;
 
+	@ApiObjectField(description="Diner description", allowedvalues= "Not blank and value length between 10 - 50")
 	@NotBlank
 	@Length(min = 10, max = 50, message = "Descritpion should be between 10 and 50 characters")
 	private String description;
 	
+	@ApiObjectField()
 	@Temporal(TemporalType.DATE)
 	private Date created;
 
+	@ApiObjectField()
 	@Temporal(TemporalType.DATE)
 	private Date modifyDate;
 	
+	@ApiObjectField()
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Image image;
 	
+	@ApiObjectField()
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Menu> menu;
 	
+	@ApiObjectField()
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<DinerComment> dinerComments = new ArrayList<DinerComment>();
 	
+	@ApiObjectField()
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<DinerLike> dinerLikes = new ArrayList<DinerLike>();
 
-	public void addDinerComment(DinerComment dinerComment) {
-		dinerComments.add(dinerComment);
-	}
-	
-	public void addDinerLikes(DinerLike dinerLike) {
-		dinerLikes.add(dinerLike);
-	}
-	
 	private String picture;
 
 	@PrePersist
@@ -146,6 +149,14 @@ public class Diner extends IdEntity {
 
 	public void setDinerLikes(List<DinerLike> dinerLikes) {
 		this.dinerLikes = dinerLikes;
+	}
+	
+	public void addDinerComment(DinerComment dinerComment) {
+		dinerComments.add(dinerComment);
+	}
+	
+	public void addDinerLikes(DinerLike dinerLike) {
+		dinerLikes.add(dinerLike);
 	}
 
 }

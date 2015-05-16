@@ -10,23 +10,23 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.context.web.WebDelegatingSmartContextLoader;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
-import ee.ttu.catering.config.unittest.UnitTestEnv;
+import ee.ttu.catering.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(loader = WebDelegatingSmartContextLoader.class, classes = UnitTestEnv.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@ActiveProfiles("unittest")
 public class MenuItemControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
 	
 	Logger LOG = Logger.getLogger(this.getClass());
@@ -48,7 +48,7 @@ public class MenuItemControllerTest extends AbstractTransactionalJUnit4SpringCon
     public void testMenuItemCreate() {
         try{
         final String CONTENT = "{\"name\":\"test\"}";
-		mvc.perform(MockMvcRequestBuilders.post("/menu_item/")
+		mvc.perform(MockMvcRequestBuilders.post("/rest/menu_item/")
                  .contentType(MediaType.APPLICATION_JSON)
                  .accept(MediaType.APPLICATION_JSON)
                  .content(CONTENT))
@@ -58,7 +58,7 @@ public class MenuItemControllerTest extends AbstractTransactionalJUnit4SpringCon
         
         
         final String BAD_CONTENT = "{\"nam\":\"Wrong name and field value\"}";
-		mvc.perform(MockMvcRequestBuilders.post("/menu_item/")
+		mvc.perform(MockMvcRequestBuilders.post("/rest/menu_item/")
                  .contentType(MediaType.APPLICATION_JSON)
                  .accept(MediaType.APPLICATION_JSON)
                  .content(BAD_CONTENT))

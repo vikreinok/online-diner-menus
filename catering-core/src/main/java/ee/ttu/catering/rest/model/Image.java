@@ -10,8 +10,11 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.jsondoc.core.annotation.ApiObject;
+
 @Entity
 @Table(name = "image")
+@ApiObject(name= "Image", description = "Contains bytes and file name attributes")
 public class Image {
 
 	@Id

@@ -2,6 +2,9 @@ package ee.ttu.catering.rest.controller.rest;
 
 import javax.validation.Valid;
 
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiAuthNone;
+import org.jsondoc.core.annotation.ApiMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ee.ttu.catering.rest.controller.dto.FileUploadForm;
 import ee.ttu.catering.rest.service.FileService;
 
+@Api(name = "File service", description = "Services for managing image files", group = "File")
 @Controller
 @RequestMapping(value="/rest/file")
 public class FileController {
@@ -25,6 +29,7 @@ public class FileController {
 	@Autowired
 	public FileService fileService;
 
+	@ApiMethod
 	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.POST)
 	@ResponseBody
 	public String createImage(@PathVariable String fileName, @ModelAttribute @Valid FileUploadForm form, BindingResult result) {
@@ -34,6 +39,8 @@ public class FileController {
 		return fileService.create(fileName, form.getFile(), form.getFilename());
 	}
 	
+	@ApiMethod
+	@ApiAuthNone
 	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.GET,  produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_GIF_VALUE})
 	public ResponseEntity<byte[]> getImage(@PathVariable String fileName) {
 		

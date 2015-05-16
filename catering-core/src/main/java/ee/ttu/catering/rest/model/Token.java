@@ -13,10 +13,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.jsondoc.core.annotation.ApiObject;
+
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
 @Table(name = "token")
+@ApiObject(name= "Token", description="Used to persist authentication info")
 public class Token extends IdEntity {
 
 	private static final long serialVersionUID = 1L;

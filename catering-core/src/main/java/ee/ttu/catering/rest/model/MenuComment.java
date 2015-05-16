@@ -6,12 +6,15 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.jsondoc.core.annotation.ApiObject;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ee.ttu.catering.rest.model.base.CommentEntity;
 
 @Entity
 @Table(name="menu_comment")
+@ApiObject(name= "Menu comment")
 public class MenuComment extends CommentEntity {
 
 	private static final long serialVersionUID = 1L;

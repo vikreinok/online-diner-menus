@@ -10,12 +10,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.jsondoc.core.annotation.ApiObject;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import ee.ttu.catering.rest.model.base.IdEntity;
 
 @Entity
 @Table(name="menu_item")
+@ApiObject(name= "Menu item")
 public class MenuItem extends IdEntity {
 
 	private static final long serialVersionUID = 1L;

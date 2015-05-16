@@ -17,7 +17,7 @@ public class ModifyDinerUiTest {
 	@Before
 	public void signInAndCreateTestData() {
 		System.out.println("Siiin");
-		sleep(10000);
+		sleep(1000);
 		new UiTest().loginAsAdminUser();
 		DinerUiForm form = new DinerUiForm();
 		sleep(1000);

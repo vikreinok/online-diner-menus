@@ -7,11 +7,16 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
+
+@ApiObject(show = false)
 @MappedSuperclass
 public abstract class CommentEntity extends IdEntity {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@ApiObjectField(description="Comment content")
 	private String comment;
 	
 	@Temporal(TemporalType.DATE)

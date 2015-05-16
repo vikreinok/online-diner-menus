@@ -2,86 +2,9 @@
 	<entity>
 		<entity-name>ee.ttu.catering.rest.model.User</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>128</entity-height>
-		<entity-X-Coordinate>490</entity-X-Coordinate>
-		<entity-Y-Coordinate>53</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.MenuComment</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>70</entity-height>
-		<entity-X-Coordinate>349</entity-X-Coordinate>
-		<entity-Y-Coordinate>406</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.Image</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>166</entity-height>
-		<entity-X-Coordinate>349</entity-X-Coordinate>
-		<entity-Y-Coordinate>28</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.Diner</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>248</entity-height>
-		<entity-X-Coordinate>181</entity-X-Coordinate>
-		<entity-Y-Coordinate>28</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.Menu</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>188</entity-height>
-		<entity-X-Coordinate>181</entity-X-Coordinate>
-		<entity-Y-Coordinate>376</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.MenuItem</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>148</entity-height>
-		<entity-X-Coordinate>10</entity-X-Coordinate>
-		<entity-Y-Coordinate>432</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.base.CommentEntity</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>90</entity-height>
-		<entity-X-Coordinate>516</entity-X-Coordinate>
-		<entity-Y-Coordinate>330</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>ee.ttu.catering.rest.model.Token</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>166</entity-height>
-		<entity-X-Coordinate>650</entity-X-Coordinate>
-		<entity-Y-Coordinate>37</entity-Y-Coordinate>
+		<entity-height>110</entity-height>
+		<entity-X-Coordinate>500</entity-X-Coordinate>
+		<entity-Y-Coordinate>30</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -99,11 +22,55 @@
 	</entity>
 
 	<entity>
+		<entity-name>ee.ttu.catering.rest.model.MenuComment</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>70</entity-height>
+		<entity-X-Coordinate>349</entity-X-Coordinate>
+		<entity-Y-Coordinate>435</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
 		<entity-name>ee.ttu.catering.rest.model.base.IdEntity</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>30</entity-height>
 		<entity-X-Coordinate>10</entity-X-Coordinate>
-		<entity-Y-Coordinate>281</entity-Y-Coordinate>
+		<entity-Y-Coordinate>321</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.MenuItem</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>168</entity-height>
+		<entity-X-Coordinate>10</entity-X-Coordinate>
+		<entity-Y-Coordinate>429</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.base.CommentEntity</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>90</entity-height>
+		<entity-X-Coordinate>500</entity-X-Coordinate>
+		<entity-Y-Coordinate>346</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.Diner</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>248</entity-height>
+		<entity-X-Coordinate>181</entity-X-Coordinate>
+		<entity-Y-Coordinate>28</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -114,7 +81,18 @@
 		<entity-width>120</entity-width>
 		<entity-height>90</entity-height>
 		<entity-X-Coordinate>10</entity-X-Coordinate>
-		<entity-Y-Coordinate>28</entity-Y-Coordinate>
+		<entity-Y-Coordinate>122</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.Menu</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>188</entity-height>
+		<entity-X-Coordinate>181</entity-X-Coordinate>
+		<entity-Y-Coordinate>376</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -125,7 +103,29 @@
 		<entity-width>120</entity-width>
 		<entity-height>70</entity-height>
 		<entity-X-Coordinate>10</entity-X-Coordinate>
-		<entity-Y-Coordinate>127</entity-Y-Coordinate>
+		<entity-Y-Coordinate>28</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.Image</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>166</entity-height>
+		<entity-X-Coordinate>343</entity-X-Coordinate>
+		<entity-Y-Coordinate>28</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ee.ttu.catering.rest.model.Token</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>128</entity-height>
+		<entity-X-Coordinate>500</entity-X-Coordinate>
+		<entity-Y-Coordinate>170</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>

@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.jsondoc.core.annotation.ApiObject;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -27,6 +28,7 @@ import ee.ttu.catering.rest.model.base.IdEntity;
 @Entity
 @Table(name="menu")
 //@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@menu_id")
+@ApiObject(name= "Menu")
 public class Menu extends IdEntity {
 	
 	private static final long serialVersionUID = 4638627189448098616L;
