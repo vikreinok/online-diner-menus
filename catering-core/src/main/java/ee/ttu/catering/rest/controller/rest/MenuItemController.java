@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
 import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,7 @@ public class MenuItemController {
 	@ApiAuthNone
 	@RequestMapping(method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public List<MenuItem> readAll() {
 		return menuItemService.findAll();
 	}
@@ -42,13 +45,15 @@ public class MenuItemController {
 	@ApiAuthNone
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public MenuItem read(@PathVariable int id) {
+	@ApiResponseObject
+	public MenuItem read(@ApiPathParam @PathVariable(value="id")  int id) {
 		return menuItemService.read(id);
 	}
 	
 	@ApiMethod(id=FlowConstants.CREATE_MENU_ITEM_ID)
 	@RequestMapping(method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public MenuItem create(@RequestBody @Valid MenuItem menuItem ) {
         return menuItemService.create(menuItem);
 	}
@@ -56,21 +61,23 @@ public class MenuItemController {
 	@ApiMethod
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public MenuItem update(@PathVariable int id, @RequestBody MenuItem menuItem) {
+	@ApiResponseObject
+	public MenuItem update(@ApiPathParam @PathVariable(value="id") int id, @RequestBody MenuItem menuItem) {
 		menuItem.setId(id);
 		return menuItemService.update(menuItem);
 	}
 	
 	@ApiMethod
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public void delete(@PathVariable int id) {
+	public void delete(@ApiPathParam @PathVariable(value="id") int id) {
 		 menuItemService.delete(id);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Find all menuitems realted to menu by menuId")
 	@ApiAuthNone
 	@RequestMapping(value="/all_menu_items/{menuId}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public List<MenuItem> readByMenu(@PathVariable int menuId) {
 		return menuItemService.findByMenuId(menuId);
 	}

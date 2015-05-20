@@ -7,6 +7,8 @@ import javax.validation.Valid;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
 import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -35,25 +37,28 @@ public class MenuController {
 	@Autowired
 	private DinerService dinerService;
 	
-	@ApiMethod
+	@ApiMethod(description="Returns all menus")
 	@ApiAuthNone
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public List<Menu> all() {
 		return menuService.getAll();
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Find menu by id")
 	@ApiAuthNone
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Menu one(@PathVariable int id) {
+	@ApiResponseObject
+	public Menu one(@ApiPathParam @PathVariable(value="id") int id) {
 		return menuService.get(id);
 	}
 	
-	@ApiMethod(id=FlowConstants.CREATE_MENU_ID)
+	@ApiMethod(id=FlowConstants.CREATE_MENU_ID, description="Menu creation service")
 	@RequestMapping( method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public Menu create(@RequestBody @Valid Menu menu) {
 		
 		int dinerId = -1;
@@ -75,7 +80,8 @@ public class MenuController {
 	@ApiMethod
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Menu update(@PathVariable int id, @RequestBody @Valid Menu menu) {
+	@ApiResponseObject
+	public Menu update(@ApiPathParam @PathVariable(value="id") int id, @RequestBody @Valid Menu menu) {
 		menu.setId(id);
 		return menuService.update(menu);
 	}
@@ -84,14 +90,16 @@ public class MenuController {
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT )
 	@ResponseBody
-	public Menu delete(@PathVariable int id) {
+	@ApiResponseObject
+	public Menu delete(@ApiPathParam @PathVariable(value="id") int id) {
 		return menuService.delete(id);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Adds comment to menu by menuId")
 	@RequestMapping(value="/comment/{menuId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Menu addComment(@PathVariable int menuId, @RequestBody @Valid MenuComment menuComment) {
+	@ApiResponseObject
+	public Menu addComment(@ApiPathParam @PathVariable(value="menuId") int menuId, @RequestBody @Valid MenuComment menuComment) {
 		Menu menu = menuService.get(menuId);
 		menu.addMenuComment(menuComment);
 		

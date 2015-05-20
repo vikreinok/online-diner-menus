@@ -7,6 +7,7 @@ import java.util.List;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
 import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +26,11 @@ public class MenuCommnetController {
 	@Autowired
 	private MenuCommentService menuCommentService;
 	
-	@ApiMethod
+	@ApiMethod(description="Returns all menu comments")
 	@ApiAuthNone
 	@RequestMapping(method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public List<MenuComment> readAll() {
 		return menuCommentService.findAll();
 	}

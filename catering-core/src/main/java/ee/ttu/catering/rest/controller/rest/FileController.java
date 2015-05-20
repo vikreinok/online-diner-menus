@@ -4,7 +4,10 @@ import javax.validation.Valid;
 
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
+import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,20 +32,22 @@ public class FileController {
 	@Autowired
 	public FileService fileService;
 
-	@ApiMethod
+	@ApiMethod(description="Service for inputing image")
 	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.POST)
 	@ResponseBody
-	public String createImage(@PathVariable String fileName, @ModelAttribute @Valid FileUploadForm form, BindingResult result) {
+	@ApiResponseObject
+	public String createImage(@ApiPathParam @PathVariable(value="fileName") String fileName,@ApiBodyObject @ModelAttribute @Valid FileUploadForm form, BindingResult result) {
 		
 		if(result.hasErrors());
 		
 		return fileService.create(fileName, form.getFile(), form.getFilename());
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Returns image data")
 	@ApiAuthNone
+	@ApiResponseObject
 	@RequestMapping(value="/image/{fileName:.+}", method=RequestMethod.GET,  produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_GIF_VALUE})
-	public ResponseEntity<byte[]> getImage(@PathVariable String fileName) {
+	public ResponseEntity<byte[]> getImage(@ApiPathParam @PathVariable(value="fileName") String fileName) {
 		
 		byte[] bytes = fileService.get(fileName);
 

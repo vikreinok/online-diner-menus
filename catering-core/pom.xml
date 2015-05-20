@@ -54,23 +54,11 @@
             <version>${spring.boot.version}</version>
         </dependency>
         
-<!--         <dependency> -->
-<!--             <groupId>org.springframework.boot</groupId> -->
-<!--             <artifactId>spring-boot-starter-thymeleaf</artifactId> -->
-<!--             <version>${spring.boot.version}</version> -->
-<!--         </dependency> -->
-        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-
-<!--         <dependency> -->
-<!--             <groupId>org.springframework.boot</groupId> -->
-<!--             <artifactId>spring-boot-starter-data-rest</artifactId> -->
-<!--             <version>${spring.boot.version}</version> -->
-<!--         </dependency> -->
 
 	  	<dependency>
 	        <groupId>org.springframework.boot</groupId>
@@ -102,71 +90,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
-        <!-- Spring -->
-<!--         <dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-core</artifactId> -->
-<!-- 			<version>${spring.version}</version> -->
-<!-- 		</dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework</groupId> -->
-<!--             <artifactId>spring-webmvc</artifactId> -->
-<!--             <version>${spring.version}</version> -->
-<!--         </dependency> -->
-<!--       	<dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-web</artifactId> -->
-<!-- 			<version>${spring.version}</version> -->
-<!-- 		</dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework.data</groupId> -->
-<!--             <artifactId>spring-data-jpa</artifactId> -->
-<!--             <version>${spring.data.version}</version> -->
-<!--             <exclusions> -->
-<!--                 <exclusion> -->
-<!--                     <artifactId>spring-aop</artifactId> -->
-<!--                     <groupId>org.springframework</groupId> -->
-<!--                 </exclusion> -->
-<!--             </exclusions> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework</groupId> -->
-<!--             <artifactId>spring-orm</artifactId> -->
-<!--             <version>${spring.version}</version> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework</groupId> -->
-<!--             <artifactId>spring-tx</artifactId> -->
-<!--             <version>${spring.version}</version> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-context</artifactId> -->
-<!-- 			<version>${spring.version}</version> -->
-<!-- 			<exclusions> -->
-<!-- 			   <exclusion> -->
-<!-- 			      <groupId>commons-logging</groupId> -->
-<!-- 			      <artifactId>commons-logging</artifactId> -->
-<!-- 			   </exclusion> -->
-<!-- 			</exclusions>			 -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!--             <groupId>org.springframework.data</groupId> -->
-<!--             <artifactId>spring-data-rest-webmvc</artifactId> -->
-<!--             <version>2.2.1.RELEASE</version> -->
-<!--         </dependency> -->
-		 <!-- Spring Security 3.1 Web, as for Spring MVC, this artifact will pull Spring Security core -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework.security</groupId> -->
-<!--             <artifactId>spring-security-web</artifactId> -->
-<!--             <version>${spring.security.version}</version> -->
-<!--         </dependency> -->
-<!--         Spring Security configuration, this is an optional feature and needs to be declared explicitly -->
-<!--         <dependency> -->
-<!--             <groupId>org.springframework.security</groupId> -->
-<!--             <artifactId>spring-security-config</artifactId> -->
-<!--             <version>${spring.security.version}</version> -->
-<!--         </dependency> -->
+ 
         <!-- CGLIB is required to process @Configuration classes -->
         <dependency>
             <groupId>cglib</groupId>

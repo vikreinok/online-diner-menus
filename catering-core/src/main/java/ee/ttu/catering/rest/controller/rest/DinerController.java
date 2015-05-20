@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
+import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -44,65 +46,71 @@ public class DinerController {
 	@PersistenceContext( )
     private EntityManager entityManager;
 
-	@ApiMethod(id=FlowConstants.GET_ALL_DINERS_ID)
+	@ApiMethod(id=FlowConstants.GET_ALL_DINERS_ID, description="Returns all diners")
 	@ApiAuthNone
 	@RequestMapping(value="", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+	@ApiResponseObject
 	public List<Diner> all() {
 		return dinerService.getAll();
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Diner by id")
 	@ApiAuthNone
 	@RequestMapping(value="/{id}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Diner one(@PathVariable int id) {
+	@ApiResponseObject
+	public Diner one(@ApiPathParam @PathVariable(value="id")  int id) {
 		return dinerService.get(id);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Create diner")
 	@RequestMapping(method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Diner create(@Valid @RequestBody Diner diner) {
+	@ApiResponseObject
+	public Diner create(@Valid @ApiBodyObject @RequestBody Diner diner) {
 		return dinerService.create(diner);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Diner by id")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Diner update(@PathVariable Integer id, @RequestBody Diner diner) {
+	@ApiResponseObject
+	public Diner update(@ApiPathParam @PathVariable(value="id") Integer id, @RequestBody Diner diner) {
 		diner.setId(id);
 		return dinerService.update(diner) ;
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Delete diner by id")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT )
-	public void delete(@PathVariable Integer id) {
+	public void delete(@ApiPathParam @PathVariable(value="id")  Integer id) {
 		dinerService.delete(id);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Find menus for by diner dinerId")
 	@ApiAuthNone
 	@RequestMapping(value="/menus/{dinerId}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Menu> findDinerMenus(@PathVariable Integer dinerId) {
+	@ApiResponseObject
+	public List<Menu> findDinerMenus(@ApiPathParam @PathVariable(value="dinerId") Integer dinerId) {
 		return menuService.findDinerMenus(dinerId);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Search diner by name")
 	@ApiAuthNone
 	@RequestMapping(value="/name/{name}", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Diner> findByName(@PathVariable String name) {
+	@ApiResponseObject
+	public List<Diner> findByName(@ApiPathParam @PathVariable(value="name") String name) {
 		return dinerService.findByName(name);
 	}
 	
-	@ApiMethod
+	@ApiMethod(description="Add comment to dner by dienrId")
 	@RequestMapping(value="/comment/{dinerId}", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	@Transactional
-	public Diner addComment(@PathVariable int dinerId, @RequestBody @Valid DinerComment dinerComment) {
+	@ApiResponseObject
+	public Diner addComment(@ApiPathParam @PathVariable(value="dinerId") int dinerId, @ApiBodyObject @RequestBody @Valid DinerComment dinerComment) {
 		
 		dinerComment = dinerCommentService.save(dinerComment);
 
