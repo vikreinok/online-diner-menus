@@ -1,5 +1,9 @@
 package ee.ttu.catering.config;
 
+import ee.ttu.catering.config.authentication.RestAuthenticationFilter;
+import ee.ttu.catering.config.authentication.UnauthenticationEntryPoint;
+import ee.ttu.catering.rest.service.TokenService;
+import ee.ttu.catering.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,11 +17,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import ee.ttu.catering.config.authentication.RestAuthenticationFilter;
-import ee.ttu.catering.config.authentication.UnauthenticationEntryPoint;
-import ee.ttu.catering.rest.service.TokenService;
-import ee.ttu.catering.rest.service.UserService;
 
 @Configuration
 @EnableWebMvcSecurity

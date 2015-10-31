@@ -1,12 +1,11 @@
 package ee.ttu.catering.config.authentication;
 
-import java.util.Collection;
-import java.util.Collections;
-
+import ee.ttu.catering.rest.model.Token;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import ee.ttu.catering.rest.model.Token;
+import java.util.Collection;
+import java.util.Collections;
 
 public class TokenAuthentication implements Authentication {
 

@@ -1,13 +1,9 @@
 package ee.ttu.catering.rest.service;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
+import ee.ttu.catering.rest.exception.FileSeriveException;
+import ee.ttu.catering.rest.exception.ImageFileNotFoundException;
+import ee.ttu.catering.rest.model.Image;
+import ee.ttu.catering.rest.repository.ImageRepository;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import ee.ttu.catering.rest.exception.FileSeriveException;
-import ee.ttu.catering.rest.exception.ImageFileNotFoundException;
-import ee.ttu.catering.rest.model.Image;
-import ee.ttu.catering.rest.repository.ImageRepository;
+import java.io.*;
 
 @Service
 @Transactional(rollbackFor=ImageFileNotFoundException.class)

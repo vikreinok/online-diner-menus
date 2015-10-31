@@ -1,17 +1,11 @@
 package ee.ttu.catering.rest.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import ee.ttu.catering.rest.model.base.LikeEntity;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import ee.ttu.catering.rest.model.base.LikeEntity;
+import javax.persistence.*;
 
 @Entity
 @Table(name="diner_like")

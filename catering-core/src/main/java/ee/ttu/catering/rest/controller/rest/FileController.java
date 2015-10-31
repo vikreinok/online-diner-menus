@@ -1,13 +1,8 @@
 package ee.ttu.catering.rest.controller.rest;
 
-import javax.validation.Valid;
-
-import org.jsondoc.core.annotation.Api;
-import org.jsondoc.core.annotation.ApiAuthNone;
-import org.jsondoc.core.annotation.ApiBodyObject;
-import org.jsondoc.core.annotation.ApiMethod;
-import org.jsondoc.core.annotation.ApiPathParam;
-import org.jsondoc.core.annotation.ApiResponseObject;
+import ee.ttu.catering.rest.controller.dto.FileUploadForm;
+import ee.ttu.catering.rest.service.FileService;
+import org.jsondoc.core.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,14 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import ee.ttu.catering.rest.controller.dto.FileUploadForm;
-import ee.ttu.catering.rest.service.FileService;
+import javax.validation.Valid;
 
 @Api(name = "File service", description = "Services for managing image files", group = "File")
 @Controller

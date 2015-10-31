@@ -1,17 +1,16 @@
 package ee.ttu.catering.rest.service;
 
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import ee.ttu.catering.rest.exception.DinerNotFoundException;
 import ee.ttu.catering.rest.model.Diner;
 import ee.ttu.catering.rest.repository.DinerCommentRepository;
 import ee.ttu.catering.rest.repository.DinerRepository;
 import ee.ttu.catering.rest.repository.ImageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor=DinerNotFoundException.class)

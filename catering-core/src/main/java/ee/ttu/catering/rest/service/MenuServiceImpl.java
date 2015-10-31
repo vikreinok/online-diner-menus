@@ -1,15 +1,14 @@
 package ee.ttu.catering.rest.service;
 
 
-import java.util.List;
-
+import ee.ttu.catering.rest.exception.MenuNotFoundException;
+import ee.ttu.catering.rest.model.Menu;
+import ee.ttu.catering.rest.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ee.ttu.catering.rest.exception.MenuNotFoundException;
-import ee.ttu.catering.rest.model.Menu;
-import ee.ttu.catering.rest.repository.MenuRepository;
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor=MenuNotFoundException.class)

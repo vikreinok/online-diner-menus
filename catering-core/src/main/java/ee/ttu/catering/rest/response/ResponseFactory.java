@@ -4,9 +4,10 @@
  */
 package ee.ttu.catering.rest.response;
 
+import org.springframework.http.HttpStatus;
+
 import java.io.Serializable;
 import java.util.List;
-import org.springframework.http.HttpStatus;
 
 /**
  *

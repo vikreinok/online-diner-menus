@@ -1,9 +1,9 @@
 package ee.ttu.catering.rest.service;
 
-import java.util.List;
-
 import ee.ttu.catering.rest.exception.MenuNotFoundException;
 import ee.ttu.catering.rest.model.Menu;
+
+import java.util.List;
 
 public interface MenuService {
 

@@ -4,9 +4,9 @@
  */
 package ee.ttu.catering.rest.exception;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
+import ee.ttu.catering.rest.response.ApiResponse;
+import ee.ttu.catering.rest.response.ResponseFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
-
-import ee.ttu.catering.rest.response.ApiResponse;
-import ee.ttu.catering.rest.response.ResponseFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *

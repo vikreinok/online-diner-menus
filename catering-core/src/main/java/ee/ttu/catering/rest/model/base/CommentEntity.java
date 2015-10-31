@@ -1,14 +1,13 @@
 package ee.ttu.catering.rest.model.base;
 
-import java.util.Date;
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.jsondoc.core.annotation.ApiObject;
-import org.jsondoc.core.annotation.ApiObjectField;
+import java.util.Date;
 
 @ApiObject(show = false)
 @MappedSuperclass

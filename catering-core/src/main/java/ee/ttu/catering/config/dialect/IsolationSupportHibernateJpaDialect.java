@@ -1,11 +1,5 @@
 package ee.ttu.catering.config.dialect;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceException;
-
 import org.hibernate.Session;
 import org.hibernate.internal.SessionImpl;
 import org.slf4j.Logger;
@@ -14,6 +8,11 @@ import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
+import java.sql.Connection;
+import java.sql.SQLException;
  
 public class IsolationSupportHibernateJpaDialect extends HibernateJpaDialect {
  

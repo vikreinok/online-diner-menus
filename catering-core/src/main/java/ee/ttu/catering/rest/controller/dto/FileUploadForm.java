@@ -1,9 +1,9 @@
 package ee.ttu.catering.rest.controller.dto;
 
-import javax.validation.constraints.NotNull;
-
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import javax.validation.constraints.NotNull;
 
 public class FileUploadForm {
 

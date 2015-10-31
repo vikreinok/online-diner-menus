@@ -1,11 +1,10 @@
 package ee.ttu.catering.rest.model.base;
 
-import java.util.Date;
-
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.util.Date;
 
 @MappedSuperclass
 public abstract class LikeEntity extends IdEntity {

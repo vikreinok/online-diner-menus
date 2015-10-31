@@ -1,8 +1,10 @@
 package ee.ttu.catering.rest.service;
 
-import java.util.Calendar;
-import java.util.Date;
-
+import ee.ttu.catering.rest.exception.TokenNotFoundException;
+import ee.ttu.catering.rest.model.Token;
+import ee.ttu.catering.rest.model.User;
+import ee.ttu.catering.rest.repository.TokenRepository;
+import ee.ttu.catering.rest.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,11 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import ee.ttu.catering.rest.exception.TokenNotFoundException;
-import ee.ttu.catering.rest.model.Token;
-import ee.ttu.catering.rest.model.User;
-import ee.ttu.catering.rest.repository.TokenRepository;
-import ee.ttu.catering.rest.repository.UserRepository;
+import java.util.Calendar;
+import java.util.Date;
 
 @Service
 @Transactional

@@ -1,8 +1,7 @@
 package ee.ttu.catering.validator;
 
-import org.junit.Test;
-
 import ee.ttu.catering.rest.validator.SSNValidator;
+import org.junit.Test;
 
 public class SSNValidatorTest {
 

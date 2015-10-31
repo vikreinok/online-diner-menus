@@ -1,13 +1,12 @@
 package ee.ttu.catering.rest.repository;
 
-import java.util.Date;
-
+import ee.ttu.catering.rest.model.Token;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import ee.ttu.catering.rest.model.Token;
+import java.util.Date;
 
 public interface TokenRepository extends CrudRepository<Token, Long> {
 

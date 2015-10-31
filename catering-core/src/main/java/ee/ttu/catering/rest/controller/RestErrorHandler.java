@@ -1,8 +1,6 @@
 package ee.ttu.catering.rest.controller;
 
-import java.util.List;
-import java.util.Locale;
-
+import ee.ttu.catering.rest.model.base.ValidationErrorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -15,7 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import ee.ttu.catering.rest.model.base.ValidationErrorDTO;
+import java.util.List;
+import java.util.Locale;
  
 @ControllerAdvice
 public class RestErrorHandler {

@@ -1,9 +1,9 @@
 package ee.ttu.catering.rest.service;
 
-import java.util.List;
-
 import ee.ttu.catering.rest.exception.DinerNotFoundException;
 import ee.ttu.catering.rest.model.Diner;
+
+import java.util.List;
 
 public interface DinerService {
 

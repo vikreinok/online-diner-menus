@@ -1,7 +1,10 @@
 package ee.ttu.catering.service;
 
-import static org.junit.Assert.assertEquals;
-
+import ee.ttu.catering.rest.exception.DinerNotFoundException;
+import ee.ttu.catering.rest.model.Diner;
+import ee.ttu.catering.rest.repository.DinerRepository;
+import ee.ttu.catering.rest.service.DinerService;
+import ee.ttu.catering.rest.service.DinerServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,11 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import ee.ttu.catering.rest.exception.DinerNotFoundException;
-import ee.ttu.catering.rest.model.Diner;
-import ee.ttu.catering.rest.repository.DinerRepository;
-import ee.ttu.catering.rest.service.DinerService;
-import ee.ttu.catering.rest.service.DinerServiceImpl;
+import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class DinerServiceImplTest {
     

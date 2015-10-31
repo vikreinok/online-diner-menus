@@ -1,16 +1,10 @@
 package ee.ttu.catering.rest.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import ee.ttu.catering.rest.model.base.CommentEntity;
 import org.jsondoc.core.annotation.ApiObject;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import ee.ttu.catering.rest.model.base.CommentEntity;
+import javax.persistence.*;
 
 @Entity
 @Table(name="menu_comment")

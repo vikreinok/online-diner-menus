@@ -1,9 +1,8 @@
 package ee.ttu.catering.rest.controller.rest;
 
 
-
-import java.util.List;
-
+import ee.ttu.catering.rest.model.MenuComment;
+import ee.ttu.catering.rest.service.MenuCommentService;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthNone;
 import org.jsondoc.core.annotation.ApiMethod;
@@ -15,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ee.ttu.catering.rest.model.MenuComment;
-import ee.ttu.catering.rest.service.MenuCommentService;
+import java.util.List;
 
 @Api(name = "MenuComment service", description = "Services for managing diner menu comments", group = "Diner menu")
 @RestController

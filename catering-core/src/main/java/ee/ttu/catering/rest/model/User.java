@@ -1,13 +1,11 @@
 package ee.ttu.catering.rest.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import ee.ttu.catering.rest.model.base.IdEntity;
 import org.jsondoc.core.annotation.ApiObject;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import ee.ttu.catering.rest.model.base.IdEntity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 @Entity(name = "user")
 //@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)

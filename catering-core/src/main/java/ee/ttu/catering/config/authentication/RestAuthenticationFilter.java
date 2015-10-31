@@ -1,16 +1,8 @@
 package ee.ttu.catering.config.authentication;
 
-import java.io.IOException;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import ee.ttu.catering.rest.exception.TokenNotFoundException;
+import ee.ttu.catering.rest.model.Token;
+import ee.ttu.catering.rest.service.TokenService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,9 +13,10 @@ import org.springframework.security.crypto.codec.Base64;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import ee.ttu.catering.rest.exception.TokenNotFoundException;
-import ee.ttu.catering.rest.model.Token;
-import ee.ttu.catering.rest.service.TokenService;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class RestAuthenticationFilter implements Filter {
 

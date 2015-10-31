@@ -1,28 +1,17 @@
 package ee.ttu.catering.rest.controller.rest;
 
 
-
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.jsondoc.core.annotation.Api;
-import org.jsondoc.core.annotation.ApiAuthNone;
-import org.jsondoc.core.annotation.ApiMethod;
-import org.jsondoc.core.annotation.ApiPathParam;
-import org.jsondoc.core.annotation.ApiResponseObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import ee.ttu.catering.rest.controller.jsondoc.FlowConstants;
 import ee.ttu.catering.rest.model.MenuItem;
 import ee.ttu.catering.rest.service.MenuItemService;
+import org.jsondoc.core.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Api(name = "MenuItem service", description = "Services for managing diner menu itmes", group = "Diner menu")
 @Controller

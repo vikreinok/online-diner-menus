@@ -1,8 +1,6 @@
 package ee.ttu.catering.config;
 
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-
+import ee.ttu.catering.rest.model.Diner;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +11,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import ee.ttu.catering.rest.model.Diner;
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 
 

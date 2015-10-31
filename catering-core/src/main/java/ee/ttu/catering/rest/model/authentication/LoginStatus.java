@@ -1,8 +1,7 @@
 package ee.ttu.catering.rest.model.authentication;
 
-import java.io.Serializable;
-
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * LoginStatus. Simple DTO (Data Transfert Object) used to give a structure to a

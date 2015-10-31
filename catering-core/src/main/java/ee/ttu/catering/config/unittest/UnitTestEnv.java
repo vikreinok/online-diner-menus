@@ -1,9 +1,7 @@
 package ee.ttu.catering.config.unittest;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import ee.ttu.catering.config.AbstractDbEnv;
+import ee.ttu.catering.config.dialect.IsolationSupportHibernateJpaDialect;
 import org.hibernate.cfg.Environment;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +12,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-import ee.ttu.catering.config.AbstractDbEnv;
-import ee.ttu.catering.config.dialect.IsolationSupportHibernateJpaDialect;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:unittest_db.properties")
