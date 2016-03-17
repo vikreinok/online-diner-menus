@@ -13,7 +13,7 @@ import javax.persistence.criteria.*;
 public interface MenuRepository extends JpaRepository<Menu, Integer>, JpaSpecificationExecutor<Menu>{
 	
 	public static class Specs {
-		public static Specification<Menu> findMenusByDienrId(final int dinerId) {
+		public static Specification<Menu> findMenusByDinerId(final int dinerId) {
 			return new Specification<Menu>() {
 
 				@Override
@@ -24,6 +24,6 @@ public interface MenuRepository extends JpaRepository<Menu, Integer>, JpaSpecifi
 			};
 		}
 	}
-	  
-	
+
+
 }

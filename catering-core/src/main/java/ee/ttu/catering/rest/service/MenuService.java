@@ -13,5 +13,6 @@ public interface MenuService {
 	public Menu update(Menu sp) throws MenuNotFoundException;
 	public Menu delete(Integer id) throws MenuNotFoundException;
 	public List<Menu> findDinerMenus(int dinerId) throws MenuNotFoundException;
-	
+	public List<Menu> findOrganizedDinerMenus(int dinerId) throws MenuNotFoundException;
+
 }

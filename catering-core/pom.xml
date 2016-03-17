@@ -5,80 +5,109 @@
     <artifactId>catering-core</artifactId>
     <packaging>war</packaging>
     <version>1.0.2-SNAPSHOT</version>
-    
+
     <name>TTU catering</name>
     <description>Dining information system</description>
     <url>http://loclahost:8080/catering-core/</url>
-    <inceptionYear>2014 </inceptionYear>
- 
+    <inceptionYear>2014</inceptionYear>
+
+
+
+
     <properties>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	    <maven.compiler.source>1.7</maven.compiler.source>
-	    <maven.compiler.target>1.7</maven.compiler.target>
-    
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <webapps.dir>C:/tomcat8/webapps/</webapps.dir>
+
         <mysql.connector>5.1.34</mysql.connector>
-        <hibernate.version>4.3.6.Final</hibernate.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
-        <spring.boot.version>1.2.3.RELEASE</spring.boot.version>
-        <spring.security.version>4.0.0.RELEASE </spring.security.version>
-        <spring.data.version>1.7.2.RELEASE</spring.data.version>
+        <hibernate.version>5.0.8.Final</hibernate.version>
+        <spring.boot.version>1.2.8.RELEASE</spring.boot.version>
+        <spring.security.version>4.0.4.RELEASE</spring.security.version>
+        <spring.data.version>1.9.4.RELEASE</spring.data.version>
         <org.slf4j-version>1.7.12</org.slf4j-version>
         <version.surefire.plugin>2.10</version.surefire.plugin>
         <jsondoc.verison>1.1.13</jsondoc.verison>
     </properties>
 
+    <!--<parent>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+        <!--<version>${spring.boot.version}</version>-->
+    <!--</parent>-->
+
     <dependencies>
-    
-	    <dependency>
-			<groupId>org.jsondoc</groupId>
-			<artifactId>spring-boot-starter-jsondoc</artifactId>
-			<version>${jsondoc.verison}</version>
-		</dependency>
-    
+
+        <dependency>
+            <groupId>org.jsondoc</groupId>
+            <artifactId>spring-boot-starter-jsondoc</artifactId>
+            <version>${jsondoc.verison}</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--&lt;!&ndash; Import dependency management from Spring Boot &ndash;&gt;-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-dependencies</artifactId>-->
+            <!--<version>${spring.boot.version}</version>-->
+            <!--<type>pom</type>-->
+            <!--<scope>import</scope>-->
+        <!--</dependency>-->
+
+
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter</artifactId>-->
+            <!--<version>${spring.boot.version}</version>-->
+        <!--</dependency>-->
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-ws</artifactId>
-			<version>${spring.boot.version}</version>
+            <version>${spring.boot.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
 
-	  	<dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-tomcat</artifactId>
-	        <version>${spring.boot.version}</version>
-	        <scope>provided</scope>
-	    </dependency>
-    
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${spring.boot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
 
-		<!-- JDBC -->
-		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>${mysql.connector}</version>
-		</dependency>
+        <!-- JDBC -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector}</version>
+        </dependency>
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -90,7 +119,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
- 
+
         <!-- CGLIB is required to process @Configuration classes -->
         <dependency>
             <groupId>cglib</groupId>
@@ -120,8 +149,8 @@
             <artifactId>validation-api</artifactId>
             <version>1.1.0.Final</version>
         </dependency>
-        
-         <!-- Logging -->
+
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -133,12 +162,12 @@
             <version>${org.slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>org.slf4j</groupId> -->
-<!--             <artifactId>slf4j-log4j12</artifactId> -->
-<!--             <version>${org.slf4j-version}</version> -->
-<!--             <scope>runtime</scope> -->
-<!--         </dependency> -->
+        <!--         <dependency> -->
+        <!--             <groupId>org.slf4j</groupId> -->
+        <!--             <artifactId>slf4j-log4j12</artifactId> -->
+        <!--             <version>${org.slf4j-version}</version> -->
+        <!--             <scope>runtime</scope> -->
+        <!--         </dependency> -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -163,43 +192,43 @@
             </exclusions>
             <scope>runtime</scope>
         </dependency>
-        
+
         <!--test-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <version>${spring.version}</version>
+            <version>${spring.boot.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.3.176</version>
-<!-- 			<scope>test</scope> -->
-		</dependency>
-        
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.176</version>
+            <!-- 			<scope>test</scope> -->
+        </dependency>
+
         <!-- utils -->
         <!-- Joda Time Library -->
         <dependency>
@@ -219,30 +248,30 @@
             <artifactId>commons-io</artifactId>
             <version>2.0.1</version>
         </dependency>
-		
+
         <!-- Unit tests -->
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>2.2.4</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>javax.el</artifactId>
-			<version>2.2.4</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
     </dependencies>
-    
+
     <profiles>
         <profile>
             <!-- The default profile skips all tests, though you can tune 
@@ -265,7 +294,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <!-- The default profile skips all tests, though you can tune 
             it to run just unit tests based on a custom pattern -->
@@ -285,40 +314,52 @@
 
     <build>
         <finalName>catering-core</finalName>
-        
+
         <plugins>
-      
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>1.2.7.RELEASE</version>
-        </plugin>
-      
-        <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.2</version>
-            <configuration>
-                <source>${maven.compiler.source}</source>
-                <target>${maven.compiler.target}</target>
-                <compilerArguments>
-		            <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-		        </compilerArguments>
-            </configuration>
-        </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerArguments>
+                        <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
 
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
+                    <outputDirectory>${webapps.dir}</outputDirectory>
+                    <warName>catering-core</warName>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
 
-        <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-             <artifactId>maven-war-plugin</artifactId>
-             <version>2.6</version>
-             <configuration>
-                 <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-	           	 <outputDirectory>C:/tomcat/webapps/</outputDirectory>
-	           	 <warName>catering-core</warName>
-	             <failOnMissingWebXml>false</failOnMissingWebXml>
-            </configuration>
-        </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 

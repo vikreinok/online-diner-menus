@@ -41,7 +41,8 @@ public class IsolationSupportHibernateJpaDialect extends HibernateJpaDialect {
         }
  
         Connection connection = ((SessionImpl)session).connection();
-        infoEnabled = logger.isInfoEnabled();
+//        infoEnabled = logger.isInfoEnabled();
+        infoEnabled = false;
         debugEnabled = logger.isDebugEnabled();
         if (infoEnabled) {
             logger.info("Connection Info: isolationlevel={} , instance={} ", connection.getTransactionIsolation(), connection);

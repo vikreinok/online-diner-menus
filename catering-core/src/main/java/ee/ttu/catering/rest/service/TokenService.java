@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,7 +31,7 @@ public class TokenService {
 
     public Token getToken(String value) throws TokenNotFoundException {
         Assert.notNull(value, "Token value must not be null");
-        Token token = tokenRepository.findByValue(value);
+        Token token = tokenRepository.findOne(TokenRepository.Specs.value(value));
         Date now = new Date();
         if (token == null || (now.getTime() - token.getLastAccess().getTime()) / 1000 > timeout) {
             throw new TokenNotFoundException(
@@ -69,7 +70,8 @@ public class TokenService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(now);
         calendar.add(Calendar.HOUR, -1 * seconds);
-        tokenRepository.deleteOlderThan(calendar.getTime());
+        List<Token> outdatedTokens = tokenRepository.findAll(TokenRepository.Specs.olderThan(calendar.getTime()));
+        tokenRepository.delete(outdatedTokens);
     }
 
     public void deleteToken(Token token) {
