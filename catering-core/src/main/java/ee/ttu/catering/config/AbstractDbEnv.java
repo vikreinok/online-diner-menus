@@ -1,7 +1,6 @@
 package ee.ttu.catering.config;
 
 import ee.ttu.catering.rest.model.Diner;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-
 
 
 @Configuration
@@ -52,20 +50,20 @@ public abstract class AbstractDbEnv {
     
 	@Bean
 	protected DataSource dataSource() {
-		BasicDataSource dataSource = new BasicDataSource();
-		
-        dataSource.setInitialSize(1);
+		org.apache.tomcat.jdbc.pool.DataSource dataSource = new org.apache.tomcat.jdbc.pool.DataSource();
+
+		dataSource.setInitialSize(1);
         dataSource.setMinIdle(5);
         dataSource.setMaxActive(20);
         dataSource.setMaxIdle(10);
-        
-		dataSource.setConnectionProperties("useUnicode=true;characterEncoding=UTF-8");	
-        
+
+		dataSource.setConnectionProperties("useUnicode=true;characterEncoding=UTF-8");
+
 		dataSource.setDriverClassName(getProperty(DATABASE_DRIVER));
 		dataSource.setUrl(getProperty(DATABASE_URL));
 		dataSource.setUsername(getProperty(DATABASE_USERNAME));
 		dataSource.setPassword(getProperty(DATABASE_PASSWORD));
-		
+
 		return dataSource;
 	}
 	  
