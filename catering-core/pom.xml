@@ -21,7 +21,7 @@
         <webapps.dir>C:/tomcat8/webapps/</webapps.dir>
 
         <mysql.connector>5.1.34</mysql.connector>
-        <hibernate.version>5.0.8.Final</hibernate.version>
+        <hibernate.version>5.4.24.Final</hibernate.version>
         <spring.boot.version>1.2.8.RELEASE</spring.boot.version>
         <spring.security.version>4.0.4.RELEASE</spring.security.version>
         <spring.data.version>1.9.4.RELEASE</spring.data.version>
